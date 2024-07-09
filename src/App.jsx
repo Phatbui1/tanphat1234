@@ -1,16 +1,16 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Splash from './onboarding/Splash';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import Guild1 from './onboarding/Guild1';
+import Splash from './onboarding/Splash';
 
 const App = () => {
   return (
-<BrowserRouter>
-      <Switch>
-        <Route exact path="/" component={Splash} />
-        <Route path="/guild1" component={Guild1} />
-      </Switch>
-    </BrowserRouter>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Splash />} />
+        <Route path="/guild1" element={<Guild1 />} />
+      </Routes>
+    </Router>
   );
 };
 
