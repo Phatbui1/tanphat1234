@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [forgotPassword, setForgotPassword] = useState(false);
   const [error, setError] = useState('');
+  const navigate = useNavigate();
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
   };
-const handleForgotPassword = () => {
-  setForgotPassword(true);
-};
+
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
@@ -24,11 +23,19 @@ const handleForgotPassword = () => {
     if (username === defaultUsername && password === defaultPassword) {
       // Đăng nhập thành công
       localStorage.setItem('token', 'dummy-token');
-      window.location.href = '/';
+      navigate('/release');
     } else {
       // Hiển thị lỗi
       setError('Sai tài khoản hoặc mật khẩu.');
     }
+  };
+
+  const handleForgotPassword = () => {
+    navigate('/reset-password');
+  };
+
+  const handleSignUp = () => {
+    navigate('/release'); // Chuyển hướng đến trang "release" khi nhấp vào nút "sign up"
   };
 
   return (
@@ -36,7 +43,7 @@ const handleForgotPassword = () => {
       <div className="bg-slate-800 border border-slate-600 rounded-md p-8 shadow-lg backdrop-filter backdrop-blur-lg bg-opacity-30 w-full max-w-md">
         <h1 className="text-white">Sign In</h1>
         <div>
-          <p className="text-white">enter your mail end password</p>
+          <p className="text-white">Enter your mail and password</p>
         </div>
         <form onSubmit={handleSubmit}>
           <div className="relative my-4">
@@ -78,11 +85,15 @@ const handleForgotPassword = () => {
           >
             Đăng nhập
           </button>
-          <button id="forgot-password" className="item-right text-white font-bold py-2 px-4 rounded">
+          <button
+            type="button"
+            onClick={handleForgotPassword}
+            className="text-right text-yellow-500 font-bold py-2 px-4 rounded mt-2 w-full"
+          >
             Forgot your password?
           </button>
           <div className='text-white font-bold py-2 px-4 rounded'>
-            <p>no account yet? <span className='text-yellow-500 font-bold py-2 px-4 rounded' >sign up </span></p>
+            <p>no account yet? <button className='text-yellow-500 font-bold py-2 px-4 rounded' onClick={handleSignUp}>sign up</button></p>
           </div>
         </form>
       </div>

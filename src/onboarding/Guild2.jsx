@@ -1,7 +1,14 @@
-import React from 'react'
-import image from "../../src/assets/image_a.png"
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import image from "../../src/assets/image_a.png";
 
 const Guild2 = () => {
+  const navigate = useNavigate();
+
+  const handleGetStartedClick = () => {
+    navigate('/guild3');
+  };
+
   return (
     <div style={{
       backgroundColor: '#090B2F',
@@ -29,23 +36,23 @@ const Guild2 = () => {
         color: '#FFFFFF',
         borderRadius: '40px'
       }}>
-        <h1>Fairly</h1>
+        <h1>Decentraized</h1>
         <p>SPL is a valuable token of a decentralized blockchain lottery platform</p>
-        <button style={{
-          backgroundColor: '#F9D54A',
-          color: '#FFFFFF',
-          border: '2px solid #F9D54A',
-          padding: '10px 20px',
-          fontSize: '16px',
-          cursor: 'pointer',
-          marginTop: '20px',
-          borderRadius: '20px'
-        }}>
-            Get Started
-        </button>
+       <button style={{
+            backgroundColor: '#F9D54A',
+            color: '#FFFFFF',
+            border: 'none',
+            padding: '15px 0',
+            fontSize: '16px',
+            cursor: 'pointer',
+            borderRadius: '10px',
+            width: '100%'
+          }} onClick={handleGetStartedClick}>
+            Get started
+          </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Guild2
+export default Guild2;

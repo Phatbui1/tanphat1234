@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const SignUpForm = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -19,6 +21,9 @@ const SignUpForm = () => {
     console.log('Email:', email);
     console.log('Password:', password);
     console.log('Confirm Password:', confirmPassword);
+
+    // Navigate to the User page after successful sign up
+    navigate('/user');
   };
 
   const handleEmailChange = (e) => {
@@ -34,10 +39,10 @@ const SignUpForm = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-900">
-      <div className="w-full max-w-md p-8 space-y-6  rounded-lg shadow-lg">
-        <h2 className="text-2xl font-bold text-center text-white">Sign Up</h2>
-        <p className="text-center text-gray-400">Hi, register to start experiencing Superlott</p>
+    <div className="flex items-center justify-center min-h-screen bg-[#090B2F]">
+      <div className="w-full max-w-md p-8 space-y-6 rounded-lg shadow-lg">
+        <h2 className="text-2xl font-bold text-left text-white">Sign Up</h2>
+        <p className="text-left text-gray-400">Hi, register to start experiencing Superlott</p>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="relative">
             <input
@@ -58,25 +63,6 @@ const SignUpForm = () => {
               required
               placeholder="Your password"
             />
-            <button
-              type="button"
-              className="absolute inset-y-0 right-4 flex items-center"
-            >
-              <svg
-                className="w-5 h-5 text-gray-500"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M15 12m2 0a7.5 7.5 0 11-10.5-6 7.5 7.5 0 0110.5 6zm-7.5 0a7.5 7.5 0 0110.5 6 7.5 7.5 0 01-10.5-6zm2.5 0a2.5 2.5 0 105 0 2.5 2.5 0 00-5 0z"
-                />
-              </svg>
-            </button>
           </div>
           <div className="relative">
             <input
@@ -87,26 +73,6 @@ const SignUpForm = () => {
               required
               placeholder="Confirm your password"
             />
-            <button
-              type="button"
-              className="absolute inset-y-0 right-4 flex items-center"
-              // Add functionality to toggle password visibility if needed
-            >
-              <svg
-                className="w-5 h-5 text-gray-500"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M15 12m2 0a7.5 7.5 0 11-10.5-6 7.5 7.5 0 0110.5 6zm-7.5 0a7.5 7.5 0 0110.5 6 7.5 7.5 0 01-10.5-6zm2.5 0a2.5 2.5 0 105 0 2.5 2.5 0 00-5 0z"
-                />
-              </svg>
-            </button>
           </div>
           {error && <div className="text-red-500">{error}</div>}
           <button

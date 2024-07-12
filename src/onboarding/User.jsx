@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 const User = () => {
   const [username, setUsername] = useState('');
   const [error, setError] = useState('');
@@ -20,7 +20,8 @@ const User = () => {
     <div style={{ backgroundColor: '#090B2F', height: '100vh' }}>
       <div className="flex items-center justify-center min-h-screen">
         <div className="w-full max-w-md p-8 space-y-6  rounded-lg shadow-lg">
-          <h1 className="text-2xl font-bold text-center text-white">Username</h1>
+          <h1 className="text-2xl font-bold text-left text-white">Username</h1>
+          <p className='text-1xl font-bold text left  text-white'>Username should be between 4 and 22 characters, consisting of only letters and number</p>
           <div className="space-y-2">
             <input
               type="text"

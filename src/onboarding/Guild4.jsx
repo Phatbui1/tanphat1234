@@ -1,12 +1,22 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Guild4 = () => {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
+  const [error, setError] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Add your password reset logic here
-    console.log('Resetting password for email:', email);
+    const defaultEmail = 'buitanphat6112003@gmail.com'; // Sửa lỗi chính tả trong defaultEmail
+
+    if (email === defaultEmail) {
+      console.log('Resetting password for email:', email);
+      // Navigate to Guild5 after successful reset
+      navigate('/guild5');
+    } else {
+      setError('Email không hợp lệ.');
+    }
   };
 
   return (
@@ -21,7 +31,11 @@ const Guild4 = () => {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             className="placeholder-gray-500 border border-gray-300 rounded px-3 py-2 mt-2 focus:outline-none focus:border-yellow-500 w-full"
+            required
           />
+          {error && (
+            <div className="text-red-500 my-2 text-center">{error}</div>
+          )}
           <button
             type="submit"
             className="mt-4 w-full bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded"
