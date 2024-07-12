@@ -1,14 +1,22 @@
 import React from 'react';
-import { FaUserFriends, FaRocket } from 'react-icons/fa'; // Import icons from 'react-icons/fa'
+import { FaUserFriends, FaRocket } from 'react-icons/fa';
 import { CiCirclePlus } from 'react-icons/ci';
+import { AiOutlineUser } from 'react-icons/ai'; // Only import the needed icon
 import Image_C from '../assets/image_c.png';
 import MiningBitcoinImage from '../assets/MiningBitcoin.png';
 import ImageBank from '../assets/Bank.png';
-import ImagePeople from '../assets/People.png'; // Corrected import statement for ImagePeople
-
+import ImagePeople from '../assets/People.png';
+import ImagePercent from '../assets/Percent.png';
+import ImageBanka from '../assets/Banka.png';
+import ImageShield from '../assets/Shield.png';
+import ImageHeadphone from '../assets/Headphone.png';
+import Imagehome from '../assets/home.png';
+import ImageWallet from '../assets/Wallet.png';
+import Imagecrown from '../assets/crown.png';
+import crowna from '../assets/crowna.png';
+import Trend from '../assets/Trend.png'
 const Home = () => {
   const handleGetStartedClick = () => {
-    // Define what happens when the button is clicked
     console.log('Start to mine clicked');
   };
 
@@ -30,89 +38,114 @@ const Home = () => {
       style={{
         background: '#090B2F',
         display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        minHeight: '100vh', // Changed height to minHeight for responsiveness
         flexDirection: 'column',
-        padding: '20px', // Added padding for spacing
-        boxSizing: 'border-box', // Ensure padding is included in element size
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        minHeight: '100vh',
+        padding: '20px',
+        boxSizing: 'border-box',
       }}
     >
-      <div style={{ position: 'relative' }}>
-        <img
-          src={Image_C}
-          alt="image_c"
-          style={{ maxWidth: '400px', maxHeight: '300px' }} // Adjust maxWidth and maxHeight as needed
-        />
+      <div style={{ width: '100%', maxWidth: '400px' }}>
         <div
           style={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
             color: 'white',
-            textAlign: 'center',
+            marginBottom: '20px',
           }}
         >
-          <h1 style={{ fontSize: '16px', marginBottom: '8px' }}>Your Balance</h1>
-          <p style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '4px' }}>
-            24,095.68 <span style={{ fontSize: '16px', color: '#D1D5DB' }}>SPL</span>
-          </p>
-          <p
+        </div>
+        <div
+          style={{
+            backgroundColor: '#1C1F4A',
+            borderRadius: '12px',
+            padding: '20px',
+            marginBottom: '20px',
+            position: 'relative',
+          }}
+        >
+          <img
+            src={Image_C}
+            alt="image_c"
             style={{
-              color: '#10B981',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              marginBottom: '16px',
-              backgroundColor: '#0C0F3F',
-              padding: '4px 8px',
+              width: '100%',
+              height: 'auto',
               borderRadius: '12px',
+              opacity: 0.2,
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              zIndex: 1,
             }}
-          >
-            <CiCirclePlus style={{ marginRight: '4px' }} />+0.00525 SPL/h
-          </p>
-          <button
-            style={{
-              width: '100%', // Ensure equal width
-              backgroundColor: '#F9D54A',
-              color: '#000000',
-              border: 'none',
-              padding: '15px 20px',
-              fontSize: '16px',
-              cursor: 'pointer',
-              borderRadius: '12px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '10px',
-              marginBottom: '16px', // Add marginBottom to create space between button and selections
-            }}
-            onClick={handleGetStartedClick}
-          >
-            Start to mine
-            <img
-              src={MiningBitcoinImage}
-              alt="Mining Bitcoin"
-              style={{ width: '24px', height: '24px' }}
-            />
-          </button>
-          {/* Render Invite and Booster tokens */}
+          />
+          <div style={{ position: 'relative', zIndex: 2 }}>
+            <h1 style={{ fontSize: '16px', marginBottom: '8px', color: 'white' }}>Your Balance</h1>
+            <p style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '4px', color: 'white' }}>
+              24,095.68 <span style={{ fontSize: '16px', color: '#D1D5DB' }}>SPL</span>
+            </p>
+            <p
+              style={{
+                color: '#10B981',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginBottom: '16px',
+                backgroundColor: '#0C0F3F',
+                padding: '4px 8px',
+                borderRadius: '12px',
+              }}
+            >
+              <CiCirclePlus style={{ marginRight: '4px' }} />+0.00525 SPL/h
+            </p>
+            <button
+              style={{
+                width: '100%',
+                backgroundColor: '#F9D54A',
+                color: '#000000',
+                border: 'none',
+                padding: '15px 20px',
+                fontSize: '16px',
+                cursor: 'pointer',
+                borderRadius: '12px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '10px',
+                marginBottom: '16px',
+              }}
+              onClick={handleGetStartedClick}
+            >
+              Start to mine
+              <img
+                src={MiningBitcoinImage}
+                alt="Mining Bitcoin"
+                style={{ width: '24px', height: '24px' }}
+              />
+            </button>
+          </div>
+        </div>
+        <div
+          style={{
+            backgroundColor: '#1C1F4A',
+            borderRadius: '12px',
+            padding: '20px',
+            marginBottom: '20px',
+          }}
+        >
           <div
             style={{
               display: 'flex',
               flexDirection: 'column',
-              alignItems: 'center',
               gap: '10px',
-              width: '100%', // Ensure equal width
-              maxWidth: '400px', // Limit max width for better presentation
             }}
           >
             {cryptoTokens.map((token, index) => (
               <button
                 key={index}
                 style={{
-                  width: '100%', // Ensure equal width
+                  width: '100%',
                   backgroundColor: '#0C0F3F',
                   color: 'white',
                   border: 'none',
@@ -129,128 +162,187 @@ const Home = () => {
               </button>
             ))}
           </div>
-          {/* Additional selections */}
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              gap: '10px',
-              width: '100%', // Ensure equal width
-              maxWidth: '400px', // Limit max width for better presentation
-              marginTop: '16px', // Add marginTop for spacing
-            }}
-          >
-            <button
-              style={{
-                width: '100%', // Ensure equal width
-                backgroundColor: '#0C0F3F',
-                color: 'white',
-                border: 'none',
-                padding: '12px',
-                borderRadius: '8px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '8px',
-              }}
-            >
-              Airdrop 
-              <img src={ImageBank} alt='Bank' style={{ width: '24px', height: '24px' }} />
-            </button>
-            <button
-              style={{
-                width: '100%', // Ensure equal width
-                backgroundColor: '#0C0F3F',
-                color: 'white',
-                border: 'none',
-                padding: '12px',
-                borderRadius: '8px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '8px',
-              }}
-            >
-              Team <img src={ImagePeople} alt='People' style={{ width: '24px', height: '24px' }} />
-            </button>
-            <button
-              style={{
-                width: '100%', // Ensure equal width
-                backgroundColor: '#0C0F3F',
-                color: 'white',
-                border: 'none',
-                padding: '12px',
-                borderRadius: '8px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '8px',
-              }}
-            >
-              Distributor
-            </button>
-          </div>
-          {/* New additions */}
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              gap: '10px',
-              width: '100%', // Ensure equal width
-              maxWidth: '400px', // Limit max width for better presentation
-              marginTop: '16px', // Add marginTop for spacing
-            }}
-          >
-            <button
-              style={{
-                width: '100%', // Ensure equal width
-                backgroundColor: '#0C0F3F',
-                color: 'white',
-                border: 'none',
-                padding: '12px',
-                borderRadius: '8px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '8px',
-              }}
-            >
-              LeaderBoard
-            </button>
-            <button
-              style={{
-                width: '100%', // Ensure equal width
-                backgroundColor: '#0C0F3F',
-                color: 'white',
-                border: 'none',
-                padding: '12px',
-                borderRadius: '8px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '8px',
-              }}
-            >
-              Utilities
-            </button>
-            <button
-              style={{
-                width: '100%', // Ensure equal width
-                backgroundColor: '#0C0F3F',
-                color: 'white',
-                border: 'none',
-                padding: '12px',
-                borderRadius: '8px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '8px',
-              }}
-            >
-              Support
-            </button>
-          </div>
         </div>
+        <div
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            justifyContent: 'space-between',
+            gap: '10px',
+          }}
+        >
+          <button
+            style={{
+              flex: '1 1 calc(33% - 10px)',
+              backgroundColor: '#0C0F3F',
+              color: 'white',
+              border: 'none',
+              padding: '12px',
+              borderRadius: '8px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '8px',
+            }}
+          >
+            Airdrop
+            <img src={ImageBank} alt="Bank" style={{ width: '24px', height: '24px' }} />
+          </button>
+          <button
+            style={{
+              flex: '1 1 calc(33% - 10px)',
+              backgroundColor: '#0C0F3F',
+              color: 'white',
+              border: 'none',
+              padding: '12px',
+              borderRadius: '8px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '8px',
+            }}
+          >
+            Team
+            <img src={ImagePeople} alt="People" style={{ width: '24px', height: '24px' }} />
+          </button>
+          <button
+            style={{
+              flex: '1 1 calc(33% - 10px)',
+              backgroundColor: '#0C0F3F',
+              color: 'white',
+              border: 'none',
+              padding: '12px',
+              borderRadius: '8px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '8px',
+            }}
+          >
+            Distributor
+            <img src={ImagePercent} alt="Percent" style={{ width: '24px', height: '24px' }} />
+          </button>
+          <button
+            style={{
+              flex: '1 1 calc(33% - 10px)',
+              backgroundColor: '#0C0F3F',
+              color: 'white',
+              border: 'none',
+              padding: '12px',
+              borderRadius: '8px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '8px',
+            }}
+          >
+            LeaderBoard
+            <img src={ImageBanka} alt="Banka" style={{ width: '24px', height: '24px' }} />
+          </button>
+          <button
+            style={{
+              flex: '1 1 calc(33% - 10px)',
+              backgroundColor: '#0C0F3F',
+              color: 'white',
+              border: 'none',
+              padding: '12px',
+              borderRadius: '8px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '8px',
+            }}
+          >
+            Utilities
+            <img src={ImageShield} alt="Shield" style={{ width: '24px', height: '24px' }} />
+          </button>
+          <button
+            style={{
+              flex: '1 1 calc(33% - 10px)',
+              backgroundColor: '#0C0F3F',
+              color: 'white',
+              border: 'none',
+              padding: '12px',
+              borderRadius: '8px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '8px',
+            }}
+          >
+            Support
+            <img src={ImageHeadphone} alt="Headphone" style={{ width: '24px', height: '24px' }} />
+          </button>
+        </div>
+      </div>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-around',
+          width: '100%',
+          maxWidth: '400px',
+          backgroundColor: '#1C1F4A',
+          borderRadius: '12px',
+          padding: '10px 0',
+          position: 'fixed',
+          bottom: '20px',
+        }}
+      >
+        <button
+          style={{
+            backgroundColor: 'transparent',
+            color: 'white',
+            border: 'none',
+            padding: '10px',
+            cursor: 'pointer',
+          }}
+        >
+          <img src={Imagehome} alt="home" style={{ width: '24px', height: '24px' }} />
+        </button>
+        <button
+          style={{
+            backgroundColor: 'transparent',
+            color: 'white',
+            border: 'none',
+            padding: '10px',
+            cursor: 'pointer',
+          }}
+        >
+          <img src={ImageWallet} alt="Wallet" style={{ width: '24px', height: '24px' }} />
+        </button>
+        <button
+          style={{
+            backgroundColor: 'transparent',
+            color: 'white',
+            border: 'none',
+            padding: '10px',
+            cursor: 'pointer',
+          }}
+        >
+          <img src={Imagecrown} alt="crown" style={{ width: '24px', height: '24px' }} />
+        </button>
+        <button
+          style={{
+            backgroundColor: 'transparent',
+            color: 'white',
+            border: 'none',
+            padding: '10px',
+            cursor: 'pointer',
+          }}
+        >
+          <img src={Trend} alt="trend" style={{ width: '24px', height: '24px' }} />
+        </button>
+        <button
+          style={{
+            backgroundColor: 'transparent',
+            color: 'white',
+            border: 'none',
+            padding: '10px',
+            cursor: 'pointer',
+          }}
+        >
+         <img src={crowna} alt="crowna" style={{ width: '24px', height: '24px' }} />
+        </button>
       </div>
     </div>
   );
