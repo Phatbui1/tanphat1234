@@ -3,14 +3,15 @@ import React from 'react';
 const Stacking = () => {
   return (
     <div className="bg-blue-950 text-gray-200 p-4 rounded-lg shadow-md max-w-md mx-auto min-h-screen flex flex-col items-center">
-      <h1 className="text-2xl font-bold mb-4 text-yellow-300">Staking USDT</h1>
+      <h1 className="text-2xl font-bold mb-4 text-white">Staking USDT</h1>
       <p className="mb-4 text-gray-300">
         Staking to become a development agent when the platform officially operates and receive more airdrops.
       </p>
       <h2 className="font-semibold text-green-300">Subscription Amount</h2>
       <div className="flex items-center justify-between bg-gray-700 p-2 rounded-lg mb-4">
         <span className="text-gray-400">Minimum 1 USDT</span>
-        <button className="bg-green-500 text-white px-2 py-1 rounded">USDT Max</button>
+        <button className="bg-green-500 text-white px-2 py-1 rounded">USDT</button>
+        <span className='text-yellow-400'>Max</span>
       </div>
 
       <p className="text-gray-400">

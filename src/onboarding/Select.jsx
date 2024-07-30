@@ -1,10 +1,11 @@
 import React from 'react';
 import { FiStar, FiPieChart, FiLayers, FiGift } from 'react-icons/fi'; // Using React Icons for icons
 import image_c from '../assets/image_c.png';
-import home from '../assets/home-2.png';
+import home from '../assets/home.png';
 import wup from '../assets/wup.png';
 import vuongmieng from '../assets/vuongmieng.png';
-import trendup from '../assets/trendup.png'
+import trendup from '../assets/trendup.png';
+import usser from '../assets/usser.png';
 const RatePage = () => {
   return (
     <div className="bg-gray-900 text-white min-h-screen flex flex-col items-center">
@@ -162,7 +163,7 @@ const RatePage = () => {
             <span className="text-sm mt-1">earn</span>
           </button>
           <button className="flex flex-col items-center text-gray-400 hover:text-white">
-         
+            <img src={usser} alt='usser'/>
             <span className="text-sm mt-1">Profile</span>
             
           </button>

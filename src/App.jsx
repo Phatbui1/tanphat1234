@@ -10,7 +10,12 @@ import Guild5 from './onboarding/Guild5';
 import Releas from './onboarding/Releas';
 import User from './onboarding/User'
 import Home from './onboarding/Home';
-
+import Select from './onboarding/Select';
+import Stacking from './onboarding/Stacking';
+import Stacking1 from './onboarding/Stacking1';
+import Ano from './onboarding/Ano';
+import Team from './onboarding/Team';
+import Team1 from './onboarding/Team1'
 const App = () => {
   return (
     // <Router>
@@ -27,7 +32,7 @@ const App = () => {
     //   </Routes>
     // </Router>
     <div>
-      <Home/>
+      <Team1/>
     </div>
   );
 };
