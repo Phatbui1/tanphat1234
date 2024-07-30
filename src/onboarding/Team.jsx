@@ -9,13 +9,13 @@ const Team = () => {
 
             <div className="bg-gray-700 p-4 rounded-lg mb-6">
                 <h2 className="text-xl font-semibold mb-2">Referral Team</h2>
-                <p className="text-gray-400">Your team has 20 members, 3 of 20 are receiving rewards</p>
+                <p className="text-gray-400">Your team has 0 members, 0 of 0 are receiving rewards</p>
                 <div className="flex justify-end">
                     <div className="relative flex items-center">
                         <img src={hinhtron} alt="hinhtron" className="w-24 h-24 object-cover" />
                         <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
                             <span className="text-gray-400">Running</span>
-                            <span className="text-4xl font-bold">3</span>
+                            <span className="text-4xl font-bold">0</span>
                         </div>
                     </div>
                 </div>
@@ -25,42 +25,10 @@ const Team = () => {
             <button className="bg-yellow-600 text-white hover:bg-yellow-500 px-4 py-2 rounded-lg mb-6">All ▼</button>
             <p className="text-gray-400 mb-4">Invite new Pioneers to your team. Boost your reward rate for every active member. Ping daily to remind to receive rewards.</p>
 
-            <table className="min-w-full bg-gray-700 rounded-lg mb-6">
-                <thead>
-                    <tr>
-                        <th className="px-4 py-2 text-left">Rank</th>
-                        <th className="px-4 py-2 text-left">Username</th>
-                        <th className="px-4 py-2 text-left">Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td className="border-t border-gray-600 px-4 py-2">1</td>
-                        <td className="border-t border-gray-600 px-4 py-2">@dianne</td>
-                        <td className="border-t border-gray-600 px-4 py-2 text-green-400">Running</td>
-                    </tr>
-                    <tr>
-                        <td className="border-t border-gray-600 px-4 py-2">2</td>
-                        <td className="border-t border-gray-600 px-4 py-2">@marjorie</td>
-                        <td className="border-t border-gray-600 px-4 py-2 text-green-400">Running</td>
-                    </tr>
-                    <tr>
-                        <td className="border-t border-gray-600 px-4 py-2">3</td>
-                        <td className="border-t border-gray-600 px-4 py-2">@philip</td>
-                        <td className="border-t border-gray-600 px-4 py-2 text-green-400">Running</td>
-                    </tr>
-                    <tr>
-                        <td className="border-t border-gray-600 px-4 py-2">4</td>
-                        <td className="border-t border-gray-600 px-4 py-2">@arthur</td>
-                        <td className="border-t border-gray-600 px-4 py-2 text-red-400">Inactive</td>
-                    </tr>
-                    <tr>
-                        <td className="border-t border-gray-600 px-4 py-2">5</td>
-                        <td className="border-t border-gray-600 px-4 py-2">@leslie</td>
-                        <td className="border-t border-gray-600 px-4 py-2 text-red-400">Reported</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div className="flex items-center justify-center mb-4">
+                <img src={friend} alt='friend'/>
+            </div>
+            <p className="text-gray-400 mb-6">No one has joined your team yet! Receive more SPL by inviting friends to join you.</p>
 
             <button className="bg-red-600 text-white hover:bg-red-500 px-4 py-2 rounded-lg mb-6">Ping Friend Inactive</button>
 

@@ -16,6 +16,9 @@ import Stacking1 from './onboarding/Stacking1';
 import Ano from './onboarding/Ano';
 import Team from './onboarding/Team';
 import Team1 from './onboarding/Team1'
+import Airdrop from './onboarding/Airdrop';
+import Airdrop1 from './onboarding/Airdrop1';
+import Verify from './onboarding/Verify';
 const App = () => {
   return (
     // <Router>
@@ -32,7 +35,7 @@ const App = () => {
     //   </Routes>
     // </Router>
     <div>
-      <Team1/>
+      <Verify/>
     </div>
   );
 };
