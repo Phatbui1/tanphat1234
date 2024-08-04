@@ -19,6 +19,14 @@ import Team1 from './onboarding/Team1'
 import Airdrop from './onboarding/Airdrop';
 import Airdrop1 from './onboarding/Airdrop1';
 import Verify from './onboarding/Verify';
+import Page from './onboarding/Page';
+import Page1 from './onboarding/Page1';
+import Page2 from './onboarding/Page2';
+import Page3 from './onboarding/Page3'
+import Leader from './onboarding/Leader';
+import Unity from './onboarding/Unity';
+import Unity1 from './onboarding/Unity1';
+import Support from './onboarding/Support';
 const App = () => {
   return (
     // <Router>
@@ -35,7 +43,7 @@ const App = () => {
     //   </Routes>
     // </Router>
     <div>
-      <Verify/>
+      <Home/>
     </div>
   );
 };

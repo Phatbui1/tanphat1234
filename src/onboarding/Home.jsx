@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaUserFriends, FaRocket } from 'react-icons/fa';
 import { CiCirclePlus } from 'react-icons/ci';
-import { AiOutlineUser } from 'react-icons/ai'; // Only import the needed icon
 import Image_C from '../assets/image_c.png';
 import MiningBitcoinImage from '../assets/MiningBitcoin.png';
 import ImageBank from '../assets/Bank.png';
@@ -14,10 +13,41 @@ import Imagehome from '../assets/home.png';
 import ImageWallet from '../assets/Wallet.png';
 import Imagecrown from '../assets/crown.png';
 import crowna from '../assets/crowna.png';
-import Trend from '../assets/Trend.png'
+import Trend from '../assets/Trend.png';
+
 const Home = () => {
+  const [isMining, setIsMining] = useState(false);
+  const [remainingTime, setRemainingTime] = useState(0);
+  const [buttonColor, setButtonColor] = useState('#F9D54A'); // Màu nền ban đầu
+
   const handleGetStartedClick = () => {
-    console.log('Start to mine clicked');
+    if (!isMining) {
+      setIsMining(true);
+      setRemainingTime(8 * 60 * 60 * 1000); // 8 hours in milliseconds
+      setButtonColor('#464664'); // Thay đổi màu nền khi nhấn nút
+    }
+  };
+
+  useEffect(() => {
+    let timer;
+    if (isMining && remainingTime > 0) {
+      timer = setInterval(() => {
+        setRemainingTime((prevTime) => prevTime - 1000); // Decrease time by 1 second
+      }, 1000);
+    } else if (remainingTime <= 0) {
+      setIsMining(false);
+      setRemainingTime(0);
+      setButtonColor('#F9D54A'); // Đặt lại màu nền khi thời gian kết thúc
+    }
+
+    return () => clearInterval(timer);
+  }, [isMining, remainingTime]);
+
+  const formatTime = (milliseconds) => {
+    const hours = Math.floor(milliseconds / (1000 * 60 * 60));
+    const minutes = Math.floor((milliseconds % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((milliseconds % (1000 * 60)) / 1000);
+    return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
   };
 
   const cryptoTokens = [
@@ -102,7 +132,7 @@ const Home = () => {
             <button
               style={{
                 width: '100%',
-                backgroundColor: '#F9D54A',
+                backgroundColor: buttonColor, // Sử dụng trạng thái màu nền
                 color: '#000000',
                 border: 'none',
                 padding: '15px 20px',
@@ -116,8 +146,9 @@ const Home = () => {
                 marginBottom: '16px',
               }}
               onClick={handleGetStartedClick}
+              disabled={isMining}
             >
-              Start to mine
+              {isMining ? `Comeback in ${formatTime(remainingTime)}` : 'Start to mine'}
               <img
                 src={MiningBitcoinImage}
                 alt="Mining Bitcoin"
@@ -341,7 +372,7 @@ const Home = () => {
             cursor: 'pointer',
           }}
         >
-         <img src={crowna} alt="crowna" style={{ width: '24px', height: '24px' }} />
+          <img src={crowna} alt="crowna" style={{ width: '24px', height: '24px' }} />
         </button>
       </div>
     </div>
