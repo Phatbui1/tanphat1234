@@ -21,11 +21,11 @@ const Login = () => {
     const defaultPassword = 'abc';
 
     if (username === defaultUsername && password === defaultPassword) {
-      // Đăng nhập thành công
+      // Simulate successful login
       localStorage.setItem('token', 'dummy-token');
-      navigate('/release');
+      navigate('/home'); // Redirect to the Home page
     } else {
-      // Hiển thị lỗi
+      // Display error message
       setError('Sai tài khoản hoặc mật khẩu.');
     }
   };
@@ -35,7 +35,7 @@ const Login = () => {
   };
 
   const handleSignUp = () => {
-    navigate('/release'); // Chuyển hướng đến trang "release" khi nhấp vào nút "sign up"
+    navigate('/release'); // Redirect to the release page
   };
 
   return (
