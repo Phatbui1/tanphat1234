@@ -34,23 +34,26 @@ import Money from './onboarding/Money';
 import Money2 from './onboarding/Money2';
 const App = () => {
   return (
-    //  <Router>
-    //   <Routes>
-    //      <Route path="/" element={<Splash />} />
-    //    <Route path="/guild1" element={<Guild1 />} />
-    //     <Route path="/guild2" element={<Guild2 />} />
-    //     <Route path="/guild3" element={<Guild3 />} />
-    //      <Route path="/login" element={<Login />} />
-    //    <Route path="/reset-password" element={<Guild4 />} />
-    //     <Route path="/guild5" element={<Guild5 />} />
-    //     <Route path="/release" element={<Releas />} />
-    //    <Route path="/user" element ={<User/>}/>
-    //    <Route path='/home' element ={<Home/>}/>
-     // </Routes>
-     //</Router>
-    <div>
-     <Money2/>
-    </div>
+     <Router>
+     <Routes>
+        <Route path="/" element={<Splash />} />
+      <Route path="/guild1" element={<Guild1 />} />
+        <Route path="/guild2" element={<Guild2 />} />
+        <Route path="/guild3" element={<Guild3 />} />
+          <Route path="/login" element={<Login />} />
+        <Route path="/reset-password" element={<Guild4 />} />
+         <Route path="/guild5" element={<Guild5 />} />
+        <Route path="/release" element={<Releas />} />
+       <Route path="/user" element ={<User/>}/>
+        <Route path='/home' element ={<Home/>}/>
+        <Route path='/Money'element={<Money/>}/>
+        <Route path='/select'element={<Select/>}/>
+        <Route path='/Stacking'element={<Stacking/>}/>
+      </Routes>
+     </Router>
+   // <div>
+    // <Money2/>
+    //</div>
   );
 };
 

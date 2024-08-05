@@ -1,4 +1,6 @@
+// src/components/Home.js
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
 import { FaUserFriends, FaRocket } from 'react-icons/fa';
 import { CiCirclePlus } from 'react-icons/ci';
 import Image_C from '../assets/image_c.png';
@@ -18,13 +20,14 @@ import Trend from '../assets/Trend.png';
 const Home = () => {
   const [isMining, setIsMining] = useState(false);
   const [remainingTime, setRemainingTime] = useState(0);
-  const [buttonColor, setButtonColor] = useState('#F9D54A'); // Màu nền ban đầu
+  const [buttonColor, setButtonColor] = useState('#F9D54A');
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleGetStartedClick = () => {
     if (!isMining) {
       setIsMining(true);
-      setRemainingTime(8 * 60 * 60 * 1000); // 8 hours in milliseconds
-      setButtonColor('#464664'); // Thay đổi màu nền khi nhấn nút
+      setRemainingTime(8 * 60 * 60 * 1000);
+      setButtonColor('#464664');
     }
   };
 
@@ -32,12 +35,12 @@ const Home = () => {
     let timer;
     if (isMining && remainingTime > 0) {
       timer = setInterval(() => {
-        setRemainingTime((prevTime) => prevTime - 1000); // Decrease time by 1 second
+        setRemainingTime((prevTime) => prevTime - 1000);
       }, 1000);
     } else if (remainingTime <= 0) {
       setIsMining(false);
       setRemainingTime(0);
-      setButtonColor('#F9D54A'); // Đặt lại màu nền khi thời gian kết thúc
+      setButtonColor('#F9D54A');
     }
 
     return () => clearInterval(timer);
@@ -132,7 +135,7 @@ const Home = () => {
             <button
               style={{
                 width: '100%',
-                backgroundColor: buttonColor, // Sử dụng trạng thái màu nền
+                backgroundColor: buttonColor,
                 color: '#000000',
                 border: 'none',
                 padding: '15px 20px',
@@ -338,6 +341,7 @@ const Home = () => {
             padding: '10px',
             cursor: 'pointer',
           }}
+          onClick={() => navigate('/money')} // Add navigation to Money page
         >
           <img src={ImageWallet} alt="Wallet" style={{ width: '24px', height: '24px' }} />
         </button>
@@ -349,6 +353,7 @@ const Home = () => {
             padding: '10px',
             cursor: 'pointer',
           }}
+          onClick={() => navigate('/select')} // Add navigation to Select page
         >
           <img src={Imagecrown} alt="crown" style={{ width: '24px', height: '24px' }} />
         </button>

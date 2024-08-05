@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import { FiStar, FiPieChart, FiLayers, FiGift } from 'react-icons/fi'; // Using React Icons for icons
 import image_c from '../assets/image_c.png';
 import home from '../assets/home.png';
@@ -6,7 +7,14 @@ import wup from '../assets/wup.png';
 import vuongmieng from '../assets/vuongmieng.png';
 import trendup from '../assets/trendup.png';
 import usser from '../assets/usser.png';
+
 const RatePage = () => {
+  const navigate = useNavigate(); // Initialize useNavigate
+
+  const handleStakingClick = () => {
+    navigate('/stacking'); // Navigate to Stacking page
+  };
+
   return (
     <div className="bg-gray-900 text-white min-h-screen flex flex-col items-center">
       {/* Header */}
@@ -80,7 +88,10 @@ const RatePage = () => {
               <p>150</p>
             </div>
           </div>
-          <button className="bg-yellow-600 hover:bg-yellow-500 text-white py-1 px-4 rounded mt-2">
+          <button
+            onClick={handleStakingClick} // Add click handler
+            className="bg-yellow-600 hover:bg-yellow-500 text-white py-1 px-4 rounded mt-2"
+          >
             Staking
           </button>
           <div className="mt-4 text-sm text-gray-400">
@@ -148,24 +159,22 @@ const RatePage = () => {
           <button className="flex flex-col items-center text-gray-400 hover:text-white">
             <img src={home} alt="home" />
             <span className="text-sm mt-1">Home</span>
-
           </button>
           <button className="flex flex-col items-center text-gray-400 hover:text-white">
-            <img src={wup} atl='wup'/>
+            <img src={wup} alt='wup' />
             <span className="text-sm mt-1">Wallet</span>
           </button>
           <button className="flex flex-col items-center text-gray-400 hover:text-white">
-          <img src={vuongmieng} alt="vuongmieng" />
+            <img src={vuongmieng} alt="vuongmieng" />
             <span className="text-sm mt-1">Rate</span>
           </button>
           <button className="flex flex-col items-center text-gray-400 hover:text-white">
-          <img src={trendup} alt= 'trendup'/>
-            <span className="text-sm mt-1">earn</span>
+            <img src={trendup} alt='trendup' />
+            <span className="text-sm mt-1">Earn</span>
           </button>
           <button className="flex flex-col items-center text-gray-400 hover:text-white">
-            <img src={usser} alt='usser'/>
+            <img src={usser} alt='usser' />
             <span className="text-sm mt-1">Profile</span>
-            
           </button>
         </div>
       </footer>
