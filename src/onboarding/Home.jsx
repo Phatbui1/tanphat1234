@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaUserFriends, FaRocket } from 'react-icons/fa';
 import { CiCirclePlus } from 'react-icons/ci';
-import Image_C from '../assets/image_c.png';
 import MiningBitcoinImage from '../assets/MiningBitcoin.png';
+import Image_C from '../assets/image_c.png';
 import ImageBank from '../assets/Bank.png';
 import ImagePeople from '../assets/People.png';
 import ImagePercent from '../assets/Percent.png';
@@ -15,17 +14,20 @@ import ImageWallet from '../assets/Wallet.png';
 import Imagecrown from '../assets/crown.png';
 import crowna from '../assets/crowna.png';
 import Trend from '../assets/Trend.png';
+import team from '../assets/friends/team.png'; // Đổi tên biến từ user thành team
+import buy from '../assets/friends/buy.png';
+import user from '../assets/newitems/user.png';
 
 const Home = () => {
   const [isMining, setIsMining] = useState(false);
   const [remainingTime, setRemainingTime] = useState(0);
   const [buttonColor, setButtonColor] = useState('#F9D54A');
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   const handleGetStartedClick = () => {
     if (!isMining) {
       setIsMining(true);
-      setRemainingTime(8 * 60 * 60 * 1000);
+      setRemainingTime(8 * 60 * 60 * 1000); // 8 hours
       setButtonColor('#464664');
     }
   };
@@ -54,14 +56,16 @@ const Home = () => {
 
   const cryptoTokens = [
     {
-      icon: <FaUserFriends style={{ color: '#FFD700', fontSize: '24px' }} />,
+      icon: <img src={team} alt="team" style={{ width: '24px', height: '24px' }} />, // Đổi tên biến từ user thành team
       name: 'Invite Friends',
       amount: '+0.05 SPL / Hr',
+      additionalInfo: '', // Add additional info here if needed
     },
     {
-      icon: <FaRocket style={{ color: '#FFD700', fontSize: '24px' }} />,
+      icon: <img src={buy} alt="buy" style={{ width: '24px', height: '24px' }} />,
       name: 'Booster',
       amount: 'Increase rewards: +20%',
+      additionalInfo: '', // Add additional info here if needed
     },
   ];
 
@@ -79,16 +83,6 @@ const Home = () => {
       }}
     >
       <div style={{ width: '100%', maxWidth: '400px' }}>
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            color: 'white',
-            marginBottom: '20px',
-          }}
-        >
-        </div>
         <div
           style={{
             backgroundColor: '#1C1F4A',
@@ -113,8 +107,8 @@ const Home = () => {
             }}
           />
           <div style={{ position: 'relative', zIndex: 2 }}>
-            <h1 style={{ fontSize: '16px', marginBottom: '8px', color: 'white' }}>Your Balance</h1>
-            <p style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '4px', color: 'white' }}>
+            <h1 className='text-center' style={{ fontSize: '16px', marginBottom: '8px', color: 'white' }}>Your Balance</h1>
+            <p className='text-center' style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '4px', color: 'white' }}>
               24,095.68 <span style={{ fontSize: '16px', color: '#D1D5DB' }}>SPL</span>
             </p>
             <p
@@ -131,6 +125,11 @@ const Home = () => {
             >
               <CiCirclePlus style={{ marginRight: '4px' }} />+0.00525 SPL/h
             </p>
+            <div className='text-center' style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white' }}>
+              <p style={{ margin: 0 }}>0/0</p>
+              <img src={user} alt="user" style={{ marginLeft: '10px' }} /> {/* Sử dụng biến team ở đây */}
+            </div>
+
             <button
               style={{
                 width: '100%',
@@ -170,7 +169,7 @@ const Home = () => {
           <div
             style={{
               display: 'flex',
-              flexDirection: 'column',
+              flexDirection: 'row', // Đặt flexDirection thành row
               gap: '10px',
             }}
           >
@@ -188,10 +187,13 @@ const Home = () => {
                   alignItems: 'center',
                   justifyContent: 'center',
                   gap: '8px',
+                  flexDirection: 'column', // Đặt flexDirection thành column
                 }}
               >
                 {token.icon}
                 <span>{token.name}</span>
+                <span>{token.amount}</span>
+                {token.additionalInfo && <span>{token.additionalInfo}</span>}
               </button>
             ))}
           </div>
@@ -202,6 +204,7 @@ const Home = () => {
             flexWrap: 'wrap',
             justifyContent: 'space-between',
             gap: '10px',
+            zIndex: 2, // Đảm bảo các nút không bị che khuất
           }}
         >
           <button
@@ -364,7 +367,7 @@ const Home = () => {
             padding: '10px',
             cursor: 'pointer',
           }}
-          onClick={() => navigate('/page')} // Navigate to Page on click
+          onClick={() => navigate('/page')}
         >
           <img src={Trend} alt="trend" style={{ width: '24px', height: '24px' }} />
         </button>

@@ -1,24 +1,39 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
-import { FiStar, FiPieChart, FiLayers, FiGift } from 'react-icons/fi'; // Using React Icons for icons
 import image_c from '../assets/image_c.png';
 import home from '../assets/home.png';
 import wup from '../assets/wup.png';
 import vuongmieng from '../assets/vuongmieng.png';
 import trendup from '../assets/trendup.png';
 import usser from '../assets/usser.png';
+import Mining from '../assets/rate/Mining.png';
+import value from '../assets/rate/value.png';
+import Rocket from '../assets/rate/Rocket.png';
+import cash from '../assets/rate/cash.png';
 
 const RatePage = () => {
   const navigate = useNavigate(); // Initialize useNavigate
 
+  const handleHomeClick = () => {
+    navigate('/home'); // Navigate to Home page
+  };
+
+  const handleWalletClick = () => {
+    navigate('/money'); // Navigate to Wallet page
+  };
+
   const handleStakingClick = () => {
-    navigate('/stacking'); // Navigate to Stacking page
+    navigate('/page'); // Navigate to Page
+  };
+
+  const handleRateClick = () => {
+    navigate('/select'); // Navigate to Select page
   };
 
   return (
-    <div className="bg-gray-900 text-white min-h-screen flex flex-col items-center">
+    <div className="min-h-screen flex flex-col items-center" style={{ backgroundColor: '#090B2F', color: 'white' }}>
       {/* Header */}
-      <header className="w-full flex items-center justify-between p-4 bg-gray-800 shadow-md">
+      <header className="w-full flex items-center justify-between p-4" style={{ backgroundColor: '#090B2F', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)' }}>
         <div className="flex items-center space-x-2">
           <div className="bg-blue-500 rounded-full h-8 w-8 flex items-center justify-center text-sm">
             {/* Placeholder for logo or icon */}
@@ -27,7 +42,7 @@ const RatePage = () => {
       </header>
 
       {/* Total Rate Section */}
-      <section className="relative bg-gray-800 w-full max-w-lg p-6 rounded-lg mt-4 shadow-lg text-center">
+      <section className="relative w-full max-w-lg p-6 rounded-lg mt-4 shadow-lg text-center" style={{ backgroundColor: '#1C1F4A' }}>
         {/* Background Image */}
         <img src={image_c} alt="image_c" className="absolute inset-0 w-full h-full object-cover rounded-lg" />
 
@@ -64,9 +79,10 @@ const RatePage = () => {
       {/* Rate Details Section */}
       <div className="w-full max-w-lg mt-6 space-y-4">
         {/* Base Card */}
-        <div className="bg-gray-800 p-4 rounded-lg shadow-md">
+        <div className="p-4 rounded-lg shadow-md" style={{ backgroundColor: '#1C1F4A' }}>
           <h2 className="text-lg font-semibold flex items-center">
-            <FiStar className="mr-2" /> Base
+            <img src={Mining} alt="Mining" className="w-6 h-6 mr-2" />
+            Base
           </h2>
           <p className="text-sm mt-2 text-gray-400">
             This rate is dynamically calculated based on total reward for communication. Base rate will be halved every time the user increases more by 100,000.
@@ -74,10 +90,11 @@ const RatePage = () => {
         </div>
 
         {/* Staking Card */}
-        <div className="bg-gray-800 p-4 rounded-lg shadow-md">
-          <h2 className="text-lg font-semibold flex items-center">
-            <FiPieChart className="mr-2" /> Staking
-          </h2>
+        <div className="p-4 rounded-lg shadow-md" style={{ backgroundColor: '#1C1F4A' }}>
+          <div className="flex items-center mb-4">
+            <img src={value} alt="value" className="w-8 h-8 mr-4" />
+            <h2 className="text-lg font-semibold">Staking</h2>
+          </div>
           <div className="flex justify-between mt-2">
             <div>
               <p className="text-gray-400">Total Staking (USDT)</p>
@@ -88,12 +105,6 @@ const RatePage = () => {
               <p>150</p>
             </div>
           </div>
-          <button
-            onClick={handleStakingClick} // Add click handler
-            className="bg-yellow-600 hover:bg-yellow-500 text-white py-1 px-4 rounded mt-2"
-          >
-            Staking
-          </button>
           <div className="mt-4 text-sm text-gray-400">
             <p>α = 20</p>
             <p>β = 5</p>
@@ -105,9 +116,10 @@ const RatePage = () => {
         </div>
 
         {/* Boosters Card */}
-        <div className="bg-gray-800 p-4 rounded-lg shadow-md">
+        <div className="p-4 rounded-lg shadow-md" style={{ backgroundColor: '#1C1F4A' }}>
           <h2 className="text-lg font-semibold flex items-center">
-            <FiLayers className="mr-2" /> Boosters
+            <img src={Rocket} alt="Rocket" className="w-6 h-6 mr-2" />
+            Boosters
           </h2>
           <div className="flex justify-between mt-2">
             <div>
@@ -128,9 +140,10 @@ const RatePage = () => {
         </div>
 
         {/* Rewards Card */}
-        <div className="bg-gray-800 p-4 rounded-lg shadow-md">
+        <div className="p-4 rounded-lg shadow-md" style={{ backgroundColor: '#1C1F4A' }}>
           <h2 className="text-lg font-semibold flex items-center">
-            <FiGift className="mr-2" /> Rewards
+            <img src={cash} alt="cash" className="w-6 h-6 mr-2" />
+            Rewards
           </h2>
           <div className="flex justify-between mt-2">
             <div>
@@ -154,26 +167,38 @@ const RatePage = () => {
       </div>
 
       {/* Footer Navigation */}
-      <footer className="w-full bg-gray-800 py-4 mt-6">
+      <footer className="w-full py-4 mt-6" style={{ backgroundColor: '#1C1F4A' }}>
         <div className="flex justify-around">
-          <button className="flex flex-col items-center text-gray-400 hover:text-white">
-            <img src={home} alt="home" />
+          <button 
+            className="flex flex-col items-center text-gray-400 hover:text-white"
+            onClick={handleHomeClick} // Add click handler for Home
+          >
+            <img src={home} alt="home" className="w-6 h-6" />
             <span className="text-sm mt-1">Home</span>
           </button>
-          <button className="flex flex-col items-center text-gray-400 hover:text-white">
-            <img src={wup} alt='wup' />
+          <button 
+            className="flex flex-col items-center text-gray-400 hover:text-white"
+            onClick={handleWalletClick} // Add click handler for Wallet
+          >
+            <img src={wup} alt='wup' className="w-6 h-6" />
             <span className="text-sm mt-1">Wallet</span>
           </button>
-          <button className="flex flex-col items-center text-gray-400 hover:text-white">
-            <img src={vuongmieng} alt="vuongmieng" />
+          <button 
+            className="flex flex-col items-center text-gray-400 hover:text-white"
+            onClick={handleRateClick} // Add click handler for Rate
+          >
+            <img src={vuongmieng} alt="vuongmieng" className="w-6 h-6" />
             <span className="text-sm mt-1">Rate</span>
           </button>
-          <button className="flex flex-col items-center text-gray-400 hover:text-white">
-            <img src={trendup} alt='trendup' />
+          <button 
+            className="flex flex-col items-center text-gray-400 hover:text-white"
+            onClick={handleStakingClick} // Add click handler for Staking
+          >
+            <img src={trendup} alt='trendup' className="w-6 h-6" />
             <span className="text-sm mt-1">Earn</span>
           </button>
           <button className="flex flex-col items-center text-gray-400 hover:text-white">
-            <img src={usser} alt='usser' />
+            <img src={usser} alt='usser' className="w-6 h-6" />
             <span className="text-sm mt-1">Profile</span>
           </button>
         </div>

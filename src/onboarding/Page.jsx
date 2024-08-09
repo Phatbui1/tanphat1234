@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import Spl from '../assets/Spl.png';
 import homepoint from '../assets/homepoint.png';
 import ImageWallet from '../assets/Wallet.png';
@@ -9,6 +10,19 @@ import Point from '../assets/Point.png';
 
 function App() {
   const [selectedTab, setSelectedTab] = useState('staking');
+  const navigate = useNavigate(); // Initialize useNavigate
+
+  const handleHomeClick = () => {
+    navigate('/home'); // Navigate to Home page
+  };
+
+  const handleWalletClick = () => {
+    navigate('/money'); // Navigate to Wallet page
+  };
+
+  const handleStakingClick = () => {
+    navigate('/Stacking'); // Navigate to Stacking page
+  };
 
   const styles = {
     app: {
@@ -78,7 +92,7 @@ function App() {
       cursor: 'pointer',
       borderRadius: '10px',
       marginRight: '10px',
-      backgroundColor: '#090B2D', // Changed to #090B2D
+      backgroundColor: '#090B2D',
       color: 'white',
     },
     activeTab: {
@@ -166,10 +180,10 @@ function App() {
       </div>
 
       <footer style={styles.footer}>
-        <button style={styles.footerButton}>
+        <button style={styles.footerButton} onClick={handleHomeClick}>
           <img src={homepoint} alt="homepoint" style={{ width: '24px', height: '24px' }} />
         </button>
-        <button style={styles.footerButton}>
+        <button style={styles.footerButton} onClick={handleWalletClick}>
           <img src={ImageWallet} alt="Wallet" style={{ width: '24px', height: '24px' }} />
         </button>
         <button style={styles.footerButton}>

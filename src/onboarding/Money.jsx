@@ -21,6 +21,7 @@ const Dashboard = () => {
         background: '#090B2F',
         display: 'flex',
         flexDirection: 'column',
+        justifyContent: 'space-between',
         alignItems: 'center',
         minHeight: '100vh',
         padding: '20px',
@@ -28,7 +29,7 @@ const Dashboard = () => {
       }}
     >
       {/* Header Section with SPL Total */}
-      <div style={{ width: '100%', maxWidth: '600px' }}>
+      <div style={{ width: '100%', maxWidth: '400px' }}>
         <div
           style={{
             backgroundColor: '#1C1F4A',
@@ -54,7 +55,7 @@ const Dashboard = () => {
                 padding: '10px',
               }}
             >
-              <img src={Crypto} alt="Crypto" style={{ width: '50px', height: '50px' }} />
+              <img src={Crypto} alt="Crypto" style={{ width: '120px', height: '100px' }} />
             </button>
             <button
               style={{
@@ -64,7 +65,7 @@ const Dashboard = () => {
                 padding: '10px',
               }}
             >
-              <img src={Stocks} alt="Stocks" style={{ width: '50px', height: '50px' }} />
+              <img src={Stocks} alt="Stocks" style={{ width: '125px', height: '100px' }} />
             </button>
             <button
               style={{
@@ -74,7 +75,7 @@ const Dashboard = () => {
                 padding: '10px',
               }}
             >
-              <img src={Gold} alt="Gold" style={{ width: '50px', height: '50px' }} />
+              <img src={Gold} alt="Gold" style={{ width: '125px', height: '100px' }} />
             </button>
           </div>
         </div>
@@ -187,7 +188,7 @@ const Dashboard = () => {
                   style={{
                     backgroundColor: 'white',
                     padding: '8px',
-                    borderRadius: '50%',
+                    borderRadius: '30%',
                     marginRight: '8px',
                   }}
                 >
