@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
@@ -15,17 +17,19 @@ const Login = () => {
     setPassword(e.target.value);
   };
 
+  const toggleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const defaultUsername = 'tanphat';
     const defaultPassword = 'abc';
 
     if (username === defaultUsername && password === defaultPassword) {
-      // Simulate successful login
       localStorage.setItem('token', 'dummy-token');
-      navigate('/home'); // Redirect to the Home page
+      navigate('/home');
     } else {
-      // Display error message
       setError('Sai tài khoản hoặc mật khẩu.');
     }
   };
@@ -35,65 +39,62 @@ const Login = () => {
   };
 
   const handleSignUp = () => {
-    navigate('/release'); // Redirect to the release page
+    navigate('/release');
   };
 
   return (
     <div className="flex justify-center items-center h-screen bg-[#090B2F]">
-      <div className="bg-slate-800 border border-slate-600 rounded-md p-8 shadow-lg backdrop-filter backdrop-blur-lg bg-opacity-30 w-full max-w-md">
-        <h1 className="text-white">Sign In</h1>
+      <div className="bg-[#090B2F] border border-gray-700 rounded-lg p-8 shadow-lg w-full max-w-md">
+        <h1 className="text-white text-xl font-semibold mb-6">Sign In</h1>
         <div>
-          <p className="text-white">Enter your mail and password</p>
+          <p className="text-gray-400 text-sm mb-4">Enter your email or username to continue</p>
         </div>
         <form onSubmit={handleSubmit}>
           <div className="relative my-4">
             <input
               type="text"
-              className="block w-full py-2.5 px-0 text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              className="block w-full py-3 px-4 text-sm text-white bg-[#090b2f] bg-opacity-50 rounded-md border-2 border-transparent focus:outline-none focus:ring-0 focus:border-yellow-500 placeholder-gray-400"
               value={username}
               onChange={handleUsernameChange}
+              placeholder="Email, username"
               required
             />
-            <label
-              htmlFor=""
-              className="absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >
-              Tên đăng nhập
-            </label>
           </div>
           <div className="relative my-4">
             <input
-              type="password"
-              className="block w-full py-2.5 px-0 text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+              type={showPassword ? 'text' : 'password'}
+              className="block w-full py-3 px-4 text-sm text-white bg-[#090b2f] bg-opacity-50 rounded-md border-2 border-transparent focus:outline-none focus:ring-0 focus:border-yellow-500 placeholder-gray-400"
               value={password}
               onChange={handlePasswordChange}
+              placeholder="Password"
               required
             />
-            <label
-              htmlFor=""
-              className="absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >
-              Mật khẩu
-            </label>
+            <div className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5 cursor-pointer" onClick={toggleShowPassword}>
+              {showPassword ? <FaEyeSlash className="text-gray-500" /> : <FaEye className="text-gray-500" />}
+            </div>
           </div>
           {error && (
             <div className="text-red-500 my-2 text-center">{error}</div>
           )}
-          <button
-            type="submit"
-            className="w-full bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded"
-          >
-            Đăng nhập
-          </button>
-          <button
-            type="button"
-            onClick={handleForgotPassword}
-            className="text-right text-yellow-500 font-bold py-2 px-4 rounded mt-2 w-full"
-          >
-            Forgot your password?
-          </button>
-          <div className='text-white font-bold py-2 px-4 rounded'>
-            <p>no account yet? <button className='text-yellow-500 font-bold py-2 px-4 rounded' onClick={handleSignUp}>sign up</button></p>
+          <div className="flex flex-col items-end">
+            <button
+              type="button"
+              onClick={handleForgotPassword}
+              className="text-yellow-500 text-xs font-medium mb-2"
+            >
+              Forgot password?
+            </button>
+            <button
+              type="submit"
+              className="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 rounded-md"
+            >
+              Sign In
+            </button>
+          </div>
+          <div className="text-center text-white font-medium py-4">
+            <p className="text-sm">
+              No account yet? <button className="text-yellow-500 hover:underline" onClick={handleSignUp}>Sign Up</button>
+            </p>
           </div>
         </form>
       </div>

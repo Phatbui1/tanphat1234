@@ -1,6 +1,5 @@
-// src/components/Home.js
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate hook
+import { useNavigate } from 'react-router-dom';
 import { FaUserFriends, FaRocket } from 'react-icons/fa';
 import { CiCirclePlus } from 'react-icons/ci';
 import Image_C from '../assets/image_c.png';
@@ -101,7 +100,7 @@ const Home = () => {
         >
           <img
             src={Image_C}
-            alt="image_c"
+            alt="Your Balance Background"
             style={{
               width: '100%',
               height: 'auto',
@@ -341,7 +340,7 @@ const Home = () => {
             padding: '10px',
             cursor: 'pointer',
           }}
-          onClick={() => navigate('/money')} // Add navigation to Money page
+          onClick={() => navigate('/money')}
         >
           <img src={ImageWallet} alt="Wallet" style={{ width: '24px', height: '24px' }} />
         </button>
@@ -353,7 +352,7 @@ const Home = () => {
             padding: '10px',
             cursor: 'pointer',
           }}
-          onClick={() => navigate('/select')} // Add navigation to Select page
+          onClick={() => navigate('/select')}
         >
           <img src={Imagecrown} alt="crown" style={{ width: '24px', height: '24px' }} />
         </button>
@@ -365,6 +364,7 @@ const Home = () => {
             padding: '10px',
             cursor: 'pointer',
           }}
+          onClick={() => navigate('/page')} // Navigate to Page on click
         >
           <img src={Trend} alt="trend" style={{ width: '24px', height: '24px' }} />
         </button>

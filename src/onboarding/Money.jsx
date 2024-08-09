@@ -1,136 +1,307 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import bchImage from '../assets/bch.png';
 import buyImage from '../assets/buy.png';
-import plusImage from '../assets/plus.png'; // Make sure the correct image path is used
-import { PiHandDeposit, PiHandWithdraw } from "react-icons/pi";
-import { MdHistory } from "react-icons/md";
-import { FaHome, FaWallet, FaChessKing } from "react-icons/fa";
-import { SiFuturelearn } from "react-icons/si";
-import { CgProfile } from "react-icons/cg";
+import plusImage from '../assets/plus.png';
+import Imagehome from '../assets/home.png';
+import ImageWallet from '../assets/Wallet.png';
+import Imagecrown from '../assets/crown.png';
+import crowna from '../assets/crowna.png';
+import Trend from '../assets/Trend.png';
+import Crypto from '../assets/newitems/Crypto.png';
+import Stocks from '../assets/newitems/Stocks.png';
+import Gold from '../assets/newitems/Gold.png';
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+
   return (
-    
-    <div className="bg-[#0E1224] min-h-screen p-4">
-      <div className="bg-[#0E1224] min-h-screen p-4 overflow-y-auto">
-<div className="text-white">
-        <div className="text-center mb-4">
-          <h2 className="text-2xl font-semibold">Total SPL</h2>
-          <div className="text-3xl font-bold mb-4">16,128.80</div>
-          <div className="flex justify-center space-x-4 mb-4">
-            <PiHandDeposit className="text-yellow-400 text-3xl" />
-            <PiHandWithdraw className="text-yellow-400 text-3xl" />
-            <MdHistory className="text-yellow-400 text-3xl" />
+    <div
+      style={{
+        background: '#090B2F',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        minHeight: '100vh',
+        padding: '20px',
+        boxSizing: 'border-box',
+      }}
+    >
+      {/* Header Section with SPL Total */}
+      <div style={{ width: '100%', maxWidth: '600px' }}>
+        <div
+          style={{
+            backgroundColor: '#1C1F4A',
+            borderRadius: '12px',
+            padding: '20px',
+            marginBottom: '20px',
+            color: 'white',
+            textAlign: 'center',
+          }}
+        >
+          <h2 style={{ fontSize: '16px', marginBottom: '8px' }}>Total SPL</h2>
+          <div
+            style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '16px' }}
+          >
+            16,128.80 <span style={{ fontSize: '16px', color: '#D1D5DB' }}>SPL</span>
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'space-around' }}>
+            <button
+              style={{
+                backgroundColor: 'transparent',
+                border: 'none',
+                cursor: 'pointer',
+                padding: '10px',
+              }}
+            >
+              <img src={Crypto} alt="Crypto" style={{ width: '50px', height: '50px' }} />
+            </button>
+            <button
+              style={{
+                backgroundColor: 'transparent',
+                border: 'none',
+                cursor: 'pointer',
+                padding: '10px',
+              }}
+            >
+              <img src={Stocks} alt="Stocks" style={{ width: '50px', height: '50px' }} />
+            </button>
+            <button
+              style={{
+                backgroundColor: 'transparent',
+                border: 'none',
+                cursor: 'pointer',
+                padding: '10px',
+              }}
+            >
+              <img src={Gold} alt="Gold" style={{ width: '50px', height: '50px' }} />
+            </button>
           </div>
         </div>
 
-        <div className="mb-4">
-          <h2 className="text-lg font-semibold">Balance</h2>
-          <div className="bg-[#1A1D2E] p-4 rounded-lg mb-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <div className="bg-[#f0b429] p-2 rounded-full mr-2">
-                  <img src={bchImage} alt="bch" />
+        {/* Balance Section */}
+        <div
+          style={{
+            backgroundColor: '#1C1F4A',
+            borderRadius: '12px',
+            padding: '20px',
+            marginBottom: '20px',
+            color: 'white',
+          }}
+        >
+          <h2 style={{ fontSize: '16px', marginBottom: '8px' }}>Balance</h2>
+
+          <div
+            style={{
+              backgroundColor: '#0C0F3F',
+              borderRadius: '8px',
+              padding: '12px',
+              marginBottom: '8px',
+            }}
+          >
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <div
+                  style={{
+                    backgroundColor: '#f0b429',
+                    padding: '8px',
+                    borderRadius: '50%',
+                    marginRight: '8px',
+                  }}
+                >
+                  <img src={bchImage} alt="bch" style={{ width: '24px', height: '24px' }} />
                 </div>
                 <div>Owner</div>
               </div>
               <div>0 SPL</div>
             </div>
           </div>
-          <div className="bg-[#1A1D2E] p-4 rounded-lg mb-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <div className="bg-[#f0b429] p-2 rounded-full mr-2">
-                  <img src={buyImage} alt="buy" />
+
+          <div
+            style={{
+              backgroundColor: '#0C0F3F',
+              borderRadius: '8px',
+              padding: '12px',
+              marginBottom: '8px',
+            }}
+          >
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <div
+                  style={{
+                    backgroundColor: '#f0b429',
+                    padding: '8px',
+                    borderRadius: '50%',
+                    marginRight: '8px',
+                  }}
+                >
+                  <img src={buyImage} alt="buy" style={{ width: '24px', height: '24px' }} />
                 </div>
                 <div>Reward</div>
               </div>
               <div>0 SPL</div>
             </div>
           </div>
-          <div className="bg-[#1A1D2E] p-4 rounded-lg">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <div className="mr-2">
-                  {/* No image for Verified */}
-                </div>
-                <div>Verified</div>
-              </div>
+
+          <div style={{ backgroundColor: '#0C0F3F', borderRadius: '8px', padding: '12px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div>Verified</div>
               <div>0 SPL</div>
             </div>
-            <div className="flex items-center justify-between mt-2">
-              <div className="flex items-center">
-                <div className="mr-2">
-                  {/* Icon for Unverified */}
-                </div>
-                <div>Unverified</div>
-              </div>
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                marginTop: '8px',
+              }}
+            >
+              <div>Unverified</div>
               <div>0 SPL</div>
             </div>
           </div>
         </div>
 
-        <div>
-          <h2 className="text-lg font-semibold">Your Assets</h2>
-          <div className="text-yellow-400 text-sm mb-2">Token unlock rules</div>
-          <div className="bg-[#1A1D2E] p-4 rounded-lg mb-4">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <div className="bg-white p-2 rounded-full mr-2">
-                  <img src={plusImage} alt="plus" />
+        {/* Your Assets Section */}
+        <div
+          style={{
+            backgroundColor: '#1C1F4A',
+            borderRadius: '12px',
+            padding: '20px',
+            marginBottom: '20px',
+            color: 'white',
+          }}
+        >
+          <h2 style={{ fontSize: '16px', marginBottom: '8px' }}>Your Assets</h2>
+          <div
+            style={{
+              backgroundColor: '#0C0F3F',
+              borderRadius: '8px',
+              padding: '12px',
+              marginBottom: '8px',
+            }}
+          >
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <div
+                  style={{
+                    backgroundColor: 'white',
+                    padding: '8px',
+                    borderRadius: '50%',
+                    marginRight: '8px',
+                  }}
+                >
+                  <img src={plusImage} alt="plus" style={{ width: '24px', height: '24px' }} />
                 </div>
                 <div>
                   <div>SPL</div>
-                  <div className="text-sm text-gray-400">Superlott</div>
+                  <div style={{ fontSize: '12px', color: '#D1D5DB' }}>Superlott</div>
                 </div>
               </div>
               <div>16,128.05</div>
             </div>
           </div>
-          <div className="bg-[#1A1D2E] p-4 rounded-lg">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <div className="bg-green-500 p-2 rounded-full mr-2">
+
+          <div style={{ backgroundColor: '#0C0F3F', borderRadius: '8px', padding: '12px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <div
+                  style={{
+                    backgroundColor: '#10B981',
+                    padding: '8px',
+                    borderRadius: '50%',
+                    marginRight: '8px',
+                  }}
+                >
                   {/* Icon for USDT */}
                 </div>
                 <div>
                   <div>USDT</div>
-                  <div className="text-sm text-gray-400">Tether</div>
+                  <div style={{ fontSize: '12px', color: '#D1D5DB' }}>Tether</div>
                 </div>
               </div>
-              <div>112,51</div>
+              <div>112.51</div>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="fixed bottom-0 left-0 right-0 bg-[#0E1224] p-2">
-        <div className="flex justify-between text-white">
-          <div className="flex flex-col items-center">
-            <FaHome className="text-white text-2xl" />
-            <div>Home</div>
-          </div>
-          <div className="flex flex-col items-center">
-            <FaWallet className="text-white text-2xl" />
-            <div>Wallet</div>
-          </div>
-          <div className="flex flex-col items-center">
-            <FaChessKing className="text-white text-2xl" />
-            <div>Rate</div>
-          </div>
-          <div className="flex flex-col items-center">
-            <SiFuturelearn className="text-white text-2xl" />
-            <div>Earn</div>
-          </div>
-          <div className="flex flex-col items-center">
-            <CgProfile className="text-white text-2xl" />
-            <div>Profile</div>
-          </div>
-        </div>
+      {/* Navigation Bar */}
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-around',
+          width: '100%',
+          maxWidth: '600px',
+          backgroundColor: '#1C1F4A',
+          borderRadius: '12px',
+          padding: '10px 0',
+          position: 'fixed',
+          bottom: '20px',
+        }}
+      >
+        <button
+          style={{
+            backgroundColor: 'transparent',
+            color: 'white',
+            border: 'none',
+            padding: '10px',
+            cursor: 'pointer',
+          }}
+          onClick={() => navigate('/home')}
+        >
+          <img src={Imagehome} alt="home" style={{ width: '24px', height: '24px' }} />
+        </button>
+        <button
+          style={{
+            backgroundColor: 'transparent',
+            color: 'white',
+            border: 'none',
+            padding: '10px',
+            cursor: 'pointer',
+          }}
+          onClick={() => navigate('/money')}
+        >
+          <img src={ImageWallet} alt="Wallet" style={{ width: '24px', height: '24px' }} />
+        </button>
+        <button
+          style={{
+            backgroundColor: 'transparent',
+            color: 'white',
+            border: 'none',
+            padding: '10px',
+            cursor: 'pointer',
+          }}
+          onClick={() => navigate('/select')}
+        >
+          <img src={Imagecrown} alt="crown" style={{ width: '24px', height: '24px' }} />
+        </button>
+        <button
+          style={{
+            backgroundColor: 'transparent',
+            color: 'white',
+            border: 'none',
+            padding: '10px',
+            cursor: 'pointer',
+          }}
+          onClick={() => navigate('/page')}
+        >
+          <img src={Trend} alt="trend" style={{ width: '24px', height: '24px' }} />
+        </button>
+        <button
+          style={{
+            backgroundColor: 'transparent',
+            color: 'white',
+            border: 'none',
+            padding: '10px',
+            cursor: 'pointer',
+          }}
+          onClick={() => navigate('/profile')}
+        >
+          <img src={crowna} alt="crowna" style={{ width: '24px', height: '24px' }} />
+        </button>
       </div>
     </div>
-      </div>
-      
   );
 };
 

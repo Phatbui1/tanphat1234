@@ -1,6 +1,14 @@
+// Stacking1.js
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Stacking1 = () => {
+  const navigate = useNavigate();
+
+  const handleBackToRate = () => {
+    navigate('/team');
+  };
+
   return (
     <div style={{ backgroundColor: '#18193E' }} className="flex flex-col items-center justify-center h-screen p-4">
       <h1 className="text-2xl font-bold mb-4 text-white">Staking USDT</h1>
@@ -29,7 +37,9 @@ const Stacking1 = () => {
         </div>
       </div>
 
-      <button className="bg-yellow-400 text-black hover:bg-yellow-300 mt-4 p-2 rounded-lg w-full max-w-xs">Back to Rate</button>
+      <button onClick={handleBackToRate} className="bg-yellow-400 text-black hover:bg-yellow-300 mt-4 p-2 rounded-lg w-full max-w-xs">
+        Back to Rate
+      </button>
     </div>
   );
 };

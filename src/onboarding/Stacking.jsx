@@ -1,6 +1,14 @@
+// Stacking.js
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Stacking = () => {
+  const navigate = useNavigate();
+
+  const handleConfirm = () => {
+    navigate('/stacking1');
+  };
+
   return (
     <div className="bg-blue-950 text-gray-200 p-4 rounded-lg shadow-md max-w-md mx-auto min-h-screen flex flex-col items-center">
       <h1 className="text-2xl font-bold mb-4 text-white">Staking USDT</h1>
@@ -29,7 +37,7 @@ const Stacking = () => {
         Please note that this amount is non-refundable over time.
       </p>
 
-      <button className="bg-yellow-300 text-black hover:bg-blue-500 w-full py-2 rounded mt-4">
+      <button onClick={handleConfirm} className="bg-yellow-300 text-black hover:bg-blue-500 w-full py-2 rounded mt-4">
         Confirm
       </button>
     </div>
