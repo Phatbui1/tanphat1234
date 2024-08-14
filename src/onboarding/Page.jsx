@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 import Spl from '../assets/Spl.png';
 import homepoint from '../assets/homepoint.png';
 import ImageWallet from '../assets/Wallet.png';
@@ -10,18 +10,10 @@ import Point from '../assets/Point.png';
 
 function App() {
   const [selectedTab, setSelectedTab] = useState('staking');
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
-  const handleHomeClick = () => {
-    navigate('/home'); // Navigate to Home page
-  };
-
-  const handleWalletClick = () => {
-    navigate('/money'); // Navigate to Wallet page
-  };
-
-  const handleStakingClick = () => {
-    navigate('/Stacking'); // Navigate to Stacking page
+  const handleNavigation = (path) => {
+    navigate(path);
   };
 
   const styles = {
@@ -56,12 +48,14 @@ function App() {
       backgroundColor: '#090B2D',
       borderRadius: '10px',
       flex: '1',
+      padding: '10px',
     },
     stakingInfo: {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
       width: '100%',
+      marginTop: '20px',
     },
     stakingItem: {
       display: 'flex',
@@ -71,29 +65,21 @@ function App() {
       padding: '10px',
       backgroundColor: '#18193E',
       borderRadius: '10px',
-      marginBottom: '20px',
-    },
-    stakingText: {
-      marginLeft: '10px',
-      flex: '1',
-    },
-    stakingDetails: {
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItems: 'center',
-      width: '100%',
+      marginTop: '10px',
     },
     tabs: {
       display: 'flex',
-      marginTop: '20px',
+      width: '100%',
+      justifyContent: 'center',
     },
     tab: {
       padding: '10px 20px',
       cursor: 'pointer',
-      borderRadius: '10px',
-      marginRight: '10px',
+      borderRadius: '10px 10px 0 0',
       backgroundColor: '#090B2D',
       color: 'white',
+      flex: '1',
+      textAlign: 'center',
     },
     activeTab: {
       backgroundColor: '#ff6b00',
@@ -102,10 +88,6 @@ function App() {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-    },
-    icon: {
-      fontSize: '50px',
-      marginBottom: '10px',
     },
     footer: {
       display: 'flex',
@@ -130,63 +112,50 @@ function App() {
     <div style={styles.app}>
       <header style={styles.header}>
         <div style={styles.totalStakingValue}>Total staking value:</div>
-        <div className='font-size-50px'>1,500 SPL</div>
+        <div style={{ fontSize: '50px' }}>1,500 SPL</div>
       </header>
 
       <div style={styles.content}>
+        <div style={styles.tabs}>
+          <div
+            style={selectedTab === 'staking' ? { ...styles.tab, ...styles.activeTab } : styles.tab}
+            onClick={() => setSelectedTab('staking')}
+          >
+            Staking
+          </div>
+          <div
+            style={selectedTab === 'order' ? { ...styles.tab, ...styles.activeTab } : styles.tab}
+            onClick={() => setSelectedTab('order')}
+          >
+            Order
+          </div>
+        </div>
+
         {selectedTab === 'staking' ? (
           <div style={styles.stakingInfo}>
             <div style={styles.stakingItem}>
               <img src={Spl} alt="Spl" style={{ marginRight: '10px' }} />
               <span style={{ flex: 1 }}>SPL Superlott</span>
-              <span className="text-green-400" style={{ flex: 1, textAlign: 'center' }}>ARP 10%</span>
-              <span className='text-white' style={{ flex: 1, textAlign: 'right' }}>1,500 SPL</span>
-            </div>
-            <div style={styles.tabs}>
-              <div
-                style={selectedTab === 'staking' ? { ...styles.tab, ...styles.activeTab } : styles.tab}
-                onClick={() => setSelectedTab('staking')}
-              >
-                Staking
-              </div>
-              <div
-                style={selectedTab === 'order' ? { ...styles.tab, ...styles.activeTab } : styles.tab}
-                onClick={() => setSelectedTab('order')}
-              >
-                Order
-              </div>
+              <span style={{ flex: 1, textAlign: 'center', color: 'green' }}>ARP 10%</span>
+              <span style={{ flex: 1, textAlign: 'right' }}>1,500 SPL</span>
             </div>
           </div>
         ) : (
           <div style={styles.noStaking}>
-            <img src={box} alt='box'/>
+            <img src={box} alt="box" />
             <div>You are not staking yet.</div>
-            <div style={styles.tabs}>
-              <div
-                style={selectedTab === 'staking' ? { ...styles.tab, ...styles.activeTab } : styles.tab}
-                onClick={() => setSelectedTab('staking')}
-              >
-                Staking
-              </div>
-              <div
-                style={selectedTab === 'order' ? { ...styles.tab, ...styles.activeTab } : styles.tab}
-                onClick={() => setSelectedTab('order')}
-              >
-                Order
-              </div>
-            </div>
           </div>
         )}
       </div>
 
       <footer style={styles.footer}>
-        <button style={styles.footerButton} onClick={handleHomeClick}>
+        <button style={styles.footerButton} onClick={() => handleNavigation('/home')}>
           <img src={homepoint} alt="homepoint" style={{ width: '24px', height: '24px' }} />
         </button>
-        <button style={styles.footerButton} onClick={handleWalletClick}>
+        <button style={styles.footerButton} onClick={() => handleNavigation('/money')}>
           <img src={ImageWallet} alt="Wallet" style={{ width: '24px', height: '24px' }} />
         </button>
-        <button style={styles.footerButton}>
+        <button style={styles.footerButton} onClick={() => handleNavigation('/select')}>
           <img src={Imagecrown} alt="crown" style={{ width: '24px', height: '24px' }} />
         </button>
         <button style={styles.footerButton}>

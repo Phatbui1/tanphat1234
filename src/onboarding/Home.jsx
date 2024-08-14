@@ -14,7 +14,7 @@ import ImageWallet from '../assets/Wallet.png';
 import Imagecrown from '../assets/crown.png';
 import crowna from '../assets/crowna.png';
 import Trend from '../assets/Trend.png';
-import team from '../assets/friends/team.png'; // Đổi tên biến từ user thành team
+import team from '../assets/friends/team.png'; // Invite Friends
 import buy from '../assets/friends/buy.png';
 import user from '../assets/newitems/user.png';
 
@@ -56,7 +56,7 @@ const Home = () => {
 
   const cryptoTokens = [
     {
-      icon: <img src={team} alt="team" style={{ width: '24px', height: '24px' }} />, // Đổi tên biến từ user thành team
+      icon: <img src={team} alt="team" style={{ width: '24px', height: '24px' }} />, // Invite Friends
       name: 'Invite Friends',
       amount: '+0.05 SPL / Hr',
       additionalInfo: '', // Add additional info here if needed
@@ -169,7 +169,7 @@ const Home = () => {
           <div
             style={{
               display: 'flex',
-              flexDirection: 'row', // Đặt flexDirection thành row
+              flexDirection: 'column', // Stack vertically
               gap: '10px',
             }}
           >
@@ -184,16 +184,19 @@ const Home = () => {
                   padding: '12px',
                   borderRadius: '8px',
                   display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: '8px',
-                  flexDirection: 'column', // Đặt flexDirection thành column
+                  alignItems: 'center', // Center items vertically
+                  gap: '12px', // Adjust gap for better spacing
+                  height: '50px', // Ensure all buttons have the same height
                 }}
               >
-                {token.icon}
-                <span>{token.name}</span>
-                <span>{token.amount}</span>
-                {token.additionalInfo && <span>{token.additionalInfo}</span>}
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                  {token.icon}
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                  <span>{token.name}</span>
+                  <span>{token.amount}</span>
+                  {token.additionalInfo && <span>{token.additionalInfo}</span>}
+                </div>
               </button>
             ))}
           </div>
@@ -204,7 +207,7 @@ const Home = () => {
             flexWrap: 'wrap',
             justifyContent: 'space-between',
             gap: '10px',
-            zIndex: 2, // Đảm bảo các nút không bị che khuất
+            zIndex: 2, // Ensure buttons are not obscured
           }}
         >
           <button
@@ -218,7 +221,8 @@ const Home = () => {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              gap: '8px',
+              gap: '12px', // Ensure consistent spacing
+              height: '50px',
             }}
           >
             Airdrop
@@ -235,7 +239,8 @@ const Home = () => {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              gap: '8px',
+              gap: '12px',
+              height: '50px',
             }}
           >
             Team
@@ -252,7 +257,8 @@ const Home = () => {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              gap: '8px',
+              gap: '12px',
+              height: '50px',
             }}
           >
             Distributor
@@ -269,7 +275,8 @@ const Home = () => {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              gap: '8px',
+              gap: '12px',
+              height: '50px',
             }}
           >
             LeaderBoard
@@ -286,7 +293,8 @@ const Home = () => {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              gap: '8px',
+              gap: '12px',
+              height: '50px',
             }}
           >
             Utilities
@@ -303,7 +311,8 @@ const Home = () => {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              gap: '8px',
+              gap: '12px',
+              height: '50px',
             }}
           >
             Support

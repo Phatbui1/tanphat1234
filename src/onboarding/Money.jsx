@@ -2,7 +2,6 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import bchImage from '../assets/bch.png';
 import buyImage from '../assets/buy.png';
-import plusImage from '../assets/plus.png';
 import Imagehome from '../assets/home.png';
 import ImageWallet from '../assets/Wallet.png';
 import Imagecrown from '../assets/crown.png';
@@ -11,7 +10,7 @@ import Trend from '../assets/Trend.png';
 import Crypto from '../assets/newitems/Crypto.png';
 import Stocks from '../assets/newitems/Stocks.png';
 import Gold from '../assets/newitems/Gold.png';
-
+import Okcash from '../assets/logo/Okcash.png';
 const Dashboard = () => {
   const navigate = useNavigate();
 
@@ -65,7 +64,7 @@ const Dashboard = () => {
                 padding: '10px',
               }}
             >
-              <img src={Stocks} alt="Stocks" style={{ width: '125px', height: '100px' }} />
+              <img src={Stocks} alt="Stocks" style={{ width: '120px', height: '100px' }} />
             </button>
             <button
               style={{
@@ -75,7 +74,7 @@ const Dashboard = () => {
                 padding: '10px',
               }}
             >
-              <img src={Gold} alt="Gold" style={{ width: '125px', height: '100px' }} />
+              <img src={Gold} alt="Gold" style={{ width: '120px', height: '100px' }} />
             </button>
           </div>
         </div>
@@ -192,7 +191,8 @@ const Dashboard = () => {
                     marginRight: '8px',
                   }}
                 >
-                  <img src={plusImage} alt="plus" style={{ width: '24px', height: '24px' }} />
+                  <img src={Okcash} alt="Okcash" style={{ width: '24px', height: '24px' }} />
+
                 </div>
                 <div>
                   <div>SPL</div>
