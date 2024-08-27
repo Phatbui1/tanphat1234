@@ -70,19 +70,24 @@ function App() {
     tabs: {
       display: 'flex',
       width: '100%',
-      justifyContent: 'center',
+      justifyContent: 'space-around',  // Makes the tabs evenly spaced
+      marginBottom: '20px',
+      backgroundColor: '#18193E',  // Background color behind the tabs
+      borderRadius: '20px',  // Rounded corners for the tabs container
     },
     tab: {
       padding: '10px 20px',
       cursor: 'pointer',
-      borderRadius: '10px 10px 0 0',
+      borderRadius: '20px',  // Rounded corners for each tab
       backgroundColor: '#090B2D',
       color: 'white',
       flex: '1',
       textAlign: 'center',
+      margin: '5px',  // Margin between tabs
     },
     activeTab: {
-      backgroundColor: '#ff6b00',
+      backgroundColor: '#ffcc00',  // Yellow background for the active tab
+      color: '#000',  // Black text color for the active tab
     },
     noStaking: {
       display: 'flex',
@@ -161,7 +166,7 @@ function App() {
         <button style={styles.footerButton}>
           <img src={Point} alt="Point" style={{ width: '24px', height: '24px' }} />
         </button>
-        <button style={styles.footerButton}>
+        <button style={styles.footerButton}onClick={()=>navigate('/user1')}>
           <img src={crowna} alt="crowna" style={{ width: '24px', height: '24px' }} />
         </button>
       </footer>

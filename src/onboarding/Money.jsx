@@ -11,6 +11,11 @@ import Crypto from '../assets/newitems/Crypto.png';
 import Stocks from '../assets/newitems/Stocks.png';
 import Gold from '../assets/newitems/Gold.png';
 import Okcash from '../assets/logo/Okcash.png';
+import clock from '../assets/newitems/clock.png';
+import len from '../assets/newitems/len.png';
+import xuong from '../assets/newitems/xuong.png';
+import computer from '../assets/money/computer.png';
+
 const Dashboard = () => {
   const navigate = useNavigate();
 
@@ -48,33 +53,54 @@ const Dashboard = () => {
           <div style={{ display: 'flex', justifyContent: 'space-around' }}>
             <button
               style={{
-                backgroundColor: 'transparent',
-                border: 'none',
+                backgroundColor: '#090B2F',
+                color: 'white',
+                border: '1px solid #1C1F4A',
+                borderRadius: '8px',
                 cursor: 'pointer',
                 padding: '10px',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '4px',
               }}
             >
-              <img src={Crypto} alt="Crypto" style={{ width: '120px', height: '100px' }} />
+              <img src={xuong} alt="xuong" style={{ width: '30px', height: '30px' }} />
+              <span>Deposit</span>
             </button>
             <button
               style={{
-                backgroundColor: 'transparent',
-                border: 'none',
+                backgroundColor: '#090B2F',
+                color: 'white',
+                border: '1px solid #1C1F4A',
+                borderRadius: '8px',
                 cursor: 'pointer',
                 padding: '10px',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '4px',
               }}
             >
-              <img src={Stocks} alt="Stocks" style={{ width: '120px', height: '100px' }} />
+              <img src={len} alt="len" style={{ width: '30px', height: '30px' }} />
+              <span>Withdraw</span>
             </button>
             <button
               style={{
-                backgroundColor: 'transparent',
-                border: 'none',
+                backgroundColor: '#090B2F',
+                color: 'white',
+                border: '1px solid #1C1F4A',
+                borderRadius: '8px',
                 cursor: 'pointer',
                 padding: '10px',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '4px',
               }}
             >
-              <img src={Gold} alt="Gold" style={{ width: '120px', height: '100px' }} />
+              <img src={clock} alt="clock" style={{ width: '30px', height: '30px' }} />
+              <span>History</span>
             </button>
           </div>
         </div>
@@ -173,6 +199,7 @@ const Dashboard = () => {
           }}
         >
           <h2 style={{ fontSize: '16px', marginBottom: '8px' }}>Your Assets</h2>
+          <p style={{color :'yellow'}}>token unlock rules</p>
           <div
             style={{
               backgroundColor: '#0C0F3F',
@@ -192,7 +219,6 @@ const Dashboard = () => {
                   }}
                 >
                   <img src={Okcash} alt="Okcash" style={{ width: '24px', height: '24px' }} />
-
                 </div>
                 <div>
                   <div>SPL</div>
@@ -297,7 +323,7 @@ const Dashboard = () => {
             padding: '10px',
             cursor: 'pointer',
           }}
-          onClick={() => navigate('/profile')}
+          onClick={() => navigate('/user1')}
         >
           <img src={crowna} alt="crowna" style={{ width: '24px', height: '24px' }} />
         </button>

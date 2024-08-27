@@ -1,18 +1,27 @@
-import React from "react";
-import buy1 from "../assets/buy1.png";  // User profile picture placeholder
-import abc from "../assets/abc.png";   // Icon for account type
-import abcd from "../assets/abcd.png"; // Icon for username
-import mail from "../assets/mail.png"; // Icon for email
-import hinhtim from "../assets/hinhtim.png"; // Icon for verify account
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";  // Import useNavigate để điều hướng
+import buy1 from "../assets/buy1.png";  
+import abc from "../assets/abc.png";   
+import abcd from "../assets/abcd.png"; 
+import mail from "../assets/mail.png"; 
+import hinhtim from "../assets/hinhtim.png"; 
+import Imagehome from '../assets/home.png';
+import ImageWallet from '../assets/Wallet.png';
+import Imagecrown from '../assets/crown.png';
+import crowna from '../assets/crowna.png';
+import Trend from '../assets/Trend.png';
+import authen from '../assets/profile/authen.png';
+import key from '../assets/profile/key.png';
+import bin from '../assets/profile/bin.png';
 
 const styles = {
   container: {
     fontFamily: "Arial, sans-serif",
-    width: "100vw", // Full viewport width
-    height: "100vh", // Full viewport height
+    width: "100vw", // Chiều rộng toàn bộ viewport
+    height: "100vh", // Chiều cao toàn bộ viewport
     padding: "20px",
-    backgroundColor: "#090B2D", // Dark blue background
-    color: "#fff", // White text for contrast
+    backgroundColor: "#090B2D", // Nền màu xanh đậm
+    color: "#fff", // Màu chữ trắng để tạo độ tương phản
     boxSizing: "border-box",
     display: "flex",
     flexDirection: "column",
@@ -25,18 +34,18 @@ const styles = {
     alignItems: "center",
     marginBottom: "30px",
     padding: "10px 0",
-    borderBottom: "1px solid #444", // Subtle border for separation
+    borderBottom: "1px solid #444", // Đường viền nhẹ để tách biệt
   },
   profileImage: {
     width: "50px",
     height: "50px",
-    borderRadius: "50%", // Circular profile image
-    backgroundColor: "#eee", // Placeholder color if image fails to load
+    borderRadius: "50%", // Hình ảnh hồ sơ tròn
+    backgroundColor: "#eee", // Màu nền thay thế nếu hình ảnh không tải
     marginRight: "15px",
   },
   id: {
     fontSize: "12px",
-    color: "#ccc", // Gray color for ID text
+    color: "#ccc", // Màu xám cho văn bản ID
     marginBottom: "4px",
   },
   username: {
@@ -56,9 +65,9 @@ const styles = {
   infoItem: {
     display: "flex",
     alignItems: "center",
-    justifyContent: "space-between", // Spread items to the ends
+    justifyContent: "space-between", // Trải đều các mục
     padding: "10px 0",
-    borderBottom: "1px solid #333", // Subtle border between items
+    borderBottom: "1px solid #333", // Đường viền nhẹ giữa các mục
   },
   infoLeft: {
     display: "flex",
@@ -73,13 +82,13 @@ const styles = {
     fontSize: "14px",
   },
   verified: {
-    color: "yellow", // Yellow for "Verified" text
+    color: "yellow", // Màu vàng cho văn bản "Verified"
     fontWeight: "bold",
   },
   arrow: {
     width: "16px",
     height: "16px",
-    marginLeft: "auto", // Push arrow to the right
+    marginLeft: "auto", // Đẩy mũi tên sang bên phải
     fill: "#fff",
   },
   securitySection: {
@@ -97,7 +106,7 @@ const styles = {
   },
   securityText: {
     fontSize: "14px",
-    color: "#bbb", // Slightly lighter for inactive state
+    color: "#bbb", // Màu sáng hơn một chút cho trạng thái không hoạt động
   },
   deleteAccount: {
     color: "red",
@@ -120,6 +129,14 @@ const RightArrow = () => (
 );
 
 const UserProfile = () => {
+  const [showModal, setShowModal] = useState(false);  // State để quản lý hiển thị modal
+  const navigate = useNavigate();  // useNavigate hook để điều hướng
+
+  // Hàm xử lý sự kiện khi nút trong modal được nhấn
+  const handleModalButtonClick = () => {
+    setShowModal(false);  // Đóng modal
+  };
+
   return (
     <div style={styles.container}>
       <header style={styles.header}>
@@ -168,6 +185,7 @@ const UserProfile = () => {
         <div style={styles.sectionTitle}>Security</div>
         <div style={styles.securityItem} onClick={() => alert("2FA Settings")}>
           <div style={styles.infoLeft}>
+            <img src={authen} alt="authen" style={{ width: '24px', height: '24px' }} />
             <p style={styles.securityText}>Two-Factor Authentication</p>
           </div>
           <span style={styles.securityText}>Disabled</span>
@@ -175,6 +193,7 @@ const UserProfile = () => {
         </div>
         <div style={styles.securityItem} onClick={() => alert("Change Password")}>
           <div style={styles.infoLeft}>
+            <img src={key} alt="key" style={{ width: '24px', height: '24px' }} />
             <p style={styles.securityText}>Change password</p>
           </div>
           <RightArrow />
@@ -184,11 +203,128 @@ const UserProfile = () => {
           onClick={() => alert("Delete Account")}
         >
           <div style={styles.infoLeft}>
+            <img src={bin} alt="bin" style={{ width: '24px', height: '24px' }} />
             <p>Delete Your Account</p>
           </div>
           <RightArrow />
         </div>
       </section>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-around',
+          width: '100%',
+          maxWidth: '360px',
+          backgroundColor: '#1C1F4A',
+          borderRadius: '12px',
+          padding: '10px 0',
+          position: 'fixed',
+          bottom: '20px',
+        }}
+      >
+        <button
+          style={{
+            backgroundColor: 'transparent',
+            color: 'white',
+            border: 'none',
+            padding: '10px',
+            cursor: 'pointer',
+          }}
+          onClick={() => navigate('/home')}
+        >
+          <img src={Imagehome} alt="home" style={{ width: '24px', height: '24px' }} />
+        </button>
+        <button
+          style={{
+            backgroundColor: 'transparent',
+            color: 'white',
+            border: 'none',
+            padding: '10px',
+            cursor: 'pointer',
+          }}
+          onClick={() => navigate('/money')}
+        >
+          <img src={ImageWallet} alt="Wallet" style={{ width: '24px', height: '24px' }} />
+        </button>
+        <button
+          style={{
+            backgroundColor: 'transparent',
+            color: 'white',
+            border: 'none',
+            padding: '10px',
+            cursor: 'pointer',
+          }}
+          onClick={() => navigate('/select')}
+        >
+          <img src={Imagecrown} alt="crown" style={{ width: '24px', height: '24px' }} />
+        </button>
+        <button
+          style={{
+            backgroundColor: 'transparent',
+            color: 'white',
+            border: 'none',
+            padding: '10px',
+            cursor: 'pointer',
+          }}
+          onClick={() => navigate('/page')}
+        >
+          <img src={Trend} alt="trend" style={{ width: '24px', height: '24px' }} />
+        </button>
+        <button
+          style={{
+            backgroundColor: 'transparent',
+            color: 'white',
+            border: 'none',
+            padding: '10px',
+            cursor: 'pointer',
+          }}
+          onClick={() => navigate('/crown')}
+        >
+          <img src={crowna} alt="crowna" style={{ width: '24px', height: '24px' }} />
+        </button>
+      </div>
+
+      {/* Modal component */}
+      {showModal && (
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 1000,
+        }}>
+          <div style={{
+            backgroundColor: '#1C1F4A',
+            padding: '20px',
+            borderRadius: '12px',
+            textAlign: 'center',
+            color: 'white',
+            maxWidth: '300px',
+            width: '100%',
+          }}>
+            <p>Inactive member of your Team have been notified!</p>
+            <button
+              onClick={handleModalButtonClick} 
+              style={{
+                backgroundColor: '#F9D54A',
+                color: '#000000',
+                border: 'none',
+                padding: '10px 20px',
+                cursor: 'pointer',
+                borderRadius: '8px',
+                marginTop: '20px',
+              }}
+            >
+              Ok
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

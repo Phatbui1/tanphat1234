@@ -9,7 +9,7 @@ import two from '../assets/two.png';
 import three from '../assets/three.png';
 
 const Leader = () => {
-  const [activeTab, setActiveTab] = useState('leaderSPL');
+  const [activeTab, setActiveTab] = useState('distributer');
 
   const leaderSPLData = [
     { rank: 1, name: '@hawking', score: '68,215,892 SPL' },
@@ -37,12 +37,16 @@ const Leader = () => {
 
   const renderList = (data) => (
     data.map((item) => (
-      <li key={item.rank} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '8px 0', borderBottom: '1px solid #333' }}>
+      <li key={item.rank} style={{
+        display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+        padding: '12px 16px', borderBottom: '1px solid #333', 
+        borderRadius: '8px', backgroundColor: '#1C1F4A', marginBottom: '8px'
+      }}>
         <span style={{ display: 'flex', alignItems: 'center' }}>
           {item.rank === 1 && <img src={one} alt="1st place" style={{ width: '24px', height: '24px', marginRight: '8px' }} />}
           {item.rank === 2 && <img src={two} alt="2nd place" style={{ width: '24px', height: '24px', marginRight: '8px' }} />}
           {item.rank === 3 && <img src={three} alt="3rd place" style={{ width: '24px', height: '24px', marginRight: '8px' }} />}
-          {item.rank > 3 && <span style={{ color: '#FFF' }}>{item.rank}.</span>}
+          {item.rank > 3 && <span style={{ color: '#FFF', marginRight: '8px' }}>{item.rank}.</span>}
         </span>
         <span style={{ flex: 1, color: '#FFF', textAlign: 'left' }}>{item.name}</span>
         <span style={{ color: '#FFF' }}>{item.score}</span>
@@ -53,36 +57,35 @@ const Leader = () => {
   return (
     <div style={{ backgroundColor: '#090B2D', color: '#ffffff', minHeight: '100vh', margin: 0, padding: '0 0 60px 0' }}>
       <h1 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '8px', color: '#FFF' }} className='text-center'>Leaderboard</h1>
-      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '8px' }}>
+      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '16px' }}>
         <button
-          style={{ 
-            padding: '4px 12px', 
-            borderRadius: '8px', 
-            backgroundColor: activeTab === 'leaderSPL' ? '#FFD700' : '#D3D3D3', 
-            color: activeTab === 'leaderSPL' ? '#333' : '#666', 
-            border: 'none', 
-            cursor: 'pointer' 
+          style={{
+            padding: '10px 50px',
+            borderRadius: '12px 0 0 12px',
+            backgroundColor: activeTab === 'leaderSPL' ? '#FFD700' : '#1C1F4A',
+            color: activeTab === 'leaderSPL' ? '#333' : '#666',
+            border: 'none',
+            cursor: 'pointer',
           }}
           onClick={() => setActiveTab('leaderSPL')}
         >
           Leader SPL
         </button>
         <button
-          style={{ 
-            padding: '4px 12px', 
-            borderRadius: '8px', 
-            backgroundColor: activeTab === 'distributer' ? '#FFD700' : '#D3D3D3', 
-            color: activeTab === 'distributer' ? '#333' : '#666', 
-            border: 'none', 
-            cursor: 'pointer', 
-            marginLeft: '4px' 
+          style={{
+            padding: '10px 50px',
+            borderRadius: '0 12px 12px 0',
+            backgroundColor: activeTab === 'distributer' ? '#FFD700' : '#1C1F4A',
+            color: activeTab === 'distributer' ? '#333' : '#666',
+            border: 'none',
+            cursor: 'pointer',
           }}
           onClick={() => setActiveTab('distributer')}
         >
           Distributer
         </button>
       </div>
-      <ul style={{ listStyle: 'none', padding: 0, margin: 0, overflow: 'hidden' }}>
+      <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
         {activeTab === 'leaderSPL' ? renderList(leaderSPLData) : renderList(distributerData)}
       </ul>
       <div style={{ position: 'fixed', bottom: '0', width: '100%', backgroundColor: '#090B2D', display: 'flex', justifyContent: 'space-around', padding: '10px' }}>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CiCirclePlus } from 'react-icons/ci';
+import { FaBars, FaBell } from 'react-icons/fa';
 import MiningBitcoinImage from '../assets/MiningBitcoin.png';
 import Image_C from '../assets/image_c.png';
 import ImageBank from '../assets/Bank.png';
@@ -14,7 +15,7 @@ import ImageWallet from '../assets/Wallet.png';
 import Imagecrown from '../assets/crown.png';
 import crowna from '../assets/crowna.png';
 import Trend from '../assets/Trend.png';
-import team from '../assets/friends/team.png'; // Invite Friends
+import team from '../assets/friends/team.png';
 import buy from '../assets/friends/buy.png';
 import user from '../assets/newitems/user.png';
 
@@ -22,6 +23,7 @@ const Home = () => {
   const [isMining, setIsMining] = useState(false);
   const [remainingTime, setRemainingTime] = useState(0);
   const [buttonColor, setButtonColor] = useState('#F9D54A');
+  const [showModal, setShowModal] = useState(false); // State for controlling modal visibility
   const navigate = useNavigate();
 
   const handleGetStartedClick = () => {
@@ -30,6 +32,31 @@ const Home = () => {
       setRemainingTime(8 * 60 * 60 * 1000); // 8 hours
       setButtonColor('#464664');
     }
+  };
+
+  const handleNotificationClick = () => {
+    setShowModal(true); // Show modal when notification icon is clicked
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false); // Close modal
+  };
+
+  const handleModalButtonClick = () => {
+    handleNotificationClick(); // Call handleNotificationClick when Ok is clicked
+    setShowModal(false); // Optionally close the modal after action
+  };
+
+  const handleInviteFriendsClick = () => {
+    navigate('/select'); // Navigate to the select page
+  };
+
+  const handleBoosterClick = () => {
+    navigate('/select'); // Navigate to the select page
+  };
+
+  const handleLeaderboardClick = () => {
+    navigate('/leader'); // Navigate to the leader page
   };
 
   useEffect(() => {
@@ -56,17 +83,26 @@ const Home = () => {
 
   const cryptoTokens = [
     {
-      icon: <img src={team} alt="team" style={{ width: '24px', height: '24px' }} />, // Invite Friends
+      icon: <img src={team} alt="team" style={{ width: '24px', height: '24px' }} />,
       name: 'Invite Friends',
       amount: '+0.05 SPL / Hr',
-      additionalInfo: '', // Add additional info here if needed
+      onClick: handleInviteFriendsClick, // Updated onClick handler
     },
     {
       icon: <img src={buy} alt="buy" style={{ width: '24px', height: '24px' }} />,
       name: 'Booster',
       amount: 'Increase rewards: +20%',
-      additionalInfo: '', // Add additional info here if needed
+      onClick: handleBoosterClick, // Updated onClick handler
     },
+  ];
+
+  const actionButtons = [
+    { icon: ImageBank, label: 'Airdrop' },
+    { icon: ImagePeople, label: 'Team', onClick: () => navigate('/team') }, // Added onClick handler
+    { icon: ImagePercent, label: 'Distributor' },
+    { icon: ImageBanka, label: 'LeaderBoard', onClick: handleLeaderboardClick }, // Added onClick handler
+    { icon: ImageShield, label: 'Utilities' },
+    { icon: ImageHeadphone, label: 'Support' },
   ];
 
   return (
@@ -75,14 +111,51 @@ const Home = () => {
         background: '#090B2F',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'space-between',
+        justifyContent: 'flex-start',
         alignItems: 'center',
         minHeight: '100vh',
         padding: '20px',
         boxSizing: 'border-box',
       }}
     >
-      <div style={{ width: '100%', maxWidth: '400px' }}>
+      {/* Header Section */}
+      <header
+        style={{
+          width: '100%',
+          maxWidth: '360px',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          marginBottom: '20px',
+        }}
+      >
+        <button
+          style={{
+            backgroundColor: 'transparent',
+            color: 'white',
+            border: 'none',
+            padding: '10px',
+            cursor: 'pointer',
+          }}
+        >
+          <FaBars size={24} />
+        </button>
+        <h1 style={{ color: 'white', fontSize: '18px' }}>Home</h1>
+        <button
+          style={{
+            backgroundColor: 'transparent',
+            color: 'white',
+            border: 'none',
+            padding: '10px',
+            cursor: 'pointer',
+          }}
+          onClick={handleNotificationClick} // Trigger modal on notification click
+        >
+          <FaBell size={24} />
+        </button>
+      </header>
+
+      <div style={{ width: '100%', maxWidth: '360px' }}>
         <div
           style={{
             backgroundColor: '#1C1F4A',
@@ -126,8 +199,8 @@ const Home = () => {
               <CiCirclePlus style={{ marginRight: '4px' }} />+0.00525 SPL/h
             </p>
             <div className='text-center' style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white' }}>
-              <p style={{ margin: 0 }}>0/0</p>
-              <img src={user} alt="user" style={{ marginLeft: '10px' }} /> {/* Sử dụng biến team ở đây */}
+              <p style={{ margin: 10 }}>0/0</p>
+              <img src={user} alt="user" style={{ marginLeft: '10px' }} />
             </div>
 
             <button
@@ -136,14 +209,14 @@ const Home = () => {
                 backgroundColor: buttonColor,
                 color: '#000000',
                 border: 'none',
-                padding: '15px 20px',
-                fontSize: '16px',
+                padding: '10px 25px',
+                fontSize: '18px',
                 cursor: 'pointer',
                 borderRadius: '12px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                gap: '10px',
+                gap: '15px',
                 marginBottom: '16px',
               }}
               onClick={handleGetStartedClick}
@@ -153,179 +226,93 @@ const Home = () => {
               <img
                 src={MiningBitcoinImage}
                 alt="Mining Bitcoin"
-                style={{ width: '24px', height: '24px' }}
+                style={{ width: '20px', height: '20px' }}
               />
             </button>
           </div>
         </div>
+
         <div
           style={{
             backgroundColor: '#1C1F4A',
             borderRadius: '12px',
-            padding: '20px',
+            padding: '10px',
             marginBottom: '20px',
           }}
         >
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column', // Stack vertically
-              gap: '10px',
-            }}
-          >
-            {cryptoTokens.map((token, index) => (
-              <button
-                key={index}
-                style={{
-                  width: '100%',
-                  backgroundColor: '#0C0F3F',
-                  color: 'white',
-                  border: 'none',
-                  padding: '12px',
-                  borderRadius: '8px',
-                  display: 'flex',
-                  alignItems: 'center', // Center items vertically
-                  gap: '12px', // Adjust gap for better spacing
-                  height: '50px', // Ensure all buttons have the same height
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center' }}>
-                  {token.icon}
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column' }}>
-                  <span>{token.name}</span>
-                  <span>{token.amount}</span>
-                  {token.additionalInfo && <span>{token.additionalInfo}</span>}
-                </div>
-              </button>
-            ))}
-          </div>
+          {cryptoTokens.map((token, index) => (
+            <button
+              key={index}
+              style={{
+                width: '100%',
+                height: '60px',
+                backgroundColor: '#0C0F3F',
+                color: 'white',
+                border: 'none',
+                padding: '10px',
+                borderRadius: '12px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '10px',
+                textAlign: 'left',
+                fontSize: '14px',
+                marginBottom: '10px',
+              }}
+              onClick={token.onClick} // Added onClick handler
+            >
+              <div style={{ flexShrink: 0 }}>
+                {token.icon}
+              </div>
+              <div style={{ flex: 1 }}>
+                <span style={{ display: 'block', fontSize: '12px' }}>{token.name}</span>
+                <span style={{ display: 'block', fontSize: '10px' }}>{token.amount}</span>
+              </div>
+            </button>
+          ))}
         </div>
+
         <div
           style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            justifyContent: 'space-between',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
             gap: '10px',
-            zIndex: 2, // Ensure buttons are not obscured
+            marginBottom: '20px',
           }}
         >
-          <button
-            style={{
-              flex: '1 1 calc(33% - 10px)',
-              backgroundColor: '#0C0F3F',
-              color: 'white',
-              border: 'none',
-              padding: '12px',
-              borderRadius: '8px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '12px', // Ensure consistent spacing
-              height: '50px',
-            }}
-          >
-            Airdrop
-            <img src={ImageBank} alt="Bank" style={{ width: '24px', height: '24px' }} />
-          </button>
-          <button
-            style={{
-              flex: '1 1 calc(33% - 10px)',
-              backgroundColor: '#0C0F3F',
-              color: 'white',
-              border: 'none',
-              padding: '12px',
-              borderRadius: '8px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '12px',
-              height: '50px',
-            }}
-          >
-            Team
-            <img src={ImagePeople} alt="People" style={{ width: '24px', height: '24px' }} />
-          </button>
-          <button
-            style={{
-              flex: '1 1 calc(33% - 10px)',
-              backgroundColor: '#0C0F3F',
-              color: 'white',
-              border: 'none',
-              padding: '12px',
-              borderRadius: '8px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '12px',
-              height: '50px',
-            }}
-          >
-            Distributor
-            <img src={ImagePercent} alt="Percent" style={{ width: '24px', height: '24px' }} />
-          </button>
-          <button
-            style={{
-              flex: '1 1 calc(33% - 10px)',
-              backgroundColor: '#0C0F3F',
-              color: 'white',
-              border: 'none',
-              padding: '12px',
-              borderRadius: '8px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '12px',
-              height: '50px',
-            }}
-          >
-            LeaderBoard
-            <img src={ImageBanka} alt="Banka" style={{ width: '24px', height: '24px' }} />
-          </button>
-          <button
-            style={{
-              flex: '1 1 calc(33% - 10px)',
-              backgroundColor: '#0C0F3F',
-              color: 'white',
-              border: 'none',
-              padding: '12px',
-              borderRadius: '8px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '12px',
-              height: '50px',
-            }}
-          >
-            Utilities
-            <img src={ImageShield} alt="Shield" style={{ width: '24px', height: '24px' }} />
-          </button>
-          <button
-            style={{
-              flex: '1 1 calc(33% - 10px)',
-              backgroundColor: '#0C0F3F',
-              color: 'white',
-              border: 'none',
-              padding: '12px',
-              borderRadius: '8px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '12px',
-              height: '50px',
-            }}
-          >
-            Support
-            <img src={ImageHeadphone} alt="Headphone" style={{ width: '24px', height: '24px' }} />
-          </button>
+          {actionButtons.map((button, index) => (
+            <button
+              key={index}
+              style={{
+                backgroundColor: '#0C0F3F',
+                color: 'white',
+                border: 'none',
+                borderRadius: '12px',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '8px',
+                textAlign: 'center',
+                fontSize: '12px',
+                padding: '10px',
+                boxSizing: 'border-box',
+              }}
+              onClick={button.onClick} // Added onClick handler
+            >
+              <img src={button.icon} alt={button.label} style={{ width: '24px', height: '24px' }} />
+              <span>{button.label}</span>
+            </button>
+          ))}
         </div>
       </div>
+
+      {/* Footer Section */}
       <div
         style={{
           display: 'flex',
           justifyContent: 'space-around',
           width: '100%',
-          maxWidth: '400px',
+          maxWidth: '360px',
           backgroundColor: '#1C1F4A',
           borderRadius: '12px',
           padding: '10px 0',
@@ -388,10 +375,53 @@ const Home = () => {
             padding: '10px',
             cursor: 'pointer',
           }}
+          onClick={()=>navigate('/user1')}
         >
           <img src={crowna} alt="crowna" style={{ width: '24px', height: '24px' }} />
         </button>
       </div>
+
+      {/* Modal component */}
+      {showModal && (
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 1000,
+        }}>
+          <div style={{
+            backgroundColor: '#1C1F4A',
+            padding: '20px',
+            borderRadius: '12px',
+            textAlign: 'center',
+            color: 'white',
+            maxWidth: '300px',
+            width: '100%',
+          }}>
+            <p>Inactive member of your Team have been notified!</p>
+            <button
+              onClick={handleModalButtonClick} // Updated to call handleModalButtonClick
+              style={{
+                backgroundColor: '#F9D54A',
+                color: '#000000',
+                border: 'none',
+                padding: '10px 20px',
+                cursor: 'pointer',
+                borderRadius: '8px',
+                marginTop: '20px',
+              }}
+            >
+              Ok
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

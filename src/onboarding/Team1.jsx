@@ -33,7 +33,7 @@ const Team = () => {
     };
 
     return (
-        <div className="bg-gray-800 text-white p-6 rounded-lg shadow-lg max-w-md mx-auto">
+        <div className="bg-[#090B2F] text-white p-6 rounded-lg shadow-lg max-w-md mx-auto">
             <h1 className="text-2xl font-bold mb-6">Team</h1>
 
             <div className="bg-gray-700 p-4 rounded-lg mb-6">
@@ -43,6 +43,7 @@ const Team = () => {
                     <div className="relative flex items-center">
                         <img src={Circle} alt="Circle" className="w-24 h-24 object-cover" />
                         <div className="absolute inset-0 flex flex-col items-center justify-center text-white">
+                            {/* Additional content can be added here if needed */}
                         </div>
                     </div>
                 </div>
