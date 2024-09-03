@@ -38,6 +38,11 @@ const SignUpForm = () => {
     setConfirmPassword(e.target.value);
   };
 
+  const handleSignInClick = () => {
+    // Navigate to the Login page
+    navigate('/login');
+  };
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-[#090B2F]">
       <div className="w-full max-w-md p-8 space-y-6 rounded-lg shadow-lg">
@@ -84,7 +89,7 @@ const SignUpForm = () => {
         </form>
         <p className="text-center text-gray-400">
           Already have an account?{' '}
-          <a href="#" className="text-yellow-500 hover:underline">
+          <a href="#" onClick={handleSignInClick} className="text-yellow-500 hover:underline">
             Sign In
           </a>
         </p>

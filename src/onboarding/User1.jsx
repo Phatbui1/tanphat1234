@@ -222,111 +222,111 @@ const UserProfile = () => {
           bottom: '20px',
         }}
       >
-        <button
-          style={{
-            backgroundColor: 'transparent',
-            color: 'white',
-            border: 'none',
-            padding: '10px',
-            cursor: 'pointer',
-          }}
-          onClick={() => navigate('/home')}
-        >
-          <img src={Imagehome} alt="home" style={{ width: '24px', height: '24px' }} />
-        </button>
-        <button
-          style={{
-            backgroundColor: 'transparent',
-            color: 'white',
-            border: 'none',
-            padding: '10px',
-            cursor: 'pointer',
-          }}
-          onClick={() => navigate('/money')}
-        >
-          <img src={ImageWallet} alt="Wallet" style={{ width: '24px', height: '24px' }} />
-        </button>
-        <button
-          style={{
-            backgroundColor: 'transparent',
-            color: 'white',
-            border: 'none',
-            padding: '10px',
-            cursor: 'pointer',
-          }}
-          onClick={() => navigate('/select')}
-        >
-          <img src={Imagecrown} alt="crown" style={{ width: '24px', height: '24px' }} />
-        </button>
-        <button
-          style={{
-            backgroundColor: 'transparent',
-            color: 'white',
-            border: 'none',
-            padding: '10px',
-            cursor: 'pointer',
-          }}
-          onClick={() => navigate('/page')}
-        >
-          <img src={Trend} alt="trend" style={{ width: '24px', height: '24px' }} />
-        </button>
-        <button
-          style={{
-            backgroundColor: 'transparent',
-            color: 'white',
-            border: 'none',
-            padding: '10px',
-            cursor: 'pointer',
-          }}
-          onClick={() => navigate('/crown')}
-        >
-          <img src={crowna} alt="crowna" style={{ width: '24px', height: '24px' }} />
-        </button>
-      </div>
-
-      {/* Modal component */}
-      {showModal && (
-        <div style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          backgroundColor: 'rgba(0, 0, 0, 0.5)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          zIndex: 1000,
-        }}>
-          <div style={{
-            backgroundColor: '#1C1F4A',
-            padding: '20px',
-            borderRadius: '12px',
-            textAlign: 'center',
-            color: 'white',
-            maxWidth: '300px',
-            width: '100%',
-          }}>
-            <p>Inactive member of your Team have been notified!</p>
-            <button
-              onClick={handleModalButtonClick} 
-              style={{
-                backgroundColor: '#F9D54A',
-                color: '#000000',
-                border: 'none',
-                padding: '10px 20px',
-                cursor: 'pointer',
-                borderRadius: '8px',
-                marginTop: '20px',
-              }}
-            >
-              Ok
-            </button>
-          </div>
+          <button
+            style={{
+              backgroundColor: 'transparent',
+              color: 'white',
+              border: 'none',
+              padding: '10px',
+              cursor: 'pointer',
+            }}
+            onClick={() => navigate('/home')}
+          >
+            <img src={Imagehome} alt="home" style={{ width: '24px', height: '24px' }} />
+          </button>
+          <button
+            style={{
+              backgroundColor: 'transparent',
+              color: 'white',
+              border: 'none',
+              padding: '10px',
+              cursor: 'pointer',
+            }}
+            onClick={() => navigate('/money')}
+          >
+            <img src={ImageWallet} alt="Wallet" style={{ width: '24px', height: '24px' }} />
+          </button>
+          <button
+            style={{
+              backgroundColor: 'transparent',
+              color: 'white',
+              border: 'none',
+              padding: '10px',
+              cursor: 'pointer',
+            }}
+            onClick={() => navigate('/select')}
+          >
+            <img src={Imagecrown} alt="crown" style={{ width: '24px', height: '24px' }} />
+          </button>
+          <button
+            style={{
+              backgroundColor: 'transparent',
+              color: 'white',
+              border: 'none',
+              padding: '10px',
+              cursor: 'pointer',
+            }}
+            onClick={() => navigate('/page')}
+          >
+            <img src={Trend} alt="trend" style={{ width: '24px', height: '24px' }} />
+          </button>
+          <button
+            style={{
+              backgroundColor: 'transparent',
+              color: 'white',
+              border: 'none',
+              padding: '10px',
+              cursor: 'pointer',
+            }}
+            onClick={() => navigate('/crown')}
+          >
+            <img src={crowna} alt="crowna" style={{ width: '24px', height: '24px' }} />
+          </button>
         </div>
-      )}
-    </div>
-  );
-};
+
+        {/* Modal component */}
+        {showModal && (
+          <div style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 1000,
+          }}>
+            <div style={{
+              backgroundColor: '#1C1F4A',
+              padding: '20px',
+              borderRadius: '12px',
+              textAlign: 'center',
+              color: 'white',
+              maxWidth: '300px',
+              width: '100%',
+            }}>
+              <p>Inactive member of your Team have been notified!</p>
+              <button
+                onClick={handleModalButtonClick} 
+                style={{
+                  backgroundColor: '#F9D54A',
+                  color: '#000000',
+                  border: 'none',
+                  padding: '10px 20px',
+                  cursor: 'pointer',
+                  borderRadius: '8px',
+                  marginTop: '20px',
+                }}
+              >
+                Ok
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  };
 
 export default UserProfile;

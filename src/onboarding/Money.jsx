@@ -53,7 +53,7 @@ const Dashboard = () => {
           <div style={{ display: 'flex', justifyContent: 'space-around' }}>
             <button
               style={{
-                backgroundColor: '#090B2F',
+                backgroundColor: '#0C0F3F',
                 color: 'white',
                 border: '1px solid #1C1F4A',
                 borderRadius: '8px',
@@ -65,12 +65,12 @@ const Dashboard = () => {
                 gap: '4px',
               }}
             >
-              <img src={xuong} alt="xuong" style={{ width: '30px', height: '30px' }} />
+              <img src={xuong} alt="xuong" style={{ width: '35px', height: '30px' }} />
               <span>Deposit</span>
             </button>
             <button
               style={{
-                backgroundColor: '#090B2F',
+                backgroundColor: '#0C0F3F',
                 color: 'white',
                 border: '1px solid #1C1F4A',
                 borderRadius: '8px',
@@ -87,7 +87,7 @@ const Dashboard = () => {
             </button>
             <button
               style={{
-                backgroundColor: '#090B2F',
+                backgroundColor: '#0C0F3F',
                 color: 'white',
                 border: '1px solid #1C1F4A',
                 borderRadius: '8px',
@@ -99,7 +99,7 @@ const Dashboard = () => {
                 gap: '4px',
               }}
             >
-              <img src={clock} alt="clock" style={{ width: '30px', height: '30px' }} />
+              <img src={clock} alt="clock" style={{ width: '35px', height: '30px' }} />
               <span>History</span>
             </button>
           </div>

@@ -38,12 +38,11 @@ const RatePage = () => {
 
   const handleHomeClick = () => navigate('/home');
   const handleWalletClick = () => navigate('/money');
-  const handleStakingClick = () => navigate('/page');
-  const handleRateClick = () => navigate('/select');
-  const handleStakingButtonClick = () => navigate('/stacking');
+  const handleStakingClick = () => navigate('/stacking');
+  const handleRateClick = () => navigate('/page');  // Navigate to /page
   const handleProfileClick = () => navigate('/user1');
-  const handleEarnClick = () => navigate('/page');
-
+  const handleEarnClick = () => navigate('/page');  // Ensure this button navigates to /page
+  const handlePingInactiveClick = () => navigate('/team'); // Navigate to /team
   const handleModalButtonClick = () => setShowModal(false);
 
   return (
@@ -129,7 +128,7 @@ const RatePage = () => {
               <div className="flex justify-center mb-4">
                 <button
                   className="bg-yellow-500 hover:bg-yellow-400 text-black py-2 px-20 rounded-lg"
-                  onClick={handleStakingButtonClick}
+                  onClick={handleStakingClick} // Updated handler
                 >
                   Staking
                 </button>
@@ -145,83 +144,86 @@ const RatePage = () => {
             </div>
           )}
         </div>
-{/* Boosters Card */}
-<div className="p-4 rounded-lg shadow-md" style={{ backgroundColor: '#1C1F4A' }}>
-  <div className="flex items-center justify-between">
-    <h2 className="text-lg font-semibold flex items-center">
-      <img src={Rocket} alt="Rocket" className="w-6 h-6 mr-2" />
-      Boosters
-    </h2>
-    <button onClick={() => setBoostersVisible(!isBoostersVisible)} className="text-gray-400 hover:text-white">
-      {isBoostersVisible ? <FaChevronUp /> : <FaChevronDown />}
-    </button>
-  </div>
-  {isBoostersVisible && (
-    <div className="mt-2">
-      <div className="flex">
-        {/* Left column */}
-        <div className="flex-1 flex flex-col">
-          <div className="flex items-center mb-2">
-            <p className="text-gray-400">Timing</p>
-          </div>
-          <div className="flex items-center">
-            <p className="text-gray-400">Community Circle</p>
-          </div>
-        </div>
-        {/* Right column */}
-        <div className="flex-1 flex flex-col items-end">
-          <div className="flex items-center mb-2">
-            <p style={{ color: 'lightgreen', display: 'flex', alignItems: 'center' }}>
-              <span role="img" aria-label="timer" style={{ marginRight: '5px' }}>⏱️</span>
-              00:00
-            </p>
-          </div>
-          <div className="flex items-center">
-            <p>0 × 20% = 0.00%</p>
-          </div>
-        </div>
-      </div>
-      <div className="text-sm mt-4 text-gray-400">
-        <span className="text-[#917EF1] block">Booster = (1+Community Circle)</span>
-        <p>Increase reward when moving to Community meeting point and click boost</p>
-      </div>
-      <div className="flex justify-center mt-4">
-        <button
-          className="bg-yellow-400 hover:bg-blue-400 text-black py-2 px-20 rounded-lg"
-          onClick={handleEarnClick}
-        >
-          Boosters
-        </button>
-      </div>
-    </div>
-  )}
-</div>
 
-<div className="p-4 rounded-lg shadow-md" style={{ backgroundColor: '#1C1F4A' }}>
-      <div className="flex items-center justify-between">
-        <h2 className="text-lg font-semibold flex items-center text-white">
-          <img src={cash} alt="cash" className="w-8 h-8 mr-4" />
-          Rewards
-        </h2>
-        <button onClick={() => setRewardsVisible(!isRewardsVisible)} className="text-gray-400 hover:text-white">
-          {isRewardsVisible ? <FaChevronUp /> : <FaChevronDown />}
-        </button>
-      </div>
-      {isRewardsVisible && (
-        <div className="text-sm mt-2 text-gray-400">
-          <div className="flex justify-between">
-            <p>Pioneer</p>
-            <p>5.00</p>
+        {/* Boosters Card */}
+        <div className="p-4 rounded-lg shadow-md" style={{ backgroundColor: '#1C1F4A' }}>
+          <div className="flex items-center justify-between">
+            <h2 className="text-lg font-semibold flex items-center">
+              <img src={Rocket} alt="Rocket" className="w-6 h-6 mr-2" />
+              Boosters
+            </h2>
+            <button onClick={() => setBoostersVisible(!isBoostersVisible)} className="text-gray-400 hover:text-white">
+              {isBoostersVisible ? <FaChevronUp /> : <FaChevronDown />}
+            </button>
           </div>
-          <div className="flex justify-between">
-            <p>Referral Team</p>
-            <p>16 × 0.25 = 4</p>
-          </div>
-          <div className="mt-4 flex justify-end space-x-2">
-            <button className="bg-gray-700 text-white py-2 px-4 rounded-md hover:bg-gray-600">Invite More</button>
-            <button className="bg-yellow-500 text-black py-2 px-4 rounded-md hover:bg-yellow-400">Ping Inactive</button>
-          </div>
+          {isBoostersVisible && (
+            <div className="mt-2">
+              <div className="flex">
+                {/* Left column */}
+                <div className="flex-1 flex flex-col">
+                  <div className="flex items-center mb-2">
+                    <p className="text-gray-400">Timing</p>
+                  </div>
+                  <div className="flex items-center">
+                    <p className="text-gray-400">Community Circle</p>
+                  </div>
+                </div>
+                {/* Right column */}
+                <div className="flex-1 flex flex-col items-end">
+                  <div className="flex items-center mb-2">
+                    <p style={{ color: 'lightgreen', display: 'flex', alignItems: 'center' }}>
+                      <span role="img" aria-label="timer" style={{ marginRight: '5px' }}>⏱️</span>
+                      00:00
+                    </p>
+                  </div>
+                  <div className="flex items-center">
+                    <p>0 × 20% = 0.00%</p>
+                  </div>
+                </div>
+              </div>
+              <div className="text-sm mt-4 text-gray-400">
+                <span className="text-[#917EF1] block">Booster = (1+Community Circle)</span>
+                <p>Increase reward when moving to Community meeting point and click boost</p>
+              </div>
+              <div className="flex justify-center mt-4">
+                <button
+                  className="bg-yellow-400 hover:bg-blue-400 text-black py-2 px-20 rounded-lg"
+                  onClick={handleEarnClick} // Updated handler
+                >
+                  Boosters
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
 
+        {/* Rewards Card */}
+        <div className="p-4 rounded-lg shadow-md" style={{ backgroundColor: '#1C1F4A' }}>
+          <div className="flex items-center justify-between">
+            <h2 className="text-lg font-semibold flex items-center text-white">
+              <img src={cash} alt="cash" className="w-8 h-8 mr-4" />
+              Rewards
+            </h2>
+            <button onClick={() => setRewardsVisible(!isRewardsVisible)} className="text-gray-400 hover:text-white">
+              {isRewardsVisible ? <FaChevronUp /> : <FaChevronDown />}
+            </button>
+          </div>
+          {isRewardsVisible && (
+            <div className="text-sm mt-2 text-gray-400">
+              <div className="flex justify-between">
+                <p>Pioneer</p>
+                <p>5.00</p>
+              </div>
+              <div className="flex justify-between">
+                <p>Referral Team</p>
+                <p>16 × 0.25 = 4</p>
+              </div>
+              <div className="mt-4 flex justify-center space-x-2">
+                <button className="bg-gray-700 text-white py-2 px-4 rounded-md hover:bg-gray-600">Invite More</button>
+                <button className="bg-yellow-500 text-black py-2 px-4 rounded-md hover:bg-yellow-400" onClick={handlePingInactiveClick}>
+                  Ping Inactive
+                </button>
+              </div>
             </div>
           )}
         </div>
@@ -232,7 +234,7 @@ const RatePage = () => {
         <div className="flex justify-around">
           <NavButton onClick={handleHomeClick} src={home} alt="Home" />
           <NavButton onClick={handleWalletClick} src={wup} alt="Wallet" />
-          <NavButton onClick={handleStakingClick} src={vuongmieng} alt="Staking" />
+          <NavButton onClick={handlePingInactiveClick} src={vuongmieng} alt="Ping Inactive" />
           <NavButton onClick={handleRateClick} src={trendup} alt="Rate" />
           <NavButton onClick={handleProfileClick} src={usser} alt="Profile" />
         </div>

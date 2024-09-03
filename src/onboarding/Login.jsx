@@ -3,14 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const Login = () => {
-  const [username, setUsername] = useState('');
+  const [identifier, setIdentifier] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleUsernameChange = (e) => {
-    setUsername(e.target.value);
+  const handleIdentifierChange = (e) => {
+    setIdentifier(e.target.value);
   };
 
   const handlePasswordChange = (e) => {
@@ -24,9 +24,10 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const defaultUsername = 'tanphat';
+    const defaultEmail = 'buitanphat6112003@gmail.com';
     const defaultPassword = 'abc';
-
-    if (username === defaultUsername && password === defaultPassword) {
+    
+    if ((identifier === defaultUsername || identifier === defaultEmail) && password === defaultPassword) {
       localStorage.setItem('token', 'dummy-token');
       navigate('/home');
     } else {
@@ -54,9 +55,9 @@ const Login = () => {
             <input
               type="text"
               className="block w-full py-3 px-4 text-sm text-white bg-[#090b2f] bg-opacity-50 rounded-md border-2 border-transparent focus:outline-none focus:ring-0 focus:border-yellow-500 placeholder-gray-400"
-              value={username}
-              onChange={handleUsernameChange}
-              placeholder="Email, username"
+              value={identifier}
+              onChange={handleIdentifierChange}
+              placeholder="Email or username"
               required
             />
           </div>
