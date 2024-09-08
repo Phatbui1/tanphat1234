@@ -12,7 +12,7 @@ import Rocket from '../assets/rate/Rocket.png';
 import cash from '../assets/rate/cash.png';
 import { FaChevronUp, FaChevronDown } from 'react-icons/fa';
 
-const NavButton = ({ onClick, src, alt }) => (
+const NavButton = ({ onClick, src, alt, style = {} }) => (
   <button
     style={{
       backgroundColor: 'transparent',
@@ -20,6 +20,7 @@ const NavButton = ({ onClick, src, alt }) => (
       border: 'none',
       padding: '10px',
       cursor: 'pointer',
+      ...style,
     }}
     onClick={onClick}
   >
@@ -34,16 +35,14 @@ const RatePage = () => {
   const [isStakingVisible, setStakingVisible] = useState(true);
   const [isBoostersVisible, setBoostersVisible] = useState(true);
   const [isRewardsVisible, setRewardsVisible] = useState(true);
-  const [showModal, setShowModal] = useState(false);
 
   const handleHomeClick = () => navigate('/home');
   const handleWalletClick = () => navigate('/money');
   const handleStakingClick = () => navigate('/stacking');
-  const handleRateClick = () => navigate('/page');  // Navigate to /page
+  const handleRateClick = () => navigate('/page');
   const handleProfileClick = () => navigate('/user1');
-  const handleEarnClick = () => navigate('/page');  // Ensure this button navigates to /page
-  const handlePingInactiveClick = () => navigate('/team'); // Navigate to /team
-  const handleModalButtonClick = () => setShowModal(false);
+  const handleEarnClick = () => navigate('/page');
+  const handlePingInactiveClick = () => navigate('/team');
 
   return (
     <div className="min-h-screen flex flex-col items-center" style={{ backgroundColor: '#090B2F', color: 'white' }}>
@@ -128,7 +127,7 @@ const RatePage = () => {
               <div className="flex justify-center mb-4">
                 <button
                   className="bg-yellow-500 hover:bg-yellow-400 text-black py-2 px-20 rounded-lg"
-                  onClick={handleStakingClick} // Updated handler
+                  onClick={handleStakingClick}
                 >
                   Staking
                 </button>
@@ -172,8 +171,7 @@ const RatePage = () => {
                 <div className="flex-1 flex flex-col items-end">
                   <div className="flex items-center mb-2">
                     <p style={{ color: 'lightgreen', display: 'flex', alignItems: 'center' }}>
-                      <span role="img" aria-label="timer" style={{ marginRight: '5px' }}>⏱️</span>
-                      00:00
+                      0 <span style={{ marginLeft: '5px', color: 'lightgreen' }}>⏱️</span> 00:00
                     </p>
                   </div>
                   <div className="flex items-center">
@@ -188,7 +186,7 @@ const RatePage = () => {
               <div className="flex justify-center mt-4">
                 <button
                   className="bg-yellow-400 hover:bg-blue-400 text-black py-2 px-20 rounded-lg"
-                  onClick={handleEarnClick} // Updated handler
+                  onClick={handleEarnClick}
                 >
                   Boosters
                 </button>
@@ -230,7 +228,7 @@ const RatePage = () => {
       </div>
 
       {/* Footer */}
-      <footer className="w-full py-4 mt-6" style={{ backgroundColor: '#090B2F' }}>
+      <footer className="w-full fixed bottom-0 py-4" style={{ backgroundColor: '#090B2F' }}>
         <div className="flex justify-around">
           <NavButton onClick={handleHomeClick} src={home} alt="Home" />
           <NavButton onClick={handleWalletClick} src={wup} alt="Wallet" />

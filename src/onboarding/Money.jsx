@@ -65,7 +65,7 @@ const Dashboard = () => {
                 gap: '4px',
               }}
             >
-              <img src={xuong} alt="xuong" style={{ width: '35px', height: '30px' }} />
+              <img src={xuong} alt="Deposit" style={{ width: '35px', height: '30px' }} />
               <span>Deposit</span>
             </button>
             <button
@@ -82,7 +82,7 @@ const Dashboard = () => {
                 gap: '4px',
               }}
             >
-              <img src={len} alt="len" style={{ width: '30px', height: '30px' }} />
+              <img src={len} alt="Withdraw" style={{ width: '30px', height: '30px' }} />
               <span>Withdraw</span>
             </button>
             <button
@@ -99,7 +99,7 @@ const Dashboard = () => {
                 gap: '4px',
               }}
             >
-              <img src={clock} alt="clock" style={{ width: '35px', height: '30px' }} />
+              <img src={clock} alt="History" style={{ width: '35px', height: '30px' }} />
               <span>History</span>
             </button>
           </div>
@@ -135,7 +135,7 @@ const Dashboard = () => {
                     marginRight: '8px',
                   }}
                 >
-                  <img src={bchImage} alt="bch" style={{ width: '24px', height: '24px' }} />
+                  <img src={bchImage} alt="BCH" style={{ width: '24px', height: '24px' }} />
                 </div>
                 <div>Owner</div>
               </div>
@@ -161,7 +161,7 @@ const Dashboard = () => {
                     marginRight: '8px',
                   }}
                 >
-                  <img src={buyImage} alt="buy" style={{ width: '24px', height: '24px' }} />
+                  <img src={buyImage} alt="Reward" style={{ width: '24px', height: '24px' }} />
                 </div>
                 <div>Reward</div>
               </div>
@@ -199,7 +199,7 @@ const Dashboard = () => {
           }}
         >
           <h2 style={{ fontSize: '16px', marginBottom: '8px' }}>Your Assets</h2>
-          <p style={{color :'yellow'}}>token unlock rules</p>
+          <p style={{ color: 'yellow' }}>Token unlock rules</p>
           <div
             style={{
               backgroundColor: '#0C0F3F',
@@ -260,7 +260,7 @@ const Dashboard = () => {
           justifyContent: 'space-around',
           width: '100%',
           maxWidth: '600px',
-          backgroundColor: '#1C1F4A',
+          backgroundColor: '#090B2F',
           borderRadius: '12px',
           padding: '10px 0',
           position: 'fixed',
@@ -277,7 +277,7 @@ const Dashboard = () => {
           }}
           onClick={() => navigate('/home')}
         >
-          <img src={Imagehome} alt="home" style={{ width: '24px', height: '24px' }} />
+          <img src={Imagehome} alt="Home" style={{ width: '24px', height: '24px' }} />
         </button>
         <button
           style={{
@@ -301,7 +301,7 @@ const Dashboard = () => {
           }}
           onClick={() => navigate('/select')}
         >
-          <img src={Imagecrown} alt="crown" style={{ width: '24px', height: '24px' }} />
+          <img src={Imagecrown} alt="Crown" style={{ width: '24px', height: '24px' }} />
         </button>
         <button
           style={{
@@ -313,7 +313,7 @@ const Dashboard = () => {
           }}
           onClick={() => navigate('/page')}
         >
-          <img src={Trend} alt="trend" style={{ width: '24px', height: '24px' }} />
+          <img src={Trend} alt="Trend" style={{ width: '24px', height: '24px' }} />
         </button>
         <button
           style={{
@@ -325,7 +325,7 @@ const Dashboard = () => {
           }}
           onClick={() => navigate('/user1')}
         >
-          <img src={crowna} alt="crowna" style={{ width: '24px', height: '24px' }} />
+          <img src={crowna} alt="Crowna" style={{ width: '24px', height: '24px' }} />
         </button>
       </div>
     </div>

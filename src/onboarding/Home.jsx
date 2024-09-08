@@ -23,7 +23,7 @@ const Home = () => {
   const [isMining, setIsMining] = useState(false);
   const [remainingTime, setRemainingTime] = useState(0);
   const [buttonColor, setButtonColor] = useState('#F9D54A');
-  const [showModal, setShowModal] = useState(false); // State for controlling modal visibility
+  const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
 
   const handleGetStartedClick = () => {
@@ -35,28 +35,28 @@ const Home = () => {
   };
 
   const handleNotificationClick = () => {
-    setShowModal(true); // Show modal when notification icon is clicked
+    setShowModal(true);
   };
 
   const handleCloseModal = () => {
-    setShowModal(false); // Close modal
+    setShowModal(false);
   };
 
   const handleModalButtonClick = () => {
-    handleNotificationClick(); // Call handleNotificationClick when Ok is clicked
-    setShowModal(false); // Optionally close the modal after action
+    handleNotificationClick();
+    setShowModal(false);
   };
 
   const handleInviteFriendsClick = () => {
-    navigate('/select'); // Navigate to the select page
+    navigate('/select');
   };
 
   const handleBoosterClick = () => {
-    navigate('/select'); // Navigate to the select page
+    navigate('/select');
   };
 
   const handleLeaderboardClick = () => {
-    navigate('/leader'); // Navigate to the leader page
+    navigate('/leader');
   };
 
   useEffect(() => {
@@ -86,21 +86,21 @@ const Home = () => {
       icon: <img src={team} alt="team" style={{ width: '24px', height: '24px' }} />,
       name: 'Invite Friends',
       amount: '+0.05 SPL / Hr',
-      onClick: handleInviteFriendsClick, // Updated onClick handler
+      onClick: handleInviteFriendsClick,
     },
     {
       icon: <img src={buy} alt="buy" style={{ width: '24px', height: '24px' }} />,
       name: 'Booster',
       amount: 'Increase rewards: +20%',
-      onClick: handleBoosterClick, // Updated onClick handler
+      onClick: handleBoosterClick,
     },
   ];
 
   const actionButtons = [
     { icon: ImageBank, label: 'Airdrop' },
-    { icon: ImagePeople, label: 'Team', onClick: () => navigate('/team') }, // Added onClick handler
+    { icon: ImagePeople, label: 'Team', onClick: () => navigate('/team') },
     { icon: ImagePercent, label: 'Distributor' },
-    { icon: ImageBanka, label: 'LeaderBoard', onClick: handleLeaderboardClick }, // Added onClick handler
+    { icon: ImageBanka, label: 'LeaderBoard', onClick: handleLeaderboardClick },
     { icon: ImageShield, label: 'Utilities' },
     { icon: ImageHeadphone, label: 'Support' },
   ];
@@ -149,7 +149,7 @@ const Home = () => {
             padding: '10px',
             cursor: 'pointer',
           }}
-          onClick={handleNotificationClick} // Trigger modal on notification click
+          onClick={handleNotificationClick}
         >
           <FaBell size={24} />
         </button>
@@ -258,7 +258,7 @@ const Home = () => {
                 fontSize: '14px',
                 marginBottom: '10px',
               }}
-              onClick={token.onClick} // Added onClick handler
+              onClick={token.onClick}
             >
               <div style={{ flexShrink: 0 }}>
                 {token.icon}
@@ -297,7 +297,7 @@ const Home = () => {
                 padding: '10px',
                 boxSizing: 'border-box',
               }}
-              onClick={button.onClick} // Added onClick handler
+              onClick={button.onClick}
             >
               <img src={button.icon} alt={button.label} style={{ width: '24px', height: '24px' }} />
               <span>{button.label}</span>
@@ -307,79 +307,70 @@ const Home = () => {
       </div>
 
       {/* Footer Section */}
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'space-around',
-          width: '100%',
-          maxWidth: '360px',
-          backgroundColor: '#1C1F4A',
-          borderRadius: '12px',
-          padding: '10px 0',
-          position: 'fixed',
-          bottom: '20px',
-        }}
-      >
-        <button
-          style={{
-            backgroundColor: 'transparent',
-            color: 'white',
-            border: 'none',
-            padding: '10px',
-            cursor: 'pointer',
-          }}
-        >
-          <img src={Imagehome} alt="home" style={{ width: '24px', height: '24px' }} />
-        </button>
-        <button
-          style={{
-            backgroundColor: 'transparent',
-            color: 'white',
-            border: 'none',
-            padding: '10px',
-            cursor: 'pointer',
-          }}
-          onClick={() => navigate('/money')}
-        >
-          <img src={ImageWallet} alt="Wallet" style={{ width: '24px', height: '24px' }} />
-        </button>
-        <button
-          style={{
-            backgroundColor: 'transparent',
-            color: 'white',
-            border: 'none',
-            padding: '10px',
-            cursor: 'pointer',
-          }}
-          onClick={() => navigate('/select')}
-        >
-          <img src={Imagecrown} alt="crown" style={{ width: '24px', height: '24px' }} />
-        </button>
-        <button
-          style={{
-            backgroundColor: 'transparent',
-            color: 'white',
-            border: 'none',
-            padding: '10px',
-            cursor: 'pointer',
-          }}
-          onClick={() => navigate('/page')}
-        >
-          <img src={Trend} alt="trend" style={{ width: '24px', height: '24px' }} />
-        </button>
-        <button
-          style={{
-            backgroundColor: 'transparent',
-            color: 'white',
-            border: 'none',
-            padding: '10px',
-            cursor: 'pointer',
-          }}
-          onClick={()=>navigate('/user1')}
-        >
-          <img src={crowna} alt="crowna" style={{ width: '24px', height: '24px' }} />
-        </button>
-      </div>
+      <footer className="w-full fixed bottom-0 py-4" style={{ backgroundColor: '#090B2F' }}>
+        <div className="flex justify-around">
+          <button
+            onClick={() => navigate('/')}
+            style={{
+              backgroundColor: '#090B2F',
+              color: 'white',
+              border: 'none',
+              padding: '10px',
+              cursor: 'pointer',
+            }}
+          >
+            <img src={Imagehome} alt="home" style={{ width: '24px', height: '24px' }} />
+          </button>
+          <button
+            onClick={() => navigate('/money')}
+            style={{
+              backgroundColor: 'transparent',
+              color: 'white',
+              border: 'none',
+              padding: '10px',
+              cursor: 'pointer',
+            }}
+          >
+            <img src={ImageWallet} alt="Wallet" style={{ width: '24px', height: '24px' }} />
+          </button>
+          <button
+            onClick={() => navigate('/select')}
+            style={{
+              backgroundColor: 'transparent',
+              color: 'white',
+              border: 'none',
+              padding: '10px',
+              cursor: 'pointer',
+            }}
+          >
+            <img src={Imagecrown} alt="crown" style={{ width: '24px', height: '24px' }} />
+          </button>
+          <button
+            onClick={() => navigate('/page')}
+            style={{
+              backgroundColor: 'transparent',
+              color: 'white',
+              border: 'none',
+              padding: '10px',
+              cursor: 'pointer',
+            }}
+          >
+            <img src={Trend} alt="trend" style={{ width: '24px', height: '24px' }} />
+          </button>
+          <button
+            onClick={() => navigate('/user1')}
+            style={{
+              backgroundColor: 'transparent',
+              color: 'white',
+              border: 'none',
+              padding: '10px',
+              cursor: 'pointer',
+            }}
+          >
+            <img src={crowna} alt="crowna" style={{ width: '24px', height: '24px' }} />
+          </button>
+        </div>
+      </footer>
 
       {/* Modal component */}
       {showModal && (
@@ -406,7 +397,7 @@ const Home = () => {
           }}>
             <p>Inactive member of your Team have been notified!</p>
             <button
-              onClick={handleModalButtonClick} // Updated to call handleModalButtonClick
+              onClick={handleModalButtonClick}
               style={{
                 backgroundColor: '#F9D54A',
                 color: '#000000',
