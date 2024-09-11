@@ -46,7 +46,7 @@ const Unity = () => {
       }}>
         <button 
           style={{ 
-            backgroundColor: '#6C7A92', 
+            backgroundColor: '#1C1F4A', 
             color: '#FFF', 
             border: 'none', 
             display: 'flex', 
@@ -72,7 +72,7 @@ const Unity = () => {
         </button>
         <button 
           style={{ 
-            backgroundColor: '#6C7A92', 
+            backgroundColor: '#1C1F4A', 
             color: '#FFF', 
             border: 'none', 
             display: 'flex', 
@@ -98,7 +98,7 @@ const Unity = () => {
         </button>
         <button 
           style={{ 
-            backgroundColor: '#6C7A92', 
+            backgroundColor: '#1C1F4A', 
             color: '#FFF', 
             border: 'none', 
             display: 'flex', 
@@ -124,7 +124,7 @@ const Unity = () => {
         </button>
         <button 
           style={{ 
-            backgroundColor: '#6C7A92', 
+            backgroundColor: '#1C1F4A', 
             color: '#FFF', 
             border: 'none', 
             display: 'flex', 

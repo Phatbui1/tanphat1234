@@ -59,6 +59,10 @@ const Home = () => {
     navigate('/leader');
   };
 
+  const handleMenuClick = () => {
+    navigate('/unity'); // Navigate to the unity page
+  };
+
   useEffect(() => {
     let timer;
     if (isMining && remainingTime > 0) {
@@ -101,7 +105,7 @@ const Home = () => {
     { icon: ImagePeople, label: 'Team', onClick: () => navigate('/team') },
     { icon: ImagePercent, label: 'Distributor' },
     { icon: ImageBanka, label: 'LeaderBoard', onClick: handleLeaderboardClick },
-    { icon: ImageShield, label: 'Utilities' },
+    { icon: ImageShield, label: 'Utilities', onClick: handleMenuClick }, // Added onClick handler for Utilities
     { icon: ImageHeadphone, label: 'Support' },
   ];
 
@@ -137,6 +141,7 @@ const Home = () => {
             padding: '10px',
             cursor: 'pointer',
           }}
+          onClick={handleMenuClick} // Add the navigation handler here
         >
           <FaBars size={24} />
         </button>

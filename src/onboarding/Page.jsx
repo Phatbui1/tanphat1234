@@ -70,24 +70,27 @@ function App() {
     tabs: {
       display: 'flex',
       width: '100%',
-      justifyContent: 'space-around',  // Makes the tabs evenly spaced
+      justifyContent: 'space-around',
       marginBottom: '20px',
-      backgroundColor: '#18193E',  // Background color behind the tabs
-      borderRadius: '20px',  // Rounded corners for the tabs container
+      backgroundColor: '#18193E',
+      borderRadius: '10px',
+      padding: '5px',
     },
     tab: {
       padding: '10px 20px',
       cursor: 'pointer',
-      borderRadius: '20px',  // Rounded corners for each tab
+      borderRadius: '10px', // Bo tròn cả hai đầu của tab
       backgroundColor: '#090B2D',
       color: 'white',
       flex: '1',
       textAlign: 'center',
-      margin: '5px',  // Margin between tabs
+      margin: '5px',
+      transition: 'background-color 0.3s, color 0.3s',
+      boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)', // Optional: add shadow for better visual effect
     },
     activeTab: {
-      backgroundColor: '#ffcc00',  // Yellow background for the active tab
-      color: '#000',  // Black text color for the active tab
+      backgroundColor: '#ffcc00',
+      color: '#000',
     },
     noStaking: {
       display: 'flex',
@@ -113,6 +116,14 @@ function App() {
     },
   };
 
+  const handleMouseEnter = (e) => {
+    e.target.style.backgroundColor = '#333';
+  };
+
+  const handleMouseLeave = (e) => {
+    e.target.style.backgroundColor = e.target.classList.contains('active') ? '#ffcc00' : '#090B2D';
+  };
+
   return (
     <div style={styles.app}>
       <header style={styles.header}>
@@ -124,13 +135,19 @@ function App() {
         <div style={styles.tabs}>
           <div
             style={selectedTab === 'staking' ? { ...styles.tab, ...styles.activeTab } : styles.tab}
+            className={selectedTab === 'staking' ? 'active' : ''}
             onClick={() => setSelectedTab('staking')}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
           >
             Staking
           </div>
           <div
             style={selectedTab === 'order' ? { ...styles.tab, ...styles.activeTab } : styles.tab}
+            className={selectedTab === 'order' ? 'active' : ''}
             onClick={() => setSelectedTab('order')}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
           >
             Order
           </div>
@@ -166,7 +183,7 @@ function App() {
         <button style={styles.footerButton}>
           <img src={Point} alt="Point" style={{ width: '24px', height: '24px' }} />
         </button>
-        <button style={styles.footerButton}onClick={()=>navigate('/user1')}>
+        <button style={styles.footerButton} onClick={() => navigate('/user1')}>
           <img src={crowna} alt="crowna" style={{ width: '24px', height: '24px' }} />
         </button>
       </footer>

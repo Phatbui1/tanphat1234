@@ -13,6 +13,7 @@ import Trend from '../assets/Trend.png';
 import authen from '../assets/profile/authen.png';
 import key from '../assets/profile/key.png';
 import bin from '../assets/profile/bin.png';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const styles = {
   container: {
@@ -69,6 +70,7 @@ const styles = {
     padding: "10px 0",
     borderBottom: "1px solid #333",
     width: "100%",
+    cursor: "pointer", // Add cursor pointer to indicate clickability
   },
   infoLeft: {
     display: "flex",
@@ -112,7 +114,7 @@ const styles = {
     padding: "10px 0",
     borderBottom: "1px solid #333",
     cursor: "pointer",
-    flexDirection: "row", // Ensure horizontal alignment
+    flexDirection: "row",
   },
   securityLeft: {
     display: "flex",
@@ -149,7 +151,7 @@ const styles = {
     borderRadius: '12px',
     textAlign: 'center',
     color: 'white',
-    maxWidth: '300px',
+    maxWidth: '400px',
     width: '100%',
   },
   modalTitle: {
@@ -160,20 +162,31 @@ const styles = {
   modalText: {
     marginBottom: '20px',
   },
+  modalInputContainer: {
+    position: 'relative',
+    marginBottom: '10px',
+  },
   modalInput: {
     width: '100%',
     padding: '10px',
-    marginBottom: '10px',
     borderRadius: '5px',
     border: '1px solid #ccc',
     backgroundColor: '#0e1036',
     color: '#fff',
   },
+  eyeIcon: {
+    position: 'absolute',
+    top: '50%',
+    right: '10px',
+    transform: 'translateY(-50%)',
+    cursor: 'pointer',
+    color: '#bbb',
+  },
   modalButton: {
     width: '100%',
     padding: '10px',
-    backgroundColor: '#ff4d4f',
-    color: '#fff',
+    backgroundColor: '#F3C30B', // Yellow button background
+    color: '#000', // Black text color
     border: 'none',
     borderRadius: '5px',
     cursor: 'pointer',
@@ -207,21 +220,50 @@ const RightArrow = () => (
 
 const UserProfile = () => {
   const [showModal, setShowModal] = useState(false);
+  const [showPasswordModal, setShowPasswordModal] = useState(false);
+  const [currentPassword, setCurrentPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [twoFactorCode, setTwoFactorCode] = useState("");
+  const [showCurrentPassword, setShowCurrentPassword] = useState(false);
+  const [showNewPassword, setShowNewPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleDeleteClick = () => {
     setShowModal(true);
   };
 
+  const handlePasswordChangeClick = () => {
+    setShowPasswordModal(true);
+  };
+
   const handleModalClose = () => {
     setShowModal(false);
+  };
+
+  const handlePasswordModalClose = () => {
+    setShowPasswordModal(false);
   };
 
   const handleDeleteAccount = () => {
     // Logic to delete account
     alert("Account Deleted");
     setShowModal(false);
+  };
+
+  const handlePasswordChange = () => {
+    if (newPassword === confirmPassword) {
+      // Logic to change the password
+      alert("Password Changed");
+      setShowPasswordModal(false);
+    } else {
+      alert("New passwords do not match");
+    }
+  };
+
+  const handleNavigation = (path) => {
+    navigate(path);
   };
 
   return (
@@ -235,7 +277,7 @@ const UserProfile = () => {
       </header>
       <section style={styles.infoSection}>
         <div style={styles.sectionTitle}>Informations</div>
-        <div style={styles.infoItem}>
+        <div style={styles.infoItem} onClick={() => handleNavigation('/verify')}>
           <div style={styles.infoLeft}>
             <img src={abcd} alt="Username" style={styles.infoIcon} />
             <div style={styles.infoText}>Username</div>
@@ -259,7 +301,7 @@ const UserProfile = () => {
           </div>
           <RightArrow />
         </div>
-        <div style={styles.infoItem}>
+        <div style={styles.infoItem} onClick={() => handleNavigation('/verify')}>
           <div style={styles.infoLeft}>
             <img src={hinhtim} alt="Verified" style={styles.infoIcon} />
             <div style={styles.infoText}>Verify Account</div>
@@ -278,7 +320,7 @@ const UserProfile = () => {
           <span style={styles.securityText}>Disabled</span>
           <RightArrow />
         </div>
-        <div style={styles.securityItem} onClick={() => alert("Change Password")}>
+        <div style={styles.securityItem} onClick={handlePasswordChangeClick}>
           <div style={styles.securityLeft}>
             <img src={key} alt="key" style={styles.securityIcon} />
             <p style={styles.securityText}>Change password</p>
@@ -318,7 +360,7 @@ const UserProfile = () => {
             padding: '10px',
             cursor: 'pointer',
           }}
-          onClick={() => navigate('/home')}
+          onClick={() => handleNavigation('/home')}
         >
           <img src={Imagehome} alt="home" style={{ width: '24px', height: '24px' }} />
         </button>
@@ -330,7 +372,7 @@ const UserProfile = () => {
             padding: '10px',
             cursor: 'pointer',
           }}
-          onClick={() => navigate('/money')}
+          onClick={() => handleNavigation('/money')}
         >
           <img src={ImageWallet} alt="Wallet" style={{ width: '24px', height: '24px' }} />
         </button>
@@ -342,7 +384,7 @@ const UserProfile = () => {
             padding: '10px',
             cursor: 'pointer',
           }}
-          onClick={() => navigate('/select')}
+          onClick={() => handleNavigation('/select')}
         >
           <img src={Imagecrown} alt="crown" style={{ width: '24px', height: '24px' }} />
         </button>
@@ -354,7 +396,7 @@ const UserProfile = () => {
             padding: '10px',
             cursor: 'pointer',
           }}
-          onClick={() => navigate('/page')}
+          onClick={() => handleNavigation('/page')}
         >
           <img src={Trend} alt="trend" style={{ width: '24px', height: '24px' }} />
         </button>
@@ -366,13 +408,13 @@ const UserProfile = () => {
             padding: '10px',
             cursor: 'pointer',
           }}
-          onClick={() => navigate('/crown')}
+          onClick={() => handleNavigation('/crown')}
         >
           <img src={crowna} alt="crowna" style={{ width: '24px', height: '24px' }} />
         </button>
       </div>
 
-      {/* Modal component */}
+      {/* Modal component for deleting account */}
       {showModal && (
         <div style={styles.modalContainer}>
           <div style={styles.modal}>
@@ -380,13 +422,15 @@ const UserProfile = () => {
             <p style={styles.modalText}>
               Deleting your account means that all your data will be permanently deleted and cannot be recovered. Enter the two-factor code to complete the process.
             </p>
-            <input
-              type="text"
-              placeholder="Enter 2FA code"
-              value={twoFactorCode}
-              onChange={(e) => setTwoFactorCode(e.target.value)}
-              style={styles.modalInput}
-            />
+            <div style={styles.modalInputContainer}>
+              <input
+                type="text"
+                placeholder="Enter 2FA code"
+                value={twoFactorCode}
+                onChange={(e) => setTwoFactorCode(e.target.value)}
+                style={styles.modalInput}
+              />
+            </div>
             <button
               onClick={handleDeleteAccount}
               style={styles.modalButton}
@@ -396,6 +440,73 @@ const UserProfile = () => {
             </button>
             <button onClick={handleModalClose} style={styles.cancelButton}>
               Keep my account
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* Modal component for changing password */}
+      {showPasswordModal && (
+        <div style={styles.modalContainer}>
+          <div style={styles.modal}>
+            <div style={styles.modalTitle}>Change Your Password</div>
+            <p style={styles.modalText}>
+              Password must be 8-20 characters with at least 1 digit, 1 uppercase letter, and 1 lowercase letter.
+            </p>
+            <div style={styles.modalInputContainer}>
+              <input
+                type={showCurrentPassword ? "text" : "password"}
+                placeholder="Current password"
+                value={currentPassword}
+                onChange={(e) => setCurrentPassword(e.target.value)}
+                style={styles.modalInput}
+              />
+              <span
+                style={styles.eyeIcon}
+                onClick={() => setShowCurrentPassword(!showCurrentPassword)}
+              >
+                {showCurrentPassword ? <FaEye /> : <FaEyeSlash />}
+              </span>
+            </div>
+            <div style={styles.modalInputContainer}>
+              <input
+                type={showNewPassword ? "text" : "password"}
+                placeholder="New password"
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+                style={styles.modalInput}
+              />
+              <span
+                style={styles.eyeIcon}
+                onClick={() => setShowNewPassword(!showNewPassword)}
+              >
+                {showNewPassword ? <FaEye /> : <FaEyeSlash />}
+              </span>
+            </div>
+            <div style={styles.modalInputContainer}>
+              <input
+                type={showConfirmPassword ? "text" : "password"}
+                placeholder="Confirm new password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                style={styles.modalInput}
+              />
+              <span
+                style={styles.eyeIcon}
+                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+              >
+                {showConfirmPassword ? <FaEye /> : <FaEyeSlash />}
+              </span>
+            </div>
+            <button
+              onClick={handlePasswordChange}
+              style={styles.modalButton}
+              disabled={!currentPassword || !newPassword || newPassword !== confirmPassword}
+            >
+              Change Password
+            </button>
+            <button onClick={handlePasswordModalClose} style={styles.cancelButton}>
+              Cancel
             </button>
           </div>
         </div>
