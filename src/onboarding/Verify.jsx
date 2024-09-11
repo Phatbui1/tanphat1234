@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { IoIosArrowRoundBack } from "react-icons/io";
 import mobile from '../assets/mobile.png';
 import sms from '../assets/sms.png';
 
@@ -9,10 +11,25 @@ const containerStyle = {
     minHeight: '100vh',
 };
 
+const headerContainerStyle = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: '20px',
+    position: 'relative',
+};
+
 const headerTextStyle = {
     color: '#ffcc00', // Yellow color for header text
-    fontSize: '2em',
-    marginBottom: '20px',
+    fontSize: '1em',
+    margin: 0,
+};
+
+const backIconStyle = {
+    position: 'absolute',
+    left: '10px',
+    cursor: 'pointer',
+    color: '#fff',
 };
 
 const cardStyle = {
@@ -72,7 +89,7 @@ const verifyButtonStyle = {
     borderRadius: '5px',
     padding: '15px 0', // Adjust padding for height, width controlled by width
     width: '100%', // Full width of the parent container
-    maxWidth: '300px', // Max width for larger buttons
+    maxWidth: '400px', // Max width for larger buttons
     fontSize: '1em',
     cursor: 'pointer',
     transition: 'background 0.3s ease',
@@ -86,6 +103,7 @@ const verifyButtonHoverStyle = {
 const Verify = () => {
     const [phoneVerified, setPhoneVerified] = useState(false);
     const [emailVerified, setEmailVerified] = useState(false);
+    const navigate = useNavigate();
 
     const handleVerifyPhone = () => {
         setPhoneVerified(true);
@@ -97,10 +115,21 @@ const Verify = () => {
         // Add additional logic for email verification if needed
     };
 
+    const handleBackClick = () => {
+        navigate(-1); // Navigate back one page
+    };
+
     return (
         <div style={containerStyle}>
-            <h2 style={headerTextStyle}>Account Verification</h2>
-            
+            <div style={headerContainerStyle}>
+                <IoIosArrowRoundBack
+                    size={50}
+                    style={backIconStyle}
+                    onClick={handleBackClick}
+                />
+                <h2 style={headerTextStyle}>Account Verification</h2>
+            </div>
+
             <div style={cardStyle}>
                 <div style={cardHeaderStyle}>
                     <div style={flexStyle}>

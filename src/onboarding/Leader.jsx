@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { IoIosArrowRoundBack } from "react-icons/io";
 import Imagehome from '../assets/home.png';
 import ImageWallet from '../assets/Wallet.png';
 import Imagecrown from '../assets/crown.png';
@@ -54,9 +55,34 @@ const Leader = () => {
     ))
   );
 
+  const handleBackClick = () => {
+    // Implement navigation logic here, e.g., using react-router
+    window.history.back();
+  };
+
   return (
     <div style={{ backgroundColor: '#090B2D', color: '#ffffff', minHeight: '100vh', margin: 0, padding: '0 0 60px 0' }}>
-      <h1 style={{ fontSize: '1.25rem', fontWeight: 'bold', marginBottom: '8px', color: '#FFF' }} className='text-center'>Leaderboard</h1>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '16px' }}>
+        <IoIosArrowRoundBack 
+          size={50} 
+          className='text-white' 
+          onClick={handleBackClick} 
+          style={{ cursor: 'pointer', position: 'absolute', left: '16px' }} 
+        />
+        <h1 style={{ 
+          color: '#FFF',
+          margin: '0',
+          padding: '0',
+          textAlign: 'center',
+          width: '100%',
+          fontSize: '1 em',
+          fontWeight: 'bold',
+          textTransform: 'uppercase',
+          letterSpacing: '2px',
+        }}>
+          Leaderboard
+        </h1>
+      </div>
       <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '16px' }}>
         <button
           style={{

@@ -8,8 +8,13 @@ import ImageWallet from '../assets/Wallet.png';
 import Imagecrown from '../assets/crown.png';
 import crowna from '../assets/crowna.png';
 import Trend from '../assets/Trend.png';
+import { IoIosArrowRoundBack } from "react-icons/io";
 
 const Unity = () => {
+  const handleBackClick = () => {
+    window.history.back(); // Navigate to the previous page
+  };
+
   return (
     <div style={{
       background: '#090B2D',
@@ -18,40 +23,63 @@ const Unity = () => {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
+      justifyContent: 'center',
       gap: '24px',
       width: '100%',
       height: '100vh',  // Set the height to 100vh to fill the screen
       overflow: 'hidden',
     }}>
-      <h1 style={{ 
-        color: '#FFF',
-        margin: '0',
-        padding: '0',
-        textAlign: 'center',
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
         width: '100%',
+        position: 'relative',
         marginBottom: '40px',
-        fontSize: '32px',  // Adjust font size
-        fontWeight: 'bold',
-        textTransform: 'uppercase',
-        letterSpacing: '2px',
-      }}>Utilities</h1>
-      
+      }}>
+        <IoIosArrowRoundBack
+          size={40}
+          className='text-white'
+          onClick={handleBackClick} // Add the back navigation handler here
+          style={{
+            cursor: 'pointer',
+            position: 'absolute',
+            left: '0px', // Position the back arrow on the left side
+          }}
+        />
+        <h1 style={{
+          color: '#FFF',
+          margin: '10px',
+          padding: '0',
+          fontSize: '1em',  // Adjust font size
+          fontWeight: 'bold',
+          textTransform: 'uppercase',
+          letterSpacing: '2px',
+          width: '100%', // Make the title take up the full width
+          position: 'relative',
+          marginLeft: '40px', // Adjust to avoid overlapping with the back arrow
+          textAlign: 'center', // Center the text
+        }}>
+          Utilities
+        </h1>
+
+      </div>
+
       <div style={{
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'center',
         gap: '20px',
         width: '100%',
-        maxWidth: '400px',  // Adjust max width to control layout
+        maxWidth: '600px',  // Adjust max width to control layout
       }}>
-        <button 
-          style={{ 
-            backgroundColor: '#1C1F4A', 
-            color: '#FFF', 
-            border: 'none', 
-            display: 'flex', 
-            flexDirection: 'column', 
-            alignItems: 'center', 
+        <button
+          style={{
+            backgroundColor: '#1C1F4A',
+            color: '#FFF',
+            border: 'none',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
             gap: '8px',
             padding: '20px',
             borderRadius: '12px',
@@ -70,14 +98,14 @@ const Unity = () => {
           <img src={caution} alt="caution" style={{ width: '28px', height: '28px' }} />
           Bug report
         </button>
-        <button 
-          style={{ 
-            backgroundColor: '#1C1F4A', 
-            color: '#FFF', 
-            border: 'none', 
-            display: 'flex', 
-            flexDirection: 'column', 
-            alignItems: 'center', 
+        <button
+          style={{
+            backgroundColor: '#1C1F4A',
+            color: '#FFF',
+            border: 'none',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
             gap: '8px',
             padding: '20px',
             borderRadius: '12px',
@@ -96,14 +124,14 @@ const Unity = () => {
           <img src={tail} alt="tail" style={{ width: '28px', height: '28px' }} />
           Invitation contest
         </button>
-        <button 
-          style={{ 
-            backgroundColor: '#1C1F4A', 
-            color: '#FFF', 
-            border: 'none', 
-            display: 'flex', 
-            flexDirection: 'column', 
-            alignItems: 'center', 
+        <button
+          style={{
+            backgroundColor: '#1C1F4A',
+            color: '#FFF',
+            border: 'none',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
             gap: '8px',
             padding: '20px',
             borderRadius: '12px',
@@ -122,14 +150,14 @@ const Unity = () => {
           <img src={people1} alt="people1" style={{ width: '28px', height: '28px' }} />
           Chat
         </button>
-        <button 
-          style={{ 
-            backgroundColor: '#1C1F4A', 
-            color: '#FFF', 
-            border: 'none', 
-            display: 'flex', 
-            flexDirection: 'column', 
-            alignItems: 'center', 
+        <button
+          style={{
+            backgroundColor: '#1C1F4A',
+            color: '#FFF',
+            border: 'none',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
             gap: '8px',
             padding: '20px',
             borderRadius: '12px',

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { IoIosArrowRoundBack } from "react-icons/io";
 import friend from '../assets/friend.png';
 import hinhtron from '../assets/hinhtron.png';
 
@@ -10,9 +11,20 @@ const Team = () => {
         navigate('/team1');
     };
 
+    const handleBackClick = () => {
+        navigate(-1); // Navigate back one page
+    };
+
     return (
         <div className="bg-[#090B2F] text-white p-6 rounded-lg shadow-lg max-w-md mx-auto">
-            <h1 className="text-2xl font-bold mb-6">Team</h1>
+            <div className="flex items-center justify-center mb-6">
+                <IoIosArrowRoundBack
+                    size={50}
+                    className="text-white absolute left-6 cursor-pointer"
+                    onClick={handleBackClick}
+                />
+                <h1 className="text-2xl font-bold text-center">Team</h1>
+            </div>
 
             <div className="bg-gray-700 p-4 rounded-lg mb-6">
                 <h2 className="text-xl font-semibold mb-2">Referral Team</h2>
