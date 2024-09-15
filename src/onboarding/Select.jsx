@@ -230,11 +230,66 @@ const RatePage = () => {
       {/* Footer */}
       <footer className="w-full fixed bottom-0 py-4" style={{ backgroundColor: '#090B2F' }}>
         <div className="flex justify-around">
-          <NavButton onClick={handleHomeClick} src={home} alt="Home" />
-          <NavButton onClick={handleWalletClick} src={wup} alt="Wallet" />
-          <NavButton onClick={handlePingInactiveClick} src={vuongmieng} alt="Ping Inactive" />
-          <NavButton onClick={handleRateClick} src={trendup} alt="Rate" />
-          <NavButton onClick={handleProfileClick} src={usser} alt="Profile" />
+          <button
+            onClick={() => navigate('/home')}
+            style={{
+              backgroundColor: '#090B2F',
+              color: 'white',
+              border: 'none',
+              padding: '10px',
+              cursor: 'pointer',
+            }}
+          >
+            <img src={home} alt="home" style={{ width: '24px', height: '24px' }} />
+          </button>
+          <button
+            onClick={() => navigate('/money')}
+            style={{
+              backgroundColor: 'transparent',
+              color: 'white',
+              border: 'none',
+              padding: '10px',
+              cursor: 'pointer',
+            }}
+          >
+            <img src={wup} alt="wup" style={{ width: '24px', height: '24px' }} />
+          </button>
+          <button
+           
+            style={{
+              backgroundColor: 'transparent',
+              color: 'white',
+              border: 'none',
+              padding: '10px',
+              cursor: 'pointer',
+            }}
+          >
+            <img src={vuongmieng} alt="vuongmieng" style={{ width: '24px', height: '24px' }} />
+          </button>
+          <button
+            onClick={() => navigate('/page')}
+            style={{
+              backgroundColor: 'transparent',
+              color: 'white',
+              border: 'none',
+              padding: '10px',
+              cursor: 'pointer',
+            }}
+          >
+            <img src={trendup} alt="trendup" style={{ width: '24px', height: '24px' }} />
+          </button>
+          <button
+            onClick={() => navigate('/user1')}
+            style={{
+              backgroundColor: 'transparent',
+              color: 'white',
+              border: 'none',
+              padding: '10px',
+              cursor: 'pointer',
+            }}
+          >
+            <img src={usser} alt="usser" style={{ width: '24px', height: '24px' }} />
+          </button>
         </div>
       </footer>
     </div>
