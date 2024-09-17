@@ -71,11 +71,11 @@ const Leader = () => {
         />
         <h1 style={{ 
           color: '#FFF',
-          margin: '0',
-          padding: '0',
+          margin: '20px',
+          padding: '10px',
           textAlign: 'center',
           width: '100%',
-          fontSize: '1 em',
+          fontSize: '1.5em',
           fontWeight: 'bold',
           textTransform: 'uppercase',
           letterSpacing: '2px',
@@ -115,61 +115,6 @@ const Leader = () => {
         {activeTab === 'leaderSPL' ? renderList(leaderSPLData) : renderList(distributerData)}
       </ul>
       <div style={{ position: 'fixed', bottom: '0', width: '100%', backgroundColor: '#090B2D', display: 'flex', justifyContent: 'space-around', padding: '10px' }}>
-        <button
-          style={{
-            backgroundColor: 'transparent',
-            color: 'white',
-            border: 'none',
-            padding: '10px',
-            cursor: 'pointer',
-          }}
-        >
-          <img src={Imagehome} alt="home" style={{ width: '24px', height: '24px' }} />
-        </button>
-        <button
-          style={{
-            backgroundColor: 'transparent',
-            color: 'white',
-            border: 'none',
-            padding: '10px',
-            cursor: 'pointer',
-          }}
-        >
-          <img src={ImageWallet} alt="Wallet" style={{ width: '24px', height: '24px' }} />
-        </button>
-        <button
-          style={{
-            backgroundColor: 'transparent',
-            color: 'white',
-            border: 'none',
-            padding: '10px',
-            cursor: 'pointer',
-          }}
-        >
-          <img src={Imagecrown} alt="crown" style={{ width: '24px', height: '24px' }} />
-        </button>
-        <button
-          style={{
-            backgroundColor: 'transparent',
-            color: 'white',
-            border: 'none',
-            padding: '10px',
-            cursor: 'pointer',
-          }}
-        >
-          <img src={Trend} alt="trend" style={{ width: '24px', height: '24px' }} />
-        </button>
-        <button
-          style={{
-            backgroundColor: 'transparent',
-            color: 'white',
-            border: 'none',
-            padding: '10px',
-            cursor: 'pointer',
-          }}
-        >
-          <img src={crowna} alt="crowna" style={{ width: '24px', height: '24px' }} />
-        </button>
       </div>
     </div>
   );

@@ -5,10 +5,10 @@ import abc from "../assets/abc.png";
 import abcd from "../assets/abcd.png";
 import mail from "../assets/mail.png";
 import hinhtim from "../assets/hinhtim.png";
-import Imagehome from '../assets/home.png';
+import homee from '../assets/money/homee.png';
 import ImageWallet from '../assets/Wallet.png';
 import Imagecrown from '../assets/crown.png';
-import crowna from '../assets/crowna.png';
+import usser from '../assets/money/userr.png';
 import Trend from '../assets/Trend.png';
 import authen from '../assets/profile/authen.png';
 import key from '../assets/profile/key.png';
@@ -362,7 +362,7 @@ const UserProfile = () => {
           }}
           onClick={() => handleNavigation('/home')}
         >
-          <img src={Imagehome} alt="home" style={{ width: '24px', height: '24px' }} />
+          <img src={homee} alt="homee" style={{ width: '24px', height: '24px' }} />
         </button>
         <button
           style={{
@@ -408,9 +408,9 @@ const UserProfile = () => {
             padding: '10px',
             cursor: 'pointer',
           }}
-          onClick={() => handleNavigation('/crown')}
+        
         >
-          <img src={crowna} alt="crowna" style={{ width: '24px', height: '24px' }} />
+          <img src={usser} alt="usser" style={{ width: '24px', height: '24px' }} />
         </button>
       </div>
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { FaRegCopy } from "react-icons/fa";
 import { IoIosSwap } from "react-icons/io";
 import DepositImage from '../assets/Deposit/Deposit.png'; // Image for QR code
-import { MdArrowBackIos } from "react-icons/md";
+import { IoIosArrowRoundBack } from "react-icons/io";
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const Deposit = () => {
@@ -17,7 +17,7 @@ const Deposit = () => {
     <div style={styles.container}>
       {/* Title and Back Arrow */}
       <div style={styles.headerContainer}>
-        <MdArrowBackIos style={styles.backArrow} onClick={handleBackClick} /> {/* Add onClick handler */}
+        <IoIosArrowRoundBack  style={styles.backArrow} onClick={handleBackClick} /> {/* Add onClick handler */}
         <h1 style={styles.title}>Deposit USDT</h1>
       </div>
 
@@ -69,7 +69,7 @@ const styles = {
     width: '100vw',  // Full width of the viewport
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'center',
+    justifyContent: 'flex-start', // Align to top of the page
     alignItems: 'center',
     padding: '20px',
     boxSizing: 'border-box',
@@ -78,17 +78,23 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     marginBottom: '20px',
+    width: '100%', // Full width
+    justifyContent: 'flex-start', // Align title and arrow to the left
+    position: 'relative', // Allow control of positioning
   },
   backArrow: {
     color: '#fff', // White icon
     fontSize: '24px',
-    marginRight: '10px',
     cursor: 'pointer', // Add pointer cursor for better UX
+    position: 'absolute', // Fix to the left edge
+    left: '0',
   },
   title: {
     fontSize: '24px',
     margin: 0,
     color: '#fff', // White title
+    textAlign: 'center', // Center the title
+    flex: 1, // Take up remaining space
   },
   description: {
     fontSize: '14px',

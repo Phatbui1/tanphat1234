@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Spl from '../assets/Spl.png';
-import Imagehome from '../assets/home.png';
+import homee from '../assets/money/homee.png';
 import ImageWallet from '../assets/Wallet.png';
 import Imagecrown from '../assets/crown.png';
 import crowna from '../assets/crowna.png';
@@ -172,7 +172,7 @@ function App() {
 
       <footer style={styles.footer}>
         <button style={styles.footerButton} onClick={() => handleNavigation('/home')}>
-          <img src={Imagehome} alt="Imagehome" style={{ width: '24px', height: '24px' }} />
+          <img src={homee} alt="homee" style={{ width: '24px', height: '24px' }} />
         </button>
         <button style={styles.footerButton} onClick={() => handleNavigation('/money')}>
           <img src={ImageWallet} alt="Wallet" style={{ width: '24px', height: '24px' }} />

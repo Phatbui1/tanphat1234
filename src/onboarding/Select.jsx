@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import image_c from '../assets/image_c.png';
-import home from '../assets/home.png';
+import homee from '../assets/money/homee.png';
 import wup from '../assets/wup.png';
 import vuongmieng from '../assets/vuongmieng.png';
 import trendup from '../assets/trendup.png';
@@ -18,13 +18,13 @@ const NavButton = ({ onClick, src, alt, style = {} }) => (
       backgroundColor: 'transparent',
       color: 'white',
       border: 'none',
-      padding: '6px',
+      padding: '10px', // Tăng padding để làm cho nút to hơn
       cursor: 'pointer',
       ...style,
     }}
     onClick={onClick}
   >
-    <img src={src} alt={alt} style={{ width: '18px', height: '18px' }} />
+    <img src={src} alt={alt} style={{ width: '24px', height: '24px' }} /> {/* Tăng kích thước của biểu tượng */}
   </button>
 );
 
@@ -47,7 +47,7 @@ const RatePage = () => {
   return (
     <div className="min-h-screen flex flex-col items-center" style={{ backgroundColor: '#090B2F', color: 'white' }}>
       {/* Header */}
-      <header className="w-full flex items-center justify-between p-3" style={{ backgroundColor: '#090B2F', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)' }}>
+      <header className="w-full flex items-center justify-between p-1" style={{ backgroundColor: '#090B2F', boxShadow: '0px 2px 4px rgba(0, 0, 0, 0.1)' }}>
         <div className="flex items-center space-x-1">
           <div className="bg-blue-500 rounded-full h-7 w-7 flex items-center justify-center text-xs">
             {/* Placeholder for logo or icon */}
@@ -62,19 +62,19 @@ const RatePage = () => {
           <h1 className="text-xl font-bold mb-1">Total Rate</h1>
           <p className="text-2xl font-semibold text-white mb-2">0.06250 SPL/h</p>
           <div className="flex flex-wrap justify-around gap-3">
-            <div className="flex flex-col items-center bg-blue-600 text-white p-1 rounded-md shadow-sm">
+            <div className="flex flex-col items-center bg-blue-600 text-white p-3 rounded-md shadow-sm">
               <span className="font-bold text-xs">Base</span>
               <p className="mt-1 text-md">0.0050</p>
             </div>
-            <div className="flex flex-col items-center bg-orange-600 text-white p-1 rounded-md shadow-sm">
+            <div className="flex flex-col items-center bg-orange-600 text-white p-4 rounded-md shadow-sm">
               <span className="font-bold text-xs">Staking</span>
               <p className="mt-1 text-md">12.5</p>
             </div>
-            <div className="flex flex-col items-center bg-purple-600 text-white p-1 rounded-md shadow-sm">
+            <div className="flex flex-col items-center bg-purple-600 text-white p-2 rounded-md shadow-sm">
               <span className="font-bold text-xs">Boosters</span>
               <p className="mt-1 text-md">100.00%</p>
             </div>
-            <div className="flex flex-col items-center bg-green-600 text-white p-1 rounded-md shadow-sm">
+            <div className="flex flex-col items-center bg-green-600 text-white p-3 rounded-md shadow-sm">
               <span className="font-bold text-xs">Rewards</span>
               <p className="mt-1 text-md">5.00</p>
             </div>
@@ -186,7 +186,7 @@ const RatePage = () => {
               <div className="flex justify-center mt-2">
                 <button
                   className="bg-yellow-400 hover:bg-yellow-300 text-black py-2 px-20 rounded-lg text-sm" // Increased padding and font size
-                  onClick={handleEarnClick}
+                  onClick={handleHomeClick}
                 >
                   Boosters
                 </button>
@@ -232,7 +232,7 @@ const RatePage = () => {
       {/* Footer */}
       <footer className="w-full fixed bottom-0  py-2" style={{ backgroundColor: '#090B2F' }}>
         <div className="flex justify-around">
-          <NavButton onClick={handleHomeClick} src={home} alt="home" />
+          <NavButton onClick={handleHomeClick} src={homee} alt="homee" />
           <NavButton onClick={handleWalletClick} src={wup} alt="wup" />
           <NavButton src={vuongmieng} alt="vuongmieng" />
           <NavButton onClick={handleRateClick} src={trendup} alt="trendup" />

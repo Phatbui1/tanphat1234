@@ -2,8 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import bchImage from '../assets/bch.png';
 import buyImage from '../assets/buy.png';
-import Imagehome from '../assets/home.png';
-import ImageWallet from '../assets/Wallet.png';
+import homee from '../assets/money/homee.png';
+import wallett from '../assets/money/wallett.png'
 import Imagecrown from '../assets/crown.png';
 import crowna from '../assets/crowna.png';
 import Trend from '../assets/Trend.png';
@@ -276,7 +276,7 @@ const Dashboard = () => {
           }}
           onClick={() => navigate('/home')}
         >
-          <img src={Imagehome} alt="Home" style={{ width: '24px', height: '24px' }} />
+          <img src={homee} alt="homee" style={{ width: '24px', height: '24px' }} />
         </button>
         <button
           style={{
@@ -288,7 +288,7 @@ const Dashboard = () => {
           }}
           onClick={() => navigate('/money')}
         >
-          <img src={ImageWallet} alt="Wallet" style={{ width: '24px', height: '24px' }} />
+          <img src={wallett} alt="wallet" style={{ width: '24px', height: '24px' }} />
         </button>
         <button
           style={{

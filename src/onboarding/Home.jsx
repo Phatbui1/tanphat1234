@@ -315,7 +315,6 @@ const Home = () => {
       <footer className="w-full fixed bottom-0 py-4" style={{ backgroundColor: '#090B2F' }}>
         <div className="flex justify-around">
           <button
-            onClick={() => navigate('/')}
             style={{
               backgroundColor: '#090B2F',
               color: 'white',

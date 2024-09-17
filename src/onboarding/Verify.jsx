@@ -5,7 +5,7 @@ import mobile from '../assets/mobile.png';
 import sms from '../assets/sms.png';
 
 const containerStyle = {
-    background: 'linear-gradient(to bottom, #000000, #333333)', // Black gradient background
+    background: '#090B2D', // Black gradient background
     color: '#ffffff',
     padding: '20px',
     minHeight: '100vh',
@@ -20,8 +20,8 @@ const headerContainerStyle = {
 };
 
 const headerTextStyle = {
-    color: '#ffcc00', // Yellow color for header text
-    fontSize: '1em',
+    color: 'white', // Yellow color for header text
+    fontSize: '1.5em',
     margin: 0,
 };
 
@@ -33,7 +33,7 @@ const backIconStyle = {
 };
 
 const cardStyle = {
-    background: '#222222', // Slightly lighter dark background for cards
+    background: '#1C1F4A', // Slightly lighter dark background for cards
     borderRadius: '10px',
     padding: '20px',
     marginBottom: '20px',

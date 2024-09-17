@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { IoIosArrowRoundBack } from "react-icons/io";
 
 const Guild4 = () => {
   const navigate = useNavigate();
@@ -8,7 +9,7 @@ const Guild4 = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const defaultEmail = 'buitanphat6112003@gmail.com'; // Sửa lỗi chính tả trong defaultEmail
+    const defaultEmail = 'buitanphat6112003@gmail.com'; // Fixed typo in defaultEmail
 
     if (email === defaultEmail) {
       console.log('Resetting password for email:', email);
@@ -22,7 +23,13 @@ const Guild4 = () => {
   return (
     <div className="flex justify-center items-center h-screen bg-[#090B2F]">
       <div className="bg-slate-800 border border-slate-600 rounded-md p-8 shadow-lg backdrop-filter backdrop-blur-lg bg-opacity-30 w-full max-w-md">
-        <h1 className="text-white text-2xl font-bold mb-4 text-center">Reset Your Password</h1>
+        <div className="flex items-center mb-4">
+          <IoIosArrowRoundBack
+            className="text-white text-4xl cursor-pointer mr-1"
+            onClick={() => navigate(-1)}
+          />
+          <h1 className="text-white text-2xl font-bold flex-1 text-center">Reset Your Password</h1>
+        </div>
         <form onSubmit={handleSubmit}>
           <p className="text-gray-400 mb-2 text-center">Please enter your email to reset your password</p>
           <input
@@ -38,7 +45,7 @@ const Guild4 = () => {
           )}
           <button
             type="submit"
-            className="mt-4 w-full bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded"
+            className="mt-4 w-full bg-yellow-500 hover:bg-yellow-700 text-black font-bold py-2 px-4 rounded"
           >
             Reset Password
           </button>
