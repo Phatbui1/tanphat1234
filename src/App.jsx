@@ -32,7 +32,8 @@ import Money from './onboarding/Money';
 import Money1 from './onboarding/Money1';
 import Money2 from './onboarding/Money2';
 import User1 from './onboarding/User1';
-
+import Deposit from './onboarding/Deposit';
+import HIstory from './onboarding/HIstory';
 const App = () => {
   return (
     <Router>
@@ -69,6 +70,8 @@ const App = () => {
         <Route path="/airdrop" element={<Airdrop />} />
         <Route path="/airdrop1" element={<Airdrop1 />} />
         <Route path="/verify" element={<Verify />} />
+        <Route path="/deposit" element={<Deposit />} />
+        <Route path="/history" element={<HIstory />} />
       </Routes>
     </Router>
   );

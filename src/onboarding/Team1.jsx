@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // for navigation
 import friend from '../assets/friend.png';
 import Circle from '../assets/Circle.png';
+import { IoIosArrowRoundBack } from "react-icons/io";
 
 const Team = () => {
     const [filter, setFilter] = useState('All');
+    const navigate = useNavigate(); // for navigation
 
     const members = [
         { rank: 1, username: '@dianne', status: 'Running' },
@@ -34,8 +37,15 @@ const Team = () => {
 
     return (
         <div className="bg-[#090B2F] text-white p-6 rounded-lg shadow-lg max-w-md mx-auto">
-            <h1 className="text-2xl font-bold mb-6">Team</h1>
-
+            {/* Flex container for alignment */}
+            <div className="relative flex items-center mb-6">
+                <IoIosArrowRoundBack
+                    className="text-3xl cursor-pointer mr-2 absolute left-0"
+                    onClick={() => navigate(-1)} // Navigate back to the previous page
+                />
+                <h1 className="text-2xl font-bold mx-auto">Team</h1>
+            </div>
+            
             <div className="bg-gray-700 p-4 rounded-lg mb-6">
                 <h2 className="text-xl font-semibold mb-2">Referral Team</h2>
                 <p className="text-gray-400">Your team has 20 members, 3 of 20 are receiving rewards</p>

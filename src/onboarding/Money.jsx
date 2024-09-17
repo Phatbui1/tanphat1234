@@ -7,14 +7,10 @@ import ImageWallet from '../assets/Wallet.png';
 import Imagecrown from '../assets/crown.png';
 import crowna from '../assets/crowna.png';
 import Trend from '../assets/Trend.png';
-import Crypto from '../assets/newitems/Crypto.png';
-import Stocks from '../assets/newitems/Stocks.png';
-import Gold from '../assets/newitems/Gold.png';
 import Okcash from '../assets/logo/Okcash.png';
 import clock from '../assets/newitems/clock.png';
 import len from '../assets/newitems/len.png';
 import xuong from '../assets/newitems/xuong.png';
-import computer from '../assets/money/computer.png';
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -64,6 +60,7 @@ const Dashboard = () => {
                 alignItems: 'center',
                 gap: '4px',
               }}
+              onClick={() => navigate('/deposit')} // Navigate to Deposit page
             >
               <img src={xuong} alt="Deposit" style={{ width: '35px', height: '30px' }} />
               <span>Deposit</span>
@@ -97,7 +94,9 @@ const Dashboard = () => {
                 flexDirection: 'column',
                 alignItems: 'center',
                 gap: '4px',
+               
               }}
+              onClick={() => navigate('/history')}
             >
               <img src={clock} alt="History" style={{ width: '35px', height: '30px' }} />
               <span>History</span>
