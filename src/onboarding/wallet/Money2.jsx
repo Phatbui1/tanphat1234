@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-
+import { IoIosArrowRoundBack } from "react-icons/io";
 const Money2 = () => {
   const [address, setAddress] = useState('');
   const [network, setNetwork] = useState('');
@@ -15,6 +15,9 @@ const Money2 = () => {
 
   const handleWithdrawalAmountChange = (event) => {
     setWithdrawalAmount(event.target.value);
+  };
+  const handleBackClick = () => {
+    navigate(-1); // Go back to the previous page
   };
 
   // Placeholder for available balance
@@ -41,7 +44,7 @@ const Money2 = () => {
     }}>
       <div style={{ maxWidth: '335px', width: '100%' }}>
         <h1 style={{ color: '#FFFFFF', textAlign: 'center' }}>Withdraw USDT</h1>
-        
+        <IoIosArrowRoundBack />
         {/* Address Input */}
         <div style={{ marginBottom: '20px' }}>
           <label htmlFor="address" style={{ color: '#FFFFFF' }}>Address:</label>
