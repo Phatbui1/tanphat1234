@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import { IoIosArrowRoundBack } from "react-icons/io";
+import authService from "../Services/authService"; // Import authService
 
 const Login = () => {
-  const [identifier, setIdentifier] = useState('');
-  const [password, setPassword] = useState('');
+  const [identifier, setIdentifier] = useState('test_@gmail.com'); // Set test email
+  const [password, setPassword] = useState('12345678'); // Set test password
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const navigate = useNavigate();
@@ -23,16 +23,21 @@ const Login = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const defaultUsername = 'tanphat';
-    const defaultEmail = 'buitanphat6112003@gmail.com';
-    const defaultPassword = 'abc';
-    
-    if ((identifier === defaultUsername || identifier === defaultEmail) && password === defaultPassword) {
-      localStorage.setItem('token', 'dummy-token');
-      navigate('/home');
-    } else {
-      setError('Sai tài khoản hoặc mật khẩu.');
+    e.preventDefault(); // Prevent form from submitting normally
+
+    try {
+      // Call the login function from authService
+      const response = await authService.login(identifier.trim(), password.trim());
+      console.log('Login successful:', response);
+      
+      // Save token to localStorage
+      localStorage.setItem('token', response.token); // Save the token
+      navigate('/home'); // Redirect to home
+    } catch (err) {
+      // Handle error
+      console.error('Login failed:', err.response ? err.response.data : err); // Log full error response
+      const errorMessage = err.response?.data?.message || 'Sai tài khoản hoặc mật khẩu.'; // Set error message
+      setError(errorMessage);
     }
   };
 
@@ -60,6 +65,7 @@ const Login = () => {
               onChange={handleIdentifierChange}
               placeholder="Email or username"
               required
+              aria-label="Email or Username" // Accessibility improvement
             />
           </div>
           <div className="relative my-4">
@@ -70,6 +76,7 @@ const Login = () => {
               onChange={handlePasswordChange}
               placeholder="Password"
               required
+              aria-label="Password" // Accessibility improvement
             />
             <div className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5 cursor-pointer" onClick={toggleShowPassword}>
               {showPassword ? <FaEyeSlash className="text-gray-500" /> : <FaEye className="text-gray-500" />}
