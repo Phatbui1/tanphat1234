@@ -1,18 +1,26 @@
 import React, { useEffect } from 'react';
-import image from '../../assets/image.png';
-import { Link } from 'react-router-dom';
+import image from '../../assets/image.png'; // Ensure this path is correct
 import { useNavigate } from 'react-router-dom';
 
 const Splash = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Thực hiện chuyển hướng tự động tới "/guild1" sau khi component được render
-    const timer = setTimeout(() => {
-      navigate('/guild1');
-    }, 3000); // Chuyển hướng sau 10 giây (10000 milliseconds)
+    // Kiểm tra xem token có trong localStorage không
+    const token = localStorage.getItem('token');
+    
+    if (token) {
+      // Nếu token tồn tại, chuyển hướng ngay lập tức tới trang Home
+      navigate('/home');
+    } else {
+      // Nếu không có token, đặt hẹn giờ để chuyển hướng sau 10 giây
+      const timer = setTimeout(() => {
+        navigate('/splash'); // Chuyển hướng tới Home sau 10 giây
+      }, 10000); // 10000 milliseconds = 10 giây
 
-    return () => clearTimeout(timer); // Xóa timer nếu component bị unmount trước khi chuyển hướng
+      // Xóa timer nếu component bị unmount
+      return () => clearTimeout(timer);
+    }
   }, [navigate]);
 
   return (
@@ -24,8 +32,11 @@ const Splash = () => {
       height: '100vh', 
       flexDirection: 'column'
     }}>
-      <img src={image} alt="Splash Image" style={{ maxWidth: '100%', maxHeight: '100%' }} />
-      <Link to="/guild1" style={{ marginTop: '20px', color: '#F7F7F7' }}></Link>
+      <img 
+        src={image} 
+        alt="Splash Image" 
+        style={{ maxWidth: '100%', maxHeight: '100%' }} 
+      />
     </div>
   );
 }

@@ -6,11 +6,12 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      // Mọi request bắt đầu với /api sẽ được chuyển đến http://27.118.21.75:8000
-      '/api': {
-        target: 'http://27.118.21.75:8000', // Địa chỉ backend của bạn
-        changeOrigin: true,  // Giả mạo origin từ frontend để tránh lỗi CORS
-        rewrite: (path) => path.replace(/^\/api/, ''), // Xóa /api trong đường dẫn
+      // Redirect requests starting with /v1 to the backend server
+      '/v1': {
+        target: 'http://27.118.21.75:8000', // Your backend API server
+        changeOrigin: true,  // Avoid CORS by faking origin
+        secure: false,  // Disable SSL verification if the backend uses http
+        rewrite: (path) => path.replace(/^\/v1/, '/v1'), // Keep /v1 in the path
       },
     },
   },

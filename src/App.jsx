@@ -7,7 +7,7 @@ import Guild3 from './onboarding/register/Guild3';
 import Login from './onboarding/register/Login';
 import Guild4 from './onboarding/register/Guild4';
 import Guild5 from './onboarding/register/Guild5';
-import Releas from './onboarding/register/Releas';
+import Releas from './onboarding/register/Releas'; // Ensure the import is correct
 import User from './onboarding/user/User';
 import Home from './onboarding/home/Home';
 import Select from './onboarding/rate/Select';
@@ -34,6 +34,7 @@ import Money2 from './onboarding/wallet/Money2';
 import User1 from './onboarding/user/User1';
 import Deposit from './onboarding/wallet/Deposit';
 import HIstory from './onboarding/wallet/HIstory';
+
 const App = () => {
   return (
     <Router>
@@ -45,7 +46,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/reset-password" element={<Guild4 />} />
         <Route path="/guild5" element={<Guild5 />} />
-        <Route path="/release" element={<Releas />} />
+        <Route path="/releas" element={<Releas />} /> {/* Correct path here */}
         <Route path="/user" element={<User />} />
         <Route path="/user1" element={<User1 />} />
         <Route path="/home" element={<Home />} />

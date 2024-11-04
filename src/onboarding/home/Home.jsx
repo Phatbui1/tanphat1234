@@ -42,29 +42,52 @@ const Home = () => {
     setShowModal(false);
   };
 
-  const handleModalButtonClick = () => {
-    handleNotificationClick();
-    setShowModal(false);
-  };
-
   const handleInviteFriendsClick = () => {
-    navigate('/select');
+    navigate('/select'); // Navigate to select friends page
   };
 
   const handleBoosterClick = () => {
-    navigate('/select');
+    navigate('/select'); // Navigate to select booster page
   };
 
   const handleLeaderboardClick = () => {
-    navigate('/leader');
+    navigate('/leader'); // Navigate to leaderboard page
   };
 
   const handleMenuClick = () => {
-    navigate('/unity'); // Navigate to the unity page
+    navigate('/unity'); // Navigate to unity page
+  };
+
+  const [token, setToken] = useState(null);
+
+  useEffect(() => {
+    // Retrieve token from localStorage once
+    const storedToken = localStorage.getItem('token');
+    console.log('Retrieved token:', storedToken);
+
+    if (!storedToken) {
+      console.log('No token found. Redirecting to login.');
+      navigate('/login'); 
+    } else {
+      setToken(storedToken);
+    }
+  }, [navigate]); // Include navigate in dependencies
+
+  useEffect(() => {
+    if (token) {
+      getWalletInfo(token); // Gọi API với token đã lưu
+    }
+  }, [token]);
+
+  const getWalletInfo = (token) => {
+    // Perform API call with token
+    console.log('Fetching wallet info with token:', token);
+    // Add your API call logic here
   };
 
   useEffect(() => {
-    let timer;
+    let timer; // Declare timer variable
+
     if (isMining && remainingTime > 0) {
       timer = setInterval(() => {
         setRemainingTime((prevTime) => prevTime - 1000);
@@ -75,7 +98,7 @@ const Home = () => {
       setButtonColor('#F9D54A');
     }
 
-    return () => clearInterval(timer);
+    return () => clearInterval(timer); // Clean up timer on component unmount
   }, [isMining, remainingTime]);
 
   const formatTime = (milliseconds) => {
@@ -186,6 +209,9 @@ const Home = () => {
           />
           <div style={{ position: 'relative', zIndex: 2 }}>
             <h1 className='text-center' style={{ fontSize: '16px', marginBottom: '8px', color: 'white' }}>Your Balance</h1>
+            <p style={{ color: 'white', textAlign: 'center', marginTop: '5px' }}>
+              ID Address: 0x1234567890abcdef
+            </p>
             <p className='text-center' style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '4px', color: 'white' }}>
               24,095.68 <span style={{ fontSize: '16px', color: '#D1D5DB' }}>SPL</span>
             </p>

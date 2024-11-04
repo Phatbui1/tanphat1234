@@ -1,58 +1,73 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import authService from '../Services/authService'; // Gọi authService
+import authService from '../Services/authService';
 
 const Login = () => {
-  const [identifier, setIdentifier] = useState('test_@gmail.com'); // Email test
-  const [password, setPassword] = useState('12345678'); // Mật khẩu test
+  const [identifier, setIdentifier] = useState(''); // Clear default for production
+  const [password, setPassword] = useState(''); // Clear default for production
   const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState('');
-  const navigate = useNavigate(); // Điều hướng giữa các trang
+  const [error, setError] = useState(''); // Store error messages
+  const [isLoading, setIsLoading] = useState(false); // Loading state
+  const navigate = useNavigate(); // Navigation hook
 
-  // Xử lý thay đổi email/username
-  const handleIdentifierChange = (e) => {
-    const value = e.target.value;
-    setIdentifier(value);
-    console.log(value); // In ra giá trị hiện tại
-  };
+  // Check token when the component mounts
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      navigate('/home'); // Redirect to home if token exists
+    }
+  }, [navigate]);
 
-  // Xử lý thay đổi mật khẩu
-  const handlePasswordChange = (e) => {
-    const value = e.target.value;
-    setPassword(value);
-    console.log(value); // In ra giá trị hiện tại
-  };
+  // Handle input changes for the identifier (email/username)
+  const handleIdentifierChange = (e) => setIdentifier(e.target.value);
 
-  // Toggle hiện/ẩn mật khẩu
+  // Handle input changes for the password field
+  const handlePasswordChange = (e) => setPassword(e.target.value);
+
+  // Toggle password visibility (show/hide)
   const toggleShowPassword = () => setShowPassword(!showPassword);
 
-  // Xử lý đăng nhập khi submit form
+  // Handle form submission
   const handleSubmit = async (e) => {
-    e.preventDefault(); // Ngăn form gửi bình thường
+    e.preventDefault();
+    setIsLoading(true); // Start loading state
 
     try {
-      // Gọi API login từ authService
-      const response = await authService.login(identifier.trim(), password.trim());
+        // Call the releas function from authService
+        const result = await authService.login(identifier, password);
+        
+        // Log the result to the console
+        console.log('Login successful:', result.token);
 
-      console.log('Login successful:', response);
+        // Check if access data already exists
+        const existingAccessData = localStorage.getItem('accessData');
 
-      // Lưu token vào localStorage nếu đăng nhập thành công
-      localStorage.setItem('token', response.token); 
-      navigate('/home'); // Chuyển hướng tới trang Home
+        if (existingAccessData) {
+            // Use the existing access data if available
+            console.log('Using existing access data:', existingAccessData);
+        } else {
+            // Otherwise, store the new token
+            localStorage.setItem('token', result.token); // Store token if available
+            localStorage.setItem('address_id',result.address_id)
+            console.log('Token:', result.token); // Log the token
+            console.log("address_id",result.address_id)
+        }
+
+        navigate('/home'); // Redirect to Home page
     } catch (err) {
-      console.error('Login failed:', err.response ? err.response.data : err); // Hiển thị thông báo lỗi chi tiết
-
-      // Hiển thị thông báo lỗi từ backend nếu có, nếu không thì dùng thông báo mặc định
-      const errorMessage = 'Đăng nhập thất bại. Vui lòng kiểm tra lại tài khoản hoặc mật khẩu.';
-      setError(errorMessage);
+        // Handle errors
+        console.error('Login failed:', err.message);
+        setError(err.message || 'Login failed. Please check your credentials.');
+    } finally {
+        setIsLoading(false); // Stop loading state
     }
-  };
+};
 
-  // Xử lý khi nhấn "Quên mật khẩu"
+  // Handle "Forgot Password" click
   const handleForgotPassword = () => navigate('/reset-password');
 
-  // Xử lý khi nhấn "Đăng ký"
+  // Handle "Sign Up" click
   const handleSignUp = () => navigate('/release');
 
   return (
@@ -62,6 +77,7 @@ const Login = () => {
         <p className="text-gray-400 text-sm mb-4">Enter your email or username to continue</p>
 
         <form onSubmit={handleSubmit}>
+          {/* Email/Username Input */}
           <div className="relative my-4">
             <input
               type="text"
@@ -74,6 +90,7 @@ const Login = () => {
             />
           </div>
 
+          {/* Password Input with Toggle Visibility */}
           <div className="relative my-4">
             <input
               type={showPassword ? 'text' : 'password'}
@@ -92,8 +109,10 @@ const Login = () => {
             </div>
           </div>
 
+          {/* Error Message */}
           {error && <div className="text-red-500 my-2 text-center">{error}</div>}
 
+          {/* Forgot Password and Sign In Button */}
           <div className="flex flex-col items-end">
             <button
               type="button"
@@ -104,12 +123,14 @@ const Login = () => {
             </button>
             <button
               type="submit"
-              className="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 rounded-md"
+              className={`w-full bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 rounded-md ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
+              disabled={isLoading} // Disable button while loading
             >
-              Sign In
+              {isLoading ? 'Signing In...' : 'Sign In'}
             </button>
           </div>
 
+          {/* Sign Up Option */}
           <div className="text-center text-white font-medium py-4">
             <p className="text-sm">
               No account yet?{' '}
