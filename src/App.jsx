@@ -39,41 +39,42 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Splash />} />
-        <Route path="/guild1" element={<Guild1 />} />
-        <Route path="/guild2" element={<Guild2 />} />
-        <Route path="/guild3" element={<Guild3 />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/reset-password" element={<Guild4 />} />
-        <Route path="/guild5" element={<Guild5 />} />
-        <Route path="/releas" element={<Releas />} /> {/* Correct path here */}
-        <Route path="/user" element={<User />} />
-        <Route path="/user1" element={<User1 />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/money" element={<Money />} />
-        <Route path="/select" element={<Select />} />
-        <Route path="/stacking" element={<Stacking />} />
-        <Route path="/stacking1" element={<Stacking1 />} />
-        <Route path="/team" element={<Team />} />
-        <Route path="/team1" element={<Team1 />} />
-        <Route path="/page" element={<Page />} />
-        <Route path="/page1" element={<Page1 />} />
-        <Route path="/page2" element={<Page2 />} />
-        <Route path="/page3" element={<Page3 />} />
-        <Route path="/leader" element={<Leader />} />
-        <Route path="/unity" element={<Unity />} />
-        <Route path="/unity1" element={<Unity1 />} />
-        <Route path="/support" element={<Support />} />
-        <Route path="/support1" element={<Support1 />} />
-        <Route path="/money1" element={<Money1 />} />
-        <Route path="/money2" element={<Money2 />} />
-        <Route path="/ano" element={<Ano />} />
-        <Route path="/airdrop" element={<Airdrop />} />
-        <Route path="/airdrop1" element={<Airdrop1 />} />
-        <Route path="/verify" element={<Verify />} />
-        <Route path="/deposit" element={<Deposit />} />
-        <Route path="/history" element={<HIstory />} />
-      </Routes>
+  <Route path="/" element={<Splash />} /> {/* Đường dẫn gốc */}
+  <Route path="/splash" element={<Splash />} />
+  <Route path="/guild1" element={<Guild1 />} />
+  <Route path="/guild2" element={<Guild2 />} />
+  <Route path="/guild3" element={<Guild3 />} />
+  <Route path="/login" element={<Login />} />
+  <Route path="/reset-password" element={<Guild4 />} />
+  <Route path="/guild5" element={<Guild5 />} />
+  <Route path="/releas" element={<Releas />} />
+  <Route path="/user" element={<User />} />
+  <Route path="/user1" element={<User1 />} />
+  <Route path="/home" element={<Home />} />
+  <Route path="/money" element={<Money />} />
+  <Route path="/select" element={<Select />} />
+  <Route path="/stacking" element={<Stacking />} />
+  <Route path="/stacking1" element={<Stacking1 />} />
+  <Route path="/team" element={<Team />} />
+  <Route path="/team1" element={<Team1 />} />
+  <Route path="/page" element={<Page />} />
+  <Route path="/page1" element={<Page1 />} />
+  <Route path="/page2" element={<Page2 />} />
+  <Route path="/page3" element={<Page3 />} />
+  <Route path="/leader" element={<Leader />} />
+  <Route path="/unity" element={<Unity />} />
+  <Route path="/unity1" element={<Unity1 />} />
+  <Route path="/support" element={<Support />} />
+  <Route path="/support1" element={<Support1 />} />
+  <Route path="/money1" element={<Money1 />} />
+  <Route path="/money2" element={<Money2 />} />
+  <Route path="/ano" element={<Ano />} />
+  <Route path="/airdrop" element={<Airdrop />} />
+  <Route path="/airdrop1" element={<Airdrop1 />} />
+  <Route path="/verify" element={<Verify />} />
+  <Route path="/deposit" element={<Deposit />} />
+  <Route path="/history" element={<HIstory />} />
+</Routes>
     </Router>
   );
 };

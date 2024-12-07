@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import image_c from '../../assets/image_c.png';
 import homee from '../../assets/money/homee.png';
@@ -18,19 +18,19 @@ const NavButton = ({ onClick, src, alt, style = {} }) => (
       backgroundColor: 'transparent',
       color: 'white',
       border: 'none',
-      padding: '10px', // Tăng padding để làm cho nút to hơn
+      padding: '10px', // Increase padding to make the button larger
       cursor: 'pointer',
       ...style,
     }}
     onClick={onClick}
   >
-    <img src={src} alt={alt} style={{ width: '24px', height: '24px' }} /> {/* Tăng kích thước của biểu tượng */}
+    <img src={src} alt={alt} style={{ width: '24px', height: '24px' }} /> {/* Increase icon size */}
   </button>
 );
 
 const RatePage = () => {
   const navigate = useNavigate();
-
+  const [token, setToken] = useState(null); // Declare state for token
   const [isBaseVisible, setBaseVisible] = useState(true);
   const [isStakingVisible, setStakingVisible] = useState(true);
   const [isBoostersVisible, setBoostersVisible] = useState(true);
@@ -44,6 +44,30 @@ const RatePage = () => {
   const handleEarnClick = () => navigate('/page');
   const handlePingInactiveClick = () => navigate('/team');
 
+  useEffect(() => {
+    // Retrieve token from localStorage once
+    const storedToken = localStorage.getItem('token');
+    console.log('Retrieved token:', storedToken);
+
+    if (!storedToken) {
+      console.log('No token found. Redirecting to login.');
+      navigate('/select'); 
+    } else {
+      setToken(storedToken); // Set the token in state
+    }
+  }, [navigate]);
+
+  useEffect(() => {
+    if (token) {
+      getRateInfo(token); // Call RateInfo API with the token
+    }
+  }, [token]); // Only runs when token changes
+
+  const getRateInfo = (token) => {
+    // Perform API call with token
+    console.log('Fetching wallet info with token:', token);
+    // Add your API call logic here
+  };
   return (
     <div className="min-h-screen flex flex-col items-center" style={{ backgroundColor: '#090B2F', color: 'white' }}>
       {/* Header */}

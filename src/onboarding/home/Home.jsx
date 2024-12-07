@@ -84,7 +84,14 @@ const Home = () => {
     console.log('Fetching wallet info with token:', token);
     // Add your API call logic here
   };
-
+  useEffect (()=>{
+    if(token){
+      createWallet(token);
+    }
+  },[token]);
+ const createWallet = (token) =>{
+  console.log('createWallet with token:',token);
+ }
   useEffect(() => {
     let timer; // Declare timer variable
 

@@ -1,13 +1,16 @@
 import axios from 'axios';
+import {HOST, VERSION} from './common';
 
-const API_URL = '/v1/auth/login'; // Đảm bảo rằng URL này là chính xác
-const API_URL1 ='/v1/auth/register'
-const API_URL2 ='/v1/wallet/info'
-const API_URL3 ='/v1/wallet/create'
+const API_LOGIN = HOST + VERSION + '/auth/login'; // Đảm bảo rằng URL này là chính xác
+const API_REGISTER = HOST + VERSION + '/auth/register'
+
+const API_WALLET_INFO = HOST + VERSION + '/wallet/info'
+const API_WALLET_CREATE = HOST + VERSION + '/wallet/create'
+
 const login = async (email, password) => {
   try {
     // Gửi yêu cầu với đúng tham số
-    const response = await axios.post(API_URL, {
+    const response = await axios.post(API_LOGIN, {
       email: email, // Thay đổi từ 'email' thành 'identifier' nếu API yêu cầu
       password: password
     });
@@ -31,7 +34,7 @@ const login = async (email, password) => {
     console.log("Sending registration request with the following data:");
     console.log({ email, password, confirm_password, username, referral_id });
 
-    const response = await axios.post(API_URL1, {
+    const response = await axios.post(API_REGISTER, {
       email,
       password,
       confirm_password,
@@ -70,15 +73,13 @@ const getWalletInfo = async (token) => {
   try {
     console.log("Fetching wallet info with token:", token);
 
-    const response = await axios.post(API_URL2, {}, {
+    const response = await axios.post(API_WALLET_INFO, {}, {
       headers: {
         Authorization: `Bearer ${token}`
       }
     });
 
-    console.log('Full response from API:', response);
-    console.log('Response status:', response.status);
-    console.log('Response data:', response.data);
+
 
     if (response.status >= 200 && response.status < 300) {
       return {
@@ -95,34 +96,35 @@ const getWalletInfo = async (token) => {
     throw new Error(message);
   }
 };
-const createWallet = async (token) => {
+const createWallet = async (crypto_id, user_id, address_id) => {
   try {
-    console.log("Creating a new wallet with token:", token);
-
-    const response = await axios.post('API_URL3', {}, {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
+    // Send a POST request to the API with the required data
+    const response = await axios.post(API_WALLET_CREATE, {
+      crypto_id: crypto_id,
+      user_id: user_id,
+      address_id: address_id,
     });
 
-    console.log('Full response from API:', response);
-    console.log('Response status:', response.status);
-    console.log('Response data:', response.data);
-
-    if (response.status >= 200 && response.status < 300) {
+    // Check if the response status is 200 and if an access_token is returned in the data
+    if (response.status === 200 && response.data.data.access_token) {
+      console.log("Wallet created successfully:", response.data.data);
+      
+      // Return the relevant data
       return {
-        wallet_id: response.data.data.wallet_id, // Customize based on actual response structure
-        address: response.data.data.address, // Customize based on actual response structure
+        wallet_id: response.data.data.wallet_id, 
+        address: response.data.data.address,
+        access_token: response.data.data.access_token
       };
     } else {
-      throw new Error('Failed to create a new wallet');
+      throw new Error('Failed to create wallet. No access token returned.');
     }
   } catch (error) {
+    // Log any errors and throw a user-friendly error message
     console.error('Error creating wallet:', error.response ? error.response.data : error.message);
-
     const message = error.response?.data?.message || 'Failed to create wallet. Please try again later.';
     throw new Error(message);
   }
 };
+
 
 export default { login, releas, getWalletInfo, createWallet };
